@@ -1,9 +1,9 @@
-import { Center } from "../../components/Center";
+import { Center } from "../../components/Center/Center";
 // import {Title} from "../../components/Title";
 import { mongooseConnect } from "../../lib/mongoose";
 import { Product } from "../../models/Product";
 // import {WhiteBox} from "../../components/WhiteBox";
-import ProductImages from "../../components/ProductImg"
+import ProductImages from "../../components/Products/ProductImg";
 import {CartIcon} from "../../components/icons/CartIcon"
 // import {Button} from "../../components/Button"
 import { CartContext } from "../../components/CartContext";
