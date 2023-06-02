@@ -10,6 +10,6 @@ export default {
     handle: "@FromDTrip",
     site: "https://twitter.com/FromDTrip",
     cardType: "summary_large_image",
-    Image: "/img/LogoNFP.png",
+    Image: "/img/Logo.png",
   },
 };
