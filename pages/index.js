@@ -3,6 +3,7 @@ import { NewProducts } from "../components/Products/NewProducts";
 import { Category } from "../components/Categories/Category"
 import { Product } from "../models/Product";
 import { mongooseConnect } from "../lib/mongoose";
+
 export default function Home({ featuredProduct, newProducts }) {
   return (
     <>
