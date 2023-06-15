@@ -77,7 +77,11 @@ export const Navbar = () => {
             <div className="grid gap-10 p-4">
               <div className="flex justify-between">
                 <Link href={"/"}>
-                  Home
+                  <button
+                  onClick={handleMobileNavClose}
+                  >
+                    Home
+                  </button>
                 </Link>
                 <div>
                   <button
@@ -101,11 +105,29 @@ export const Navbar = () => {
                   </button>
                 </div>
               </div>
-              <Link href={"/products"}>All products</Link>
+              <Link href={"/products"}>
+                <button
+                  onClick={handleMobileNavClose}
+                >
+                  All products  
+                </button>
+              </Link>
               {/* <Link href={"/categories"}>Categories</Link> */}
-              <Link href={"/signup"}>Account</Link>
+              <Link href={"/signup"}>
+                <button
+                  onClick={handleMobileNavClose}
+                >
+                  Account
+                </button>
+              </Link>
               <div className="flex justify-between">
-                <Link href={"/cart"}>Cart</Link>
+                <Link href={"/cart"}>
+                  <button
+                  onClick={handleMobileNavClose}
+                  >
+                    Cart
+                  </button>
+                </Link>
                 <div className="flex">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

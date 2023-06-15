@@ -22,14 +22,14 @@ export default function SignUp() {
   };
 
   return (
-    <div className="p-16 bg-[#CBD4C2]">
+    <div className="p-16 bg-[#CBD4C2] flex justify-center">
       <Center>
         <WhiteBox>
-          <div className="max-w-xs mx-auto">
+          <div className="max-w-xs mx-auto w-fit">
             <h1 className="text-center mb-4">Create an Account</h1>
             <form
               onSubmit={handleSubmit}
-              className="bg-[#7E9181] text-white border-2 border-[#C7CEDB] p-2 rounded-xl"
+              className="bg-[#7E9181] text-white border-2 border-[#C7CEDB] p-2 rounded-xl w-fit"
             >
               <div className="mb-4 flex justify-between">
                 <label className="font-bold mb-1" htmlFor="email">

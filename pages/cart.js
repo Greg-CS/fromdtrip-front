@@ -137,6 +137,7 @@ export default function CartPage() {
           <div className="mt-4">
             <Input
               placeholder="Name"
+              white
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -144,12 +145,14 @@ export default function CartPage() {
           <div className="mt-4">
             <Input
               placeholder="Email"
+              white
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="mt-4">
             <Input
+              white
               placeholder="City"
               value={city}
               onChange={(e) => setCity(e.target.value)}
@@ -157,6 +160,7 @@ export default function CartPage() {
           </div>
           <div className="mt-4">
             <Input
+              white
               placeholder="Postal Code"
               value={postalCode}
               onChange={(e) => setPostalCode(e.target.value)}
@@ -164,6 +168,7 @@ export default function CartPage() {
           </div>
           <div className="mt-4">
             <Input
+              white
               placeholder="Street Address"
               value={streetAddress}
               onChange={(e) => setStreetAddress(e.target.value)}
@@ -171,13 +176,14 @@ export default function CartPage() {
           </div>
           <div className="mt-4">
             <Input
+              white
               placeholder="Country"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
             />
           </div>
           <div className="mt-4">
-            <Button onClick={goToPayment}>Checkout</Button>
+            <Button black="true" onClick={goToPayment}>Checkout</Button>
           </div>
         </div>
       </div>
