@@ -12,22 +12,22 @@ import { useContext } from "react";
 export default function ProductPage({ product }) {
   const { addProduct } = useContext(CartContext);
   return (
-    <>
+    <div className="p-10 bg-blue-500">
       <Center>
-        <div className="grid grid-cols-1 gap-40 md:grid-cols-2">
-          <div className="bg-white rounded-lg p-6">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 p-10">
+          <div className="bg-blue-300 rounded-lg p-6">
             <ProductImages images={product.images} />
           </div>
           <div>
-            <h2 className="text-2xl font-bold mb-4">{product.title}</h2>
-            <p>{product.description}</p>
+            <h2 className="text-2xl font-bold mb-4 uppercase text-white">{product.title}</h2>
+            <p className="text-white">{product.description}</p>
             <div className="flex items-center gap-20">
               <div>
-                <span className="text-xl">${product.price}</span>
+                <span className="text-xl text-white">${product.price}</span>
               </div>
               <div>
                 <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center"
+                  className="bg-blue-900 text-white px-4 py-2 rounded-lg flex items-center"
                   onClick={() => addProduct(product._id)}
                 >
                   <CartIcon />
@@ -38,7 +38,7 @@ export default function ProductPage({ product }) {
           </div>
         </div>
       </Center>
-    </>
+    </div>
   );
 }
 

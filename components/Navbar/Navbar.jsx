@@ -26,7 +26,7 @@ export const Navbar = () => {
       <div className="flex-none hidden lg:flex">
         <div className="flex gap-10">
           <Link href="/products">All products</Link>
-          <Link href="/categories">Categories</Link>
+          {/* <Link href="/categories">Categories</Link> */}
           <Link href="/signup">Account</Link>
         </div>
         <div className="dropdown dropdown-end">
@@ -96,7 +96,7 @@ export const Navbar = () => {
             <div className="grid gap-10 p-4">
               <Link href={"/"}>Home</Link>
               <Link href={"/products"}>All products</Link>
-              <Link href={"/categories"}>Categories</Link>
+              {/* <Link href={"/categories"}>Categories</Link> */}
               <Link href={"/signup"}>Account</Link>
               <Link href={"/cart"}>Cart</Link>
             </div>

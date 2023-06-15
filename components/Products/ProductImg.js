@@ -14,10 +14,10 @@ export default function ProductImg({ images }) {
             key={image}
             className={`border-2 ${
               image === activeImage ? "border-gray-300" : "border-transparent"
-            } h-40 p-2 cursor-pointer rounded-md`}
+            } cursor-pointer rounded-xl p-1 bg-gray-300`}
             onClick={() => setActiveImage(image)}
           >
-            <img src={image} className="max-w-full max-h-full" alt="" />
+            <img src={image} className="w-10 h-10" alt="" />
           </div>
         ))}
       </div>
