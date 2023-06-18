@@ -75,7 +75,7 @@ export const Navbar = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
           <div className="flex flex-col h-screen max-w-xs w-full bg-white">
             <div className="grid gap-10 p-4">
-              <div className="flex justify-between">
+              <div className="flex justify-between mt-10 items-center">
                 <Link href={"/"}>
                   <button
                   onClick={handleMobileNavClose}
