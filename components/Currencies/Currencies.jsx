@@ -31,16 +31,6 @@ export const Currencies = () => {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
-          <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm2 2v8h12V8H6zm4 2a2 2 0 1 1 4 0v2h2V8a4 4 0 0 0-8 0v2h2zm4 0a2 2 0 1 1 4 0v2h2V8a4 4 0 0 0-8 0v2h2zm-2 4v2h4v-2h-4z" />
-        </svg>
-        <span className="ml-2">Cash On Delivery</span>
-      </div>
-      <div className="flex items-center">
-        <svg
-          className="w-6 h-6 text-white"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-        >
           <path d="M12 2C6.486 2 2 6.486 2 12c0 5.514 4.486 10 10 10s10-4.486 10-10c0-5.514-4.486-10-10-10zm0 18c-4.411 0-8-3.589-8-8 0-4.411 3.589-8 8-8s8 3.589 8 8c0 4.411-3.589 8-8 8zm-2-9h4v1.586l2-2V10h2v2.586l2-2V10h1V8h-1V6h-2v1.414l-2 2V7H9v1.586l-2-2V9H6V7h1V6H5v4h5v2H6v1h3v-1.414l2 2V13h2v-1.414l2 2V14h1v2h-1v1h2v-4h-5v-2h5V9h-3v1.414l-2-2V11H9v1.414l-2-2V12H6v2h1v1H5v-4h5V9H6V6h3v1.414l2-2V7h2v1.586l2-2V8h1V6h-1V5h2v4h-5v2h5v4h-2v-1h1v-2h-3v-1.586l-2 2V13H9v1.586l-2-2V14H6v-2z" />
         </svg>
         <span className="ml-2">Google Pay</span>
