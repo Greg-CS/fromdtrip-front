@@ -4,7 +4,7 @@ import React from "react";
 
 export const NewProducts = ({ products }) => {
   return (
-    <div className="bg-[#FFFCFF] text-white py-10">
+    <div className="bg-[#4F359B] text-white py-10">
         <Title>
           <span className='pl-5'>
             New Arrivals

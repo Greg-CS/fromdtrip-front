@@ -13,15 +13,15 @@ export const Featured = ({ product }) => {
   }
 
   return (
-    <div className="bg-[#CBD4C2] text-white py-10">
+    <div className="bg-[#585191] text-white py-10">
       <Center>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div>
             <h1 className="text-2xl md:text-4xl font-medium mb-2">
               {product.title}
             </h1>
-            <p className="text-gray-400 text-sm">{product.description}</p>
-            <div className="flex mt-4">
+            <p className="text-white text-md">{product.description}</p>
+            <div className="flex mt-4 gap-2">
               <ButtonLink href="/products/" outline white>
                 Read More
               </ButtonLink>

@@ -17,7 +17,7 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-[#FFFCFF]">
+    <div className="navbar bg-[#99907D] text-white">
       <div className="flex-1">
         <Link className="btn btn-ghost normal-case text-xl" href="/">
           Fromdtrip
@@ -73,7 +73,7 @@ export const Navbar = () => {
       </button>
       {isMobileNavActive && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
-          <div className="flex flex-col h-screen max-w-xs w-full bg-white">
+          <div className="flex flex-col h-screen max-w-xs w-full bg-[#99907D]">
             <div className="grid gap-10 p-4">
               <div className="flex justify-between mt-10 items-center">
                 <Link href={"/"}>
