@@ -21,9 +21,16 @@ const categories = [
 
 export const Category = () => {
   return (
+    <>
+    <div class="custom-shape-divider-top-1688535601">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+    <path d="M1200 0L0 0 892.25 114.72 1200 0z" class="shape-fill"></path>
+    </svg>
+    </div>
     <div className="bg-[#575A5E] py-10">
-      <h1 className="text-white text-3xl font-mono font-bold pl-5">Categories</h1>
+      <h1 className="relative text-white text-4xl font-mono font-bold pl-5">Categories</h1>
       <CategoryGrid categories={categories} />
     </div>
+    </>
   ); 
 }

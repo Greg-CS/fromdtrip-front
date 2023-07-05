@@ -4,6 +4,7 @@ import { Center } from "../Center/Center";
 import { Button } from "../Buttons/Button";
 import { ButtonLink } from "../Buttons/ButtonLink";
 import { CartIcon } from "../icons/CartIcon";
+import Link from "next/link";
 
 export const Featured = ({ product }) => {
   const { addProduct } = useContext(CartContext);
@@ -13,32 +14,40 @@ export const Featured = ({ product }) => {
   }
 
   return (
-    <div className="bg-[#474A48] text-white py-10">
-      <Center>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-          <div>
-            <h1 className="text-2xl md:text-4xl font-medium mb-2">
-              {product.title}
-            </h1>
-            <p className="text-white text-md">{product.description}</p>
-            <div className="flex mt-4 gap-2">
-              <ButtonLink href="/products/" outline white>
-                Read More
-              </ButtonLink>
-              <Button white onClick={addFeaturedToCart}>
-                <CartIcon className="w-5 h-5 mr-1" /> Add to Cart
-              </Button>
-            </div>
-          </div>
-          <div>
-            <img
-              src="https://fromdtrip-ecommerce-bucket.s3.amazonaws.com/1684115693368.jpg"
-              alt="featured"
-              className="max-w-full max-h-48 md:max-h-full mx-auto"
-            />
-          </div>
-        </div>
-      </Center>
-    </div>
+    <>
+      <div className="custom-shape-divider-top-1688534628 bg-[#474A48]">
+          <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="#2C302E">
+              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+          </svg>
+      </div>
+      <section className="bg-[#474A48]">
+      <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+      <div className="mr-auto place-self-center lg:col-span-7">
+      <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Checkout our new product</h1>
+      <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack.</p>
+      <div className="flex gap-5">
+        <Link className="btn border-white" href="/products/">
+          Read More
+        </Link>
+        <button className="flex gap-3 btn border-white border-2" onClick={addFeaturedToCart}>
+          <CartIcon className="w-5 h-5 mr-1" /> 
+          <span className="">
+            Add to Cart
+          </span>
+        </button>
+      </div>
+      </div>
+      <div>
+        <img
+          src="https://fromdtrip-ecommerce-bucket.s3.amazonaws.com/1684115693368.jpg"
+          alt="featured"
+          className="max-w-full max-h-48 md:max-h-full mx-auto mt-10"
+          height={"100px"}
+          width={"1000px"}
+        />
+      </div>            
+      </div>
+      </section>
+    </>
   );
 };

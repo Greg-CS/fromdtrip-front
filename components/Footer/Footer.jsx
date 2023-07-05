@@ -2,8 +2,14 @@ import React from 'react'
 
 export const Footer = () => {
   return (
+    <>
+    <div class="custom-shape-divider-top-1688536506">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" class="shape-fill"></path>
+        </svg>
+    </div>
     <footer className="footer p-10 bg-[#A7A2A9] text-white">
-      <div>
+      <div className='relative'>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -64,5 +70,6 @@ export const Footer = () => {
         </div>
       </div>
     </footer>
+    </>
   );
 }

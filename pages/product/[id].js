@@ -15,9 +15,9 @@ export default function ProductPage({ product, newProducts }) {
   const { addProduct } = useContext(CartContext);
   return (
     <>
-      <div className="bg-blue-500">
+      <div className="bg-[#484a48]">
         <div className="grid lg:flex lg:justify-between lg:gap-40 xs:p-0 sm:p-10">
-          <div className="bg-blue-300 rounded-lg p-6">
+          <div className="bg-white border-4 border-black rounded-lg p-6">
             <ProductImages images={product.images} />
           </div>
           <div className="py-5 px-5">
@@ -31,7 +31,7 @@ export default function ProductPage({ product, newProducts }) {
               </div>
               <div>
                 <button
-                  className="bg-blue-900 text-white px-4 py-2 rounded-lg flex items-center"
+                  className="bg-black text-white px-4 py-2 rounded-lg flex items-center"
                   onClick={() => addProduct(product._id)}
                 >
                   <CartIcon />

@@ -5,3 +5,64 @@
 a:hover {
     text-decoration: underline;
 }
+
+.custom-shape-divider-top-1688534345 {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    // change svg color to 2C302E
+    svg {
+        fill: "#2C302E"
+    }
+}
+
+.custom-shape-divider-top-1688535057 {
+    position: absolute;
+    top: 100;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1688535601 {
+    position: absolute;
+    top: 100;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1688535601 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 136px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1688535601 .shape-fill {
+    fill: #909590;
+}
+
+.custom-shape-divider-top-1688536506 {
+    position: absolute;
+    top: 100;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1688536506 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 94px;
+}
+
+.custom-shape-divider-top-1688536506 .shape-fill {
+    fill: #575A5E;
+}
