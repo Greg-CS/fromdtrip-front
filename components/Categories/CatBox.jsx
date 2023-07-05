@@ -5,8 +5,8 @@ export const CatBox = ({ _id, name, description, price, image }) => {
   let url = "/";
   console.log(name)
   return (
-    <div className='text-center'>
-      <div className="box-border w-72 h-80 bg-gray-200 border border-white shadow-md backdrop-filter backdrop-blur-lg rounded-lg cursor-pointer transition-all duration-500 grid place-items-center select-none font-bold text-black hover:border-black transform hover:scale-105 active:scale-95 active:rotate-1 md:shadow-lg">
+    <div className="text-center">
+      <div className="box-border w-72 h-80 bg-[#2C302E] border-4 border-[#F4F7F5] shadow-md backdrop-filter backdrop-blur-lg rounded-3xl cursor-pointer transition-all duration-500 grid place-items-center select-none font-bold text-black hover:border-black transform hover:scale-105 active:scale-95 active:rotate-1 md:shadow-lg">
         <Link href={url}>
           <div className="flex items-center justify-center">
             <img
@@ -17,9 +17,7 @@ export const CatBox = ({ _id, name, description, price, image }) => {
           </div>
         </Link>
       </div>
-      <span className="text-gray-400 ">
-        {name}
-      </span>
+      <span className="text-black">{name}</span>
     </div>
   );
 };

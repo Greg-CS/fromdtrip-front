@@ -20,13 +20,14 @@ export const ProductBox = ({ _id, title, description, price, images }) => {
         </div>
       </Link>
       <div className="mt-2">
-        <div className="flex justify-between">
+        <div className="grid gap-1">
           <Link href={url}>
             <h2 className="text-sm capitalize text-center">{title}</h2>
           </Link>
-          <span className="text-sm font-medium text-right md:text-left">
-            ${price}
-          </span>
+          <div className="flex justify-around">
+            <span className="items-center">Price</span>
+            <span className="text-sm font-medium items-center">${price}</span>
+          </div>
         </div>
         <div className="flex items-center justify-around mt-2">
           <button

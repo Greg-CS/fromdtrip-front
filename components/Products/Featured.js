@@ -13,7 +13,7 @@ export const Featured = ({ product }) => {
   }
 
   return (
-    <div className="bg-[#585191] text-white py-10">
+    <div className="bg-[#474A48] text-white py-10">
       <Center>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
           <div>

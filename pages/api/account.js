@@ -12,25 +12,24 @@ export default async function handler(req, res) {
     });
     const db = client.db();
 
-    // Check if the user already exists in the database
-    const existingUser = await db.collection("users").findOne({ email });
+    // Find the user in the database
+    const user = await db.collection("users").findOne({ email });
 
-    if (existingUser) {
-      res.status(409).json({ message: "User already exists" });
+    if (!user) {
+      res.status(404).json({ message: "User not found" });
       client.close();
       return;
     }
 
-    // Create a new user document
-    const newUser = {
-      email,
-      password,
-    };
+    // Check if the provided password matches the stored password
+    if (user.password !== password) {
+      res.status(401).json({ message: "Invalid password" });
+      client.close();
+      return;
+    }
 
-    // Insert the new user into the database
-    const result = await db.collection("users").insertOne(newUser);
-
-    res.status(201).json({ message: "User created successfully" });
+    // User authenticated successfully
+    res.status(200).json({ message: "Login successful" });
     client.close();
   }
 }

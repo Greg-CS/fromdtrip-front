@@ -21,10 +21,8 @@ const categories = [
 
 export const Category = () => {
   return (
-    <div className="bg-[#7D6F86] py-10">
-      <Title>
-        <span className="pl-5 text-center">Categories</span>
-      </Title>
+    <div className="bg-[#575A5E] py-10">
+      <h1 className="text-white text-3xl font-mono font-bold pl-5">Categories</h1>
       <CategoryGrid categories={categories} />
     </div>
   ); 

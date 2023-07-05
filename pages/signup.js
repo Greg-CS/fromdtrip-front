@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Center } from "../components/Center/Center";
-import {WhiteBox} from "../components/WhiteBox";
+import { WhiteBox } from "../components/WhiteBox";
 
-export default function SignUp() {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("/api/account", {
+    const response = await fetch("/api/account/account", {
+      // Modify the API endpoint to handle login
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +27,8 @@ export default function SignUp() {
       <Center>
         <WhiteBox>
           <div className="max-w-xs mx-auto w-fit">
-            <h1 className="text-center mb-4">Create an Account</h1>
+            <h1 className="text-center mb-4">Login</h1>{" "}
+            {/* Update the heading */}
             <form
               onSubmit={handleSubmit}
               className="bg-[#7E9181] text-white border-2 border-[#C7CEDB] p-2 rounded-xl w-fit"
@@ -60,7 +62,7 @@ export default function SignUp() {
                   type="submit"
                   className="px-4 py-2 bg-blue-500 text-white rounded cursor-pointer"
                 >
-                  Sign Up
+                  Login {/* Update the button text */}
                 </button>
               </div>
             </form>

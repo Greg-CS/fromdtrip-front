@@ -17,7 +17,7 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-[#99907D] text-white">
+    <div className="navbar bg-[#2C302E] text-white">
       <div className="flex-1">
         <Link className="btn btn-ghost normal-case text-xl" href="/">
           Fromdtrip
@@ -77,11 +77,7 @@ export const Navbar = () => {
             <div className="grid gap-10 p-4">
               <div className="flex justify-between mt-10 items-center">
                 <Link href={"/"}>
-                  <button
-                  onClick={handleMobileNavClose}
-                  >
-                    Home
-                  </button>
+                  <button onClick={handleMobileNavClose}>Home</button>
                 </Link>
                 <div>
                   <button
@@ -106,27 +102,15 @@ export const Navbar = () => {
                 </div>
               </div>
               <Link href={"/products"}>
-                <button
-                  onClick={handleMobileNavClose}
-                >
-                  All products  
-                </button>
+                <button onClick={handleMobileNavClose}>All products</button>
               </Link>
               {/* <Link href={"/categories"}>Categories</Link> */}
               <Link href={"/signup"}>
-                <button
-                  onClick={handleMobileNavClose}
-                >
-                  Account
-                </button>
+                <button onClick={handleMobileNavClose}>Account</button>
               </Link>
               <div className="flex justify-between">
                 <Link href={"/cart"}>
-                  <button
-                  onClick={handleMobileNavClose}
-                  >
-                    Cart
-                  </button>
+                  <button onClick={handleMobileNavClose}>Cart</button>
                 </Link>
                 <div className="flex">
                   <svg
