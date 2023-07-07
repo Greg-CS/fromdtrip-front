@@ -42,8 +42,6 @@ export const Featured = ({ product }) => {
           src="https://fromdtrip-ecommerce-bucket.s3.amazonaws.com/1684115693368.jpg"
           alt="featured"
           className="max-w-full max-h-48 md:max-h-full mx-auto mt-10"
-          height={"100px"}
-          width={"1000px"}
         />
       </div>            
       </div>
