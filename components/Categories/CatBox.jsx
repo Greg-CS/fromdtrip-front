@@ -6,8 +6,8 @@ export const CatBox = ({categories}) => {
   console.log(categories);
 
   return (
-    <button className="btn text-white">
+    <Link href={"/products"} className="btn text-white">
       <span>{categories.name}</span>
-    </button>
+    </Link>
   );
 };

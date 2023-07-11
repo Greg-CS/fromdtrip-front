@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useContext } from "react";
-import { CartContext } from "../CartContext";
+import { CartContext } from "../Context/CartContext";
 import { useRouter } from "next/router";
 import Link from "next/link";
 export const Navbar = () => {
@@ -31,7 +31,7 @@ export const Navbar = () => {
         </div>
         <div className="dropdown dropdown-end">
           <a href={"/cart"}>
-            <label tabIndex={0} className="btn btn-ghost btn-circle relative">
+            <label tabIndex={0} className="btn btn-ghost btn-circle relative m-1">
               <button className="indicator">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

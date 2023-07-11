@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --dark-color: "#93CEC0"
+    --light-color: "#D9D9D9"
+}
+
+/* #dark {
+    fill: var(--dark-color);
+}
+#light {
+    fill: var(--light-color);
+} */
+
+svg {
+    cursor: pointer;
+}
+
+
+#fire {
+    transition: all 1s ease;
+    fill: red;
+}
+
+svg #fire {
+    transform: translatex(100%)
+}
+
+svg:hover #fire {
+    transform: translateX(0%);
+}
+
+
 a:hover {
     text-decoration: underline;
 }

@@ -1,8 +1,5 @@
 import React, { useContext } from "react";
-import { CartContext } from "../CartContext";
-import { Center } from "../Center/Center";
-import { Button } from "../Buttons/Button";
-import { ButtonLink } from "../Buttons/ButtonLink";
+import { CartContext } from "../Context/CartContext";
 import { CartIcon } from "../icons/CartIcon";
 import Link from "next/link";
 
