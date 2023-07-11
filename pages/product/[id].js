@@ -1,23 +1,25 @@
-import { Center } from "../../components/Center/Center";
-// import {Title} from "../../components/Title";
 import { mongooseConnect } from "../../lib/mongoose";
 import { Product } from "../../models/Product";
-// import {WhiteBox} from "../../components/WhiteBox";
 import ProductImages from "../../components/Products/ProductImg";
 import {CartIcon} from "../../components/icons/CartIcon"
-// import {Button} from "../../components/Button"
 import { CartContext } from "../../components/CartContext";
 import { useContext } from "react";
 import { NewProducts } from "../../components/Products/NewProducts";
 import { Currencies } from "../../components/Currencies/Currencies";
+import { Cdivider } from "../../components/Cdivider/Cdivider";
 
 export default function ProductPage({ product, newProducts }) {
   const { addProduct } = useContext(CartContext);
   return (
     <>
+      <div className="custom-shape-divider-top-1688534628 bg-[#474A48]">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="#2C302E">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+      </div>
       <div className="bg-[#484a48]">
         <div className="grid lg:flex lg:justify-between lg:gap-40 xs:p-0 sm:p-10">
-          <div className="bg-white border-4 border-black rounded-lg p-6">
+          <div className="bg-white border-4 border-[#32C302E] rounded-lg p-6">
             <ProductImages images={product.images} />
           </div>
           <div className="py-5 px-5">
@@ -46,13 +48,13 @@ export default function ProductPage({ product, newProducts }) {
         </div>
       </div>
       <NewProducts products={newProducts} />
+      <Cdivider/>
     </>
   );
 }
 
 
 export async function getServerSideProps(context) {
-  const featuredProductId = "6461913287ecc9911950dac8";
   await mongooseConnect();
   const newProducts = await Product.find({}, null, {
     sort: { _id: -1 },

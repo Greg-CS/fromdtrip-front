@@ -18,7 +18,7 @@ a:hover {
 
 .custom-shape-divider-top-1689003855 {
     position: absolute;
-    top: 100;
+    top: 1;
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -37,42 +37,42 @@ a:hover {
     fill: #474A48;
 }
 
-.custom-shape-divider-top-1689004285 {
+.custom-shape-divider-top-1689040754 {
     position: absolute;
-    top: 100;
+    top: 1;
     left: 0;
     width: 100%;
     overflow: hidden;
     line-height: 0;
 }
 
-.custom-shape-divider-top-1689004285 svg {
+.custom-shape-divider-top-1689040754 svg {
     position: relative;
     display: block;
-    width: calc(103% + 1.3px);
-    height: 100px;
+    width: calc(179% + 1.3px);
+    height: 193px;
 }
 
-.custom-shape-divider-top-1689004285 .shape-fill {
+.custom-shape-divider-top-1689040754 .shape-fill {
     fill: #909590;
 }
 
-.custom-shape-divider-top-1689004419 {
+.custom-shape-divider-top-1689042667 {
     position: absolute;
-    top: 100;
+    top: 1;
     left: 0;
     width: 100%;
     overflow: hidden;
     line-height: 0;
 }
 
-.custom-shape-divider-top-1689004419 svg {
+.custom-shape-divider-top-1689042667 svg {
     position: relative;
     display: block;
-    width: calc(183% + 1.3px);
-    height: 175px;
+    width: calc(180% + 1.3px);
+    height: 100px;
 }
 
-.custom-shape-divider-top-1689004419 .shape-fill {
+.custom-shape-divider-top-1689042667 .shape-fill {
     fill: #575A5E;
 }

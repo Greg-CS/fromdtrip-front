@@ -1,9 +1,7 @@
 import { ProductsGrid } from './ProductsGrid';
-import { Title } from '../Title'
 import React from "react";
 
 export const NewProducts = ({ products }) => {
-  // 474A48
   return (
     <>
       <div class="custom-shape-divider-top-1689003855">
