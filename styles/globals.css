@@ -43,6 +43,7 @@ a:hover {
     overflow: hidden;
     line-height: 0;
     margin-bottom: -1px;
+    z-index: 999 !important;
     svg {
         fill: "#2C302E"
     }
@@ -56,6 +57,7 @@ a:hover {
     overflow: hidden;
     line-height: 0;
     margin-bottom: -1px;
+    z-index: 999 !important;
 }
 
 .custom-shape-divider-top-1689003855 svg {
@@ -78,6 +80,7 @@ a:hover {
     overflow: hidden;
     line-height: 0;
     margin-bottom: -1px;
+    z-index: 999 !important;
 }
 
 .custom-shape-divider-top-1689040754 svg {
@@ -99,6 +102,7 @@ a:hover {
     overflow: hidden;
     line-height: 0;
     margin-bottom: -1px;
+    z-index: 999 !important;
 }
 
 .custom-shape-divider-top-1689042667 svg {
