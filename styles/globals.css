@@ -69,12 +69,13 @@ a:hover {
 }
 
 .custom-shape-divider-top-1689040754 {
-    position: absolute;
-    top: 1;
+    position: relative;
+    top: 0.10;
     left: 0;
     width: 100%;
     overflow: hidden;
     line-height: 0;
+    background: #575A5E
 }
 
 .custom-shape-divider-top-1689040754 svg {
