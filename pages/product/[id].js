@@ -2,7 +2,7 @@ import { mongooseConnect } from "../../lib/mongoose";
 import { Product } from "../../models/Product";
 import ProductImages from "../../components/Products/ProductImg";
 import {CartIcon} from "../../components/icons/CartIcon"
-import { CartContext } from "../../components/CartContext";
+import { CartContext } from "../../components/Context/CartContext";
 import { useContext } from "react";
 import { NewProducts } from "../../components/Products/NewProducts";
 import { Currencies } from "../../components/Currencies/Currencies";
