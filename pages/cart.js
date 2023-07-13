@@ -1,12 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 import { Button } from '../components/Button/Button';
 import { CartContext } from '../components/Context/CartContext';
 import { Table } from '../components/Table/Table';
 import { Input } from '../components/Input/Input';
 
+const stripePromise = loadStripe(process.env.STRIPE_PK);
+
+
 export default function CartPage() {
+  const [clientSecret, setClientSecret] = useState("");
   const { cartProducts, addProduct, removeProduct, clearCart } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [name, setName] = useState('');
@@ -37,6 +43,28 @@ export default function CartPage() {
     }
 
   }, [clearCart]);
+
+  useEffect(() => {
+    // Create PaymentIntent as soon as the page loads
+    fetch("/api/create-payment-intent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items: [{ ids: cartProducts }] }),
+    })
+      .then((res) => res.json())
+      .then((data) => setClientSecret(data.clientSecret));
+  }, []);
+
+  const appearance = {
+    theme: 'night',
+    variables: {
+      colorPrimary: '#78a2d9',
+    },
+  };
+  const options = {
+    clientSecret,
+    appearance,
+  };
 
   function moreOfThisProduct(id) {
     addProduct(id);
@@ -137,85 +165,89 @@ export default function CartPage() {
         </div>
         <div className="bg-[#A7A2A9] text-white p-6 mx-5 rounded-xl">
           <h2 className="text-2xl font-bold">Checkout</h2>
-          <div className="mt-4">
-            <label className='block mb-3 text-xl font-bold text-[#05060f99]' style={{transition: "color .3s cubic-bezier(.25,.01,.25,1) 0s"}}>
-              Name
-            </label>
-            <Input
-              // placeholder="Name"
-              white
-              type={"text"}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div className="mt-4">
-            <label className='block mb-3 text-xl font-bold text-[#05060f99]' style={{transition: "color .3s cubic-bezier(.25,.01,.25,1) 0s"}}>
-              Email
-            </label>
-            <Input
-              // placeholder="Email"
-              white
-              type={"email"}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="mt-4">
-            <label className='block mb-3 text-xl font-bold text-[#05060f99]' style={{transition: "color .3s cubic-bezier(.25,.01,.25,1) 0s"}}>
-              city
-            </label>
-            <Input
-              // placeholder="City"
-              white
-              type={"text"}
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-            />
-          </div>
-          <div className="mt-4">
-            <label className='block mb-3 text-xl font-bold text-[#05060f99]' style={{transition: "color .3s cubic-bezier(.25,.01,.25,1) 0s"}}>
-              Zip code
-            </label>
-            <Input
-              white
-              type={"text"}
-              // placeholder="Zip code"
-              value={postalCode}
-              onChange={(e) => setPostalCode(e.target.value)}
-            />
-          </div>
-          <div className="mt-4">
-            <label className='block mb-3 text-xl font-bold text-[#05060f99]' style={{transition: "color .3s cubic-bezier(.25,.01,.25,1) 0s"}}>
-              Street Address
-            </label>
-            <Input
-              white
-              // placeholder="Street Address"
-              value={streetAddress}
-              onChange={(e) => setStreetAddress(e.target.value)}
-            />
-          </div>
-          <div className="mt-4">
-            <label className='block mb-3 text-xl font-bold text-[#05060f99] hover:text-[#05060fc2]' style={{transition: "color .3s cubic-bezier(.25,.01,.25,1) 0s"}}>
-              Country
-            </label>
-            <Input
-              white
-              // placeholder="Country"
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-            />
-          </div>
-          <div className="mt-4">
-            <Button black="true" onClick={goToPayment}>
-              Checkout
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                <path id="fire" strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
-                <path id="fire" strokeLinecap="round" strokeLinejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z" />
-              </svg>
-            </Button>
-          </div>
+          {clientSecret && (
+            <Elements options={options} stripe={stripePromise}>
+              <div className="mt-4">
+                <label className='block mb-3 text-xl font-bold text-[#05060f99]' style={{transition: "color .3s cubic-bezier(.25,.01,.25,1) 0s"}}>
+                  Name
+                </label>
+                <Input
+                  // placeholder="Name"
+                  white
+                  type={"text"}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div className="mt-4">
+                <label className='block mb-3 text-xl font-bold text-[#05060f99]' style={{transition: "color .3s cubic-bezier(.25,.01,.25,1) 0s"}}>
+                  Email
+                </label>
+                <Input
+                  // placeholder="Email"
+                  white
+                  type={"email"}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div className="mt-4">
+                <label className='block mb-3 text-xl font-bold text-[#05060f99]' style={{transition: "color .3s cubic-bezier(.25,.01,.25,1) 0s"}}>
+                  city
+                </label>
+                <Input
+                  // placeholder="City"
+                  white
+                  type={"text"}
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                />
+              </div>
+              <div className="mt-4">
+                <label className='block mb-3 text-xl font-bold text-[#05060f99]' style={{transition: "color .3s cubic-bezier(.25,.01,.25,1) 0s"}}>
+                  Zip code
+                </label>
+                <Input
+                  white
+                  type={"text"}
+                  // placeholder="Zip code"
+                  value={postalCode}
+                  onChange={(e) => setPostalCode(e.target.value)}
+                />
+              </div>
+              <div className="mt-4">
+                <label className='block mb-3 text-xl font-bold text-[#05060f99]' style={{transition: "color .3s cubic-bezier(.25,.01,.25,1) 0s"}}>
+                  Street Address
+                </label>
+                <Input
+                  white
+                  // placeholder="Street Address"
+                  value={streetAddress}
+                  onChange={(e) => setStreetAddress(e.target.value)}
+                />
+              </div>
+              <div className="mt-4">
+                <label className='block mb-3 text-xl font-bold text-[#05060f99] hover:text-[#05060fc2]' style={{transition: "color .3s cubic-bezier(.25,.01,.25,1) 0s"}}>
+                  Country
+                </label>
+                <Input
+                  white
+                  // placeholder="Country"
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                />
+              </div>
+              <div className="mt-4">
+                <Button black="true" onClick={goToPayment}>
+                  Checkout
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                    <path id="fire" strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
+                    <path id="fire" strokeLinecap="round" strokeLinejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z" />
+                  </svg>
+                </Button>
+              </div>
+            </Elements>
+          )}
         </div>
       </div>
     </>
