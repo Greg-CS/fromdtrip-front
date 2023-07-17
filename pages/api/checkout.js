@@ -32,7 +32,7 @@ export default async function handler(req, res) {
           price_data: {
             currency: "USD",
             product_data: { name: productInfo.title },
-            unit_amount: quantity * productInfo.price * 100,
+            unit_amount: productInfo.price * 100,
           },
         });
       }
@@ -40,7 +40,7 @@ export default async function handler(req, res) {
     const orderDoc = await Order.create({
         line_items, name, email, 
         city, postalCode, streetAddress, 
-        country, paid:false,
+        country, paid:true,
     });
 
     const session = await stripe.checkout.sessions.create({
