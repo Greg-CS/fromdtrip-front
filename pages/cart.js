@@ -1,18 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-
 import { Button } from '../components/Button/Button';
 import { CartContext } from '../components/Context/CartContext';
 import { Table } from '../components/Table/Table';
 import { Input } from '../components/Input/Input';
 
-const stripePromise = loadStripe(process.env.STRIPE_PK);
-
 
 export default function CartPage() {
-  const [clientSecret, setClientSecret] = useState("");
   const { cartProducts, addProduct, removeProduct, clearCart } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [name, setName] = useState('');
@@ -43,28 +37,6 @@ export default function CartPage() {
     }
 
   }, [clearCart]);
-
-  useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    fetch("/api/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: [{ ids: cartProducts }] }),
-    })
-      .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret));
-  }, []);
-
-  const appearance = {
-    theme: 'night',
-    variables: {
-      colorPrimary: '#78a2d9',
-    },
-  };
-  const options = {
-    clientSecret,
-    appearance,
-  };
 
   function moreOfThisProduct(id) {
     addProduct(id);
@@ -165,8 +137,6 @@ export default function CartPage() {
         </div>
         <div className="bg-[#A7A2A9] text-white p-6 mx-5 rounded-xl">
           <h2 className="text-2xl font-bold">Checkout</h2>
-          {clientSecret && (
-            <Elements options={options} stripe={stripePromise}>
               <div className="mt-4">
                 <label className='block mb-3 text-xl font-bold text-[#05060f99]' style={{transition: "color .3s cubic-bezier(.25,.01,.25,1) 0s"}}>
                   Name
@@ -246,8 +216,6 @@ export default function CartPage() {
                   </svg>
                 </Button>
               </div>
-            </Elements>
-          )}
         </div>
       </div>
     </>

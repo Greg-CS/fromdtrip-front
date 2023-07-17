@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { mongooseConnect } from "../lib/mongoose";
 import { Product } from "../models/Product";
+import { Category } from "../models/Category";
 import { ProductsGrid } from "../components/Products/ProductsGrid";
-export default function ProductsPage({products}) {
+export default function ProductsPage({products, CategoryProp}) {
   const [filteredProducts, setFilteredProducts] = useState(products);
-  console.log(products)
-  const handleFilter = (filter) => {
-    // Apply the filter logic here
-    // You can modify this based on your specific filtering requirements
+
+  const handleFilter = (categoryId) => {
+    // Apply the filter logic here based on categoryId
     const filteredItems = products.filter((product) => {
-      // Replace 'filterProperty' with the property you want to filter on
-      return product.filterProperty === "645913b3259d88a4d26fdba0";
-    });
+      return product.category === categoryId;
+    }); 
 
     setFilteredProducts(filteredItems);
   };
@@ -35,8 +34,11 @@ export default function ProductsPage({products}) {
                 </svg>
               </label>
               <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-[#575A5E] text-white font-mono border-2 border-base-50 rounded-box w-52">
-              <li onClick={handleFilter}><a>Shirts</a></li>
-              <li><a>Accesories</a></li>
+              {CategoryProp.map((Cat) => (
+                <li key={Cat._id} onClick={() => handleFilter(Cat._id)} className="py-2 px-2">
+                  {Cat.name}
+                </li>
+              ))}
               </ul>
             </div>
           </div>
@@ -50,10 +52,14 @@ export async function getServerSideProps() {
     await mongooseConnect();
     const products = await Product.find({}, null, {sort:{ '_id':-1}});
     console.log(products);
-
+    const CategoryProp = await Category.find({}, null, {
+      sort: { _id: -1 },
+      timeOut: 20000
+    });
     return {
         props: {
-           products: JSON.parse(JSON.stringify(products))
+           products: JSON.parse(JSON.stringify(products)),
+           CategoryProp: JSON.parse(JSON.stringify(CategoryProp)),
         }
     };  
 }

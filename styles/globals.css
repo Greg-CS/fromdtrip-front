@@ -98,7 +98,7 @@ a:hover {
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    margin-bottom: -1px;
+    padding-bottom: 10px;
 }
 
 .custom-shape-divider-top-1689042667 svg {
@@ -110,4 +110,13 @@ a:hover {
 
 .custom-shape-divider-top-1689042667 .shape-fill {
     fill: #575A5E;
+}
+
+.custom-shape-divider-top-1689003855,
+.custom-shape-divider-top-1689040754,
+.custom-shape-divider-top-1689042667 {
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: normal; 
+    /* Other existing properties... */
 }
