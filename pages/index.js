@@ -10,7 +10,7 @@ export default function Home({ featuredProduct, newProducts, CategoryProp }) {
     <>
       <Featured product={featuredProduct} />
       <NewProducts products={newProducts} />
-      <Categories Category={CategoryProp} />
+      {/* <Categories Category={CategoryProp} /> */}
     </>
   );
 }

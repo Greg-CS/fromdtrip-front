@@ -47,47 +47,6 @@ a:hover {
     }
 }
 
-.custom-shape-divider-top-1689003855 {
-    position: absolute;
-    top: 1;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-}
-
-.custom-shape-divider-top-1689003855 svg {
-    position: relative;
-    display: block;
-    width: calc(100% + 1.3px);
-    height: 181px;
-    transform: rotateY(180deg);
-}
-
-.custom-shape-divider-top-1689003855 .shape-fill {
-    fill: #474A48;
-}
-
-.custom-shape-divider-top-1689040754 {
-    position: absolute;
-    top: 1;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-}
-
-.custom-shape-divider-top-1689040754 svg {
-    position: relative;
-    display: block;
-    width: calc(179% + 1.3px);
-    height: 193px;
-}
-
-.custom-shape-divider-top-1689040754 .shape-fill {
-    fill: #909590;
-}
-
 .custom-shape-divider-top-1689042667 {
     position: absolute;
     top: 1;
@@ -112,4 +71,28 @@ a:hover {
     background-image: url("/img/wave.svg");
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.divider-footer {
+    background-image: url("/img/divider-footer.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.divider-new {
+    background-image: url("/img/divider-new.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.divider-shop {
+    background-image: url("/img/divider-shop.svg");
+    background-repeat: no-repeat;
+    background-size: cover;  
+}
+
+.divider-cart {
+    background-image: url("/img/divider-cart.svg");
+    background-repeat: no-repeat;
+    background-size: cover;  
 }
