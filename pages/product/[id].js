@@ -6,7 +6,6 @@ import { CartContext } from "../../components/Context/CartContext";
 import { useContext } from "react";
 import { NewProducts } from "../../components/Products/NewProducts";
 import { Currencies } from "../../components/Currencies/Currencies";
-import { Cdivider } from "../../components/Cdivider/Cdivider";
 
 export default function ProductPage({ product, newProducts }) {
   const { addProduct } = useContext(CartContext);
@@ -48,7 +47,6 @@ export default function ProductPage({ product, newProducts }) {
         </div>
       </div>
       <NewProducts products={newProducts} />
-      <Cdivider/>
     </>
   );
 }
