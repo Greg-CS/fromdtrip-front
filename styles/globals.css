@@ -55,7 +55,6 @@ a:hover {
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    margin-bottom: -1px;
 }
 
 .custom-shape-divider-top-1689003855 svg {
@@ -64,6 +63,7 @@ a:hover {
     width: calc(100% + 1.3px);
     height: 181px;
     transform: rotateY(180deg);
+    margin-bottom: -1px;
 }
 
 .custom-shape-divider-top-1689003855 .shape-fill {
@@ -77,7 +77,6 @@ a:hover {
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    margin-bottom: -1px;
 }
 
 .custom-shape-divider-top-1689040754 svg {
@@ -85,6 +84,7 @@ a:hover {
     display: block;
     width: calc(179% + 1.3px);
     height: 193px;
+    margin-bottom: -1px;
 }
 
 .custom-shape-divider-top-1689040754 .shape-fill {
@@ -98,7 +98,6 @@ a:hover {
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    padding-bottom: 10px;
 }
 
 .custom-shape-divider-top-1689042667 svg {
@@ -106,17 +105,9 @@ a:hover {
     display: block;
     width: calc(180% + 1.3px);
     height: 100px;
+    margin-bottom: -1px;
 }
 
 .custom-shape-divider-top-1689042667 .shape-fill {
     fill: #575A5E;
-}
-
-.custom-shape-divider-top-1689003855,
-.custom-shape-divider-top-1689040754,
-.custom-shape-divider-top-1689042667 {
-    overflow: hidden;
-    vertical-align: bottom;
-    line-height: normal; 
-    /* Other existing properties... */
 }
