@@ -10,7 +10,7 @@ export default function Home({ featuredProduct, newProducts, CategoryProp }) {
     <>
       <Featured product={featuredProduct} />
       <NewProducts products={newProducts} />
-      <Categories Category={CategoryProp} />
+      {/* <Categories Category={CategoryProp} /> */}
     </>
   );
 }
@@ -22,10 +22,12 @@ export async function getServerSideProps() {
   const newProducts = await Product.find({}, null, {
     sort: { _id: -1 },
     limit: 5,
+    timeOut: 20000
   });
   const CategoryProp = await Category.find({}, null, {
     sort: { _id: -1 },
     limit: 5,
+    timeOut: 20000
   });
   return {
     props: {

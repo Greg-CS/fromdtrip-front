@@ -1,6 +1,6 @@
 import { Layout } from '../components/Layout/Layout'
 import '../styles/globals.css'
-import { CartContextProvider } from "../components/CartContext";
+import { CartContextProvider } from "../components/Context/CartContext";
 import { SessionProvider } from "next-auth/react"
 import { DefaultSeo } from "next-seo";
 import SEO from "../next-seo.config";

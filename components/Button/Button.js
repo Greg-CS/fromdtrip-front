@@ -3,6 +3,7 @@ import React from "react";
 export const Button = ({ children, ...rest }) => {
   return (
     <button
+      id="fire"
       className={`border-0 px-3 py-1 rounded cursor-pointer inline-flex items-center font-semibold ${
         rest.block ? "block w-full" : ""
       } 

@@ -2,7 +2,7 @@ import React from "react";
 import { CartIcon } from "../icons/CartIcon";
 import Link from "next/link";
 import { useContext } from "react";
-import { CartContext } from "../CartContext";
+import { CartContext } from "../Context/CartContext";
 
 export const ProductBox = ({ _id, title, description, price, images }) => {
   const { addProduct } = useContext(CartContext);

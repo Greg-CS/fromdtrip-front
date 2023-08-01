@@ -2,6 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --dark-color: "#93CEC0"
+    --light-color: "#D9D9D9"
+}
+
+/* #dark {
+    fill: var(--dark-color);
+}
+#light {
+    fill: var(--light-color);
+} */
+
+svg {
+    cursor: pointer;
+}
+
+
+#fire {
+    transition: all 1s ease;
+    fill: red;
+}
+
+svg #fire {
+    transform: translatex(100%)
+}
+
+svg:hover #fire {
+    transform: translateX(0%);
+}
+
+
 a:hover {
     text-decoration: underline;
 }
@@ -16,63 +47,52 @@ a:hover {
     }
 }
 
-.custom-shape-divider-top-1689003855 {
+.custom-shape-divider-top-1689042667 {
     position: absolute;
-    top: 100;
+    top: 1;
     left: 0;
     width: 100%;
     overflow: hidden;
     line-height: 0;
 }
 
-.custom-shape-divider-top-1689003855 svg {
+.custom-shape-divider-top-1689042667 svg {
     position: relative;
     display: block;
-    width: calc(100% + 1.3px);
-    height: 181px;
-    transform: rotateY(180deg);
-}
-
-.custom-shape-divider-top-1689003855 .shape-fill {
-    fill: #474A48;
-}
-
-.custom-shape-divider-top-1689004285 {
-    position: absolute;
-    top: 100;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-}
-
-.custom-shape-divider-top-1689004285 svg {
-    position: relative;
-    display: block;
-    width: calc(103% + 1.3px);
+    width: calc(180% + 1.3px);
     height: 100px;
 }
 
-.custom-shape-divider-top-1689004285 .shape-fill {
-    fill: #909590;
-}
-
-.custom-shape-divider-top-1689004419 {
-    position: absolute;
-    top: 100;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-}
-
-.custom-shape-divider-top-1689004419 svg {
-    position: relative;
-    display: block;
-    width: calc(183% + 1.3px);
-    height: 175px;
-}
-
-.custom-shape-divider-top-1689004419 .shape-fill {
+.custom-shape-divider-top-1689042667 .shape-fill {
     fill: #575A5E;
+}
+
+.wave {
+    background-image: url("/img/wave.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.divider-footer {
+    background-image: url("/img/divider-footer.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.divider-new {
+    background-image: url("/img/divider-new.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.divider-shop {
+    background-image: url("/img/divider-shop.svg");
+    background-repeat: no-repeat;
+    background-size: cover;  
+}
+
+.divider-cart {
+    background-image: url("/img/divider-cart.svg");
+    background-repeat: no-repeat;
+    background-size: cover;  
 }
