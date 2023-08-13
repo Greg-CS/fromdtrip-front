@@ -73,7 +73,7 @@ export default function CartPage() {
     return (
       <>
           <div className="text-center">
-            <div className="bg-white p-40">
+            <div className="bg-white min-h-screen">
               <h1 className="text-2xl font-bold">Thanks for your order!</h1>
               <p>We will email you when your order will be sent.</p>
             </div>
