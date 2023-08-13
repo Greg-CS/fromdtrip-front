@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: "https://fromdtrip-front-9vdgdupru-greg-cs.vercel.app/",
+  siteUrl: "https://www.fromdtrip.com/",
   changefreq: "daily",
   generateRobotsTxt: true, // (optional)
   priority: 0.9,

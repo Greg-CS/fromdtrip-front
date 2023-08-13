@@ -1,7 +1,7 @@
 export default {
   openGraph: {
     type: "website",
-    url: "https://fromdtrip-front-9vdgdupru-greg-cs.vercel.app/",
+    url: "https://www.fromdtrip.com/",
     title: "Fromdtrip",
     description:
       "We sell trippy clothing",
