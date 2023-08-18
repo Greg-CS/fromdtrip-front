@@ -73,7 +73,7 @@ export const Navbar = () => {
         </div>
         <div className="flex-none hidden lg:flex">
           <div className="flex gap-10">
-            <Link href="/products">All products</Link>
+            <a href="/products">All products</a>
             {/* <Link href="/categories">Categories</Link> */}
             {/* <Link href="/signup">Account</Link> */}
           </div>

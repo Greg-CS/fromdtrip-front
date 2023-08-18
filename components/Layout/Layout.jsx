@@ -8,7 +8,7 @@ export const Layout = ({children}) => {
         <Head>
           <title>Fromdtrip</title>
           <link rel="icon" type="image/x-icon" href="/img/Logo.png"></link>
-
+          <meta name="description" content="We sell trippy clothing" />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://www.fromdtrip.com/" />
           <meta property="og:title" content="Fromdtrip" />

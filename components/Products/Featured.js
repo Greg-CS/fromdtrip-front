@@ -23,9 +23,6 @@ export const Featured = ({ product }) => {
           <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-white">Checkout our new product</h1>
           <p className="max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl text-white">a stylish and comfortable shirt that&apos;s perfect for any occasion! This premium-quality shirt is crafted with care, using soft and breathable fabric to ensure maximum comfort throughout the day.</p>
           <div className="flex gap-5">
-            <Link className="btn border-white" href="/products/">
-              Read More
-            </Link>
             <button className="flex gap-3 btn border-white border-2" onClick={addFeaturedToCart}>
               <CartIcon className="w-5 h-5 mr-1" /> 
               <span className="">
