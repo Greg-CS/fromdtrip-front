@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
       <CartContextProvider>
         <Layout>
           <DefaultSeo {...SEO} />
+          <Analytics />
           <Component {...pageProps} />
         </Layout>
       </CartContextProvider>
