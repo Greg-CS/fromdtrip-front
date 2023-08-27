@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.fromdtrip.com/
+
+# Sitemaps
+Sitemap: https://www.fromdtrip.com/sitemap.xml

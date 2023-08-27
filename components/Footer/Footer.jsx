@@ -2,7 +2,7 @@ import React from 'react'
 import { FaTiktok, FaInstagram } from 'react-icons/fa'
 export const Footer = () => {
   return (
-      <footer className="footer p-10 text-white divider-footer">
+      <footer className="footer justify-around p-10 text-white divider-footer">
         <div className="relative">
           <svg
             xmlns="http://www.w3.org/2000/svg"

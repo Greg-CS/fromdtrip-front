@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 
 import { mongooseConnect } from "../../lib/mongoose";
 import { Product } from "../../models/Product";
@@ -14,11 +14,16 @@ import { useRouter } from "next/router";
 
 export default function ProductPage({ product, newProducts, CategoryProp }) {
   const { addProduct } = useContext(CartContext);
+  // const router = useRouter();
   // const [selectedColor, setSelectedColor] = useState("")
 
   // function customerSelect(value) {
   //   setSelectedColor(value);
   // }
+
+    // useEffect(() => {
+    //   router.refresh();
+    // }, []);
 
   return (
     <>
@@ -33,11 +38,11 @@ export default function ProductPage({ product, newProducts, CategoryProp }) {
             <ProductImages images={product.images} />
           </div>
           <div className="py-5 px-5">
-            <h2 className="text-2xl font-bold mb-4 uppercase text-white">
+            <h2 className="text-4xl font-bold mb-4 uppercase text-white">
               {product.title}
             </h2>
             <p className="text-white lg:text-xl">{product.description}</p>
-            <div className="lg:flex lg:justify-between gap-20 py-5">
+            <div className="flex gap-16 items-center py-10">
               <div className="flex gap-10">
                 <span className="text-8xl text-white">${product.price}</span>
                 {/* <div className="dropdown dropdown-end pr-5">

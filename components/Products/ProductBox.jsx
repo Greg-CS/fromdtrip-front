@@ -10,7 +10,7 @@ export const ProductBox = ({ _id, title, description, price, images }) => {
 
   return (
     <div className="min-w-fit box-border w-48 h-64 bg-gray-200 border border-white shadow-md backdrop-filter backdrop-blur-lg rounded-lg cursor-pointer transition-all duration-500 grid place-items-center select-none font-bold text-black hover:border-black transform hover:scale-105 active:scale-95 active:rotate-1 md:shadow-lg">
-      <Link href={url}>
+      <Link href={url} replace>
         <div className="p-4 h-32 flex items-center justify-center">
           <img
             className="max-w-full max-h-40 border-1 border-gray-300 rounded-lg"
