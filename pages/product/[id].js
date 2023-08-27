@@ -9,14 +9,16 @@ import {CartIcon} from "../../components/icons/CartIcon"
 import { CartContext } from "../../components/Context/CartContext";
 import { NewProducts } from "../../components/Products/NewProducts";
 import { Currencies } from "../../components/Currencies/Currencies";
+import { useRouter } from "next/router";
+
 
 export default function ProductPage({ product, newProducts, CategoryProp }) {
   const { addProduct } = useContext(CartContext);
-  const [selectedColor, setSelectedColor] = useState("")
+  // const [selectedColor, setSelectedColor] = useState("")
 
-  function customerSelect(value) {
-    setSelectedColor(value);
-  }
+  // function customerSelect(value) {
+  //   setSelectedColor(value);
+  // }
 
   return (
     <>
@@ -38,7 +40,7 @@ export default function ProductPage({ product, newProducts, CategoryProp }) {
             <div className="lg:flex lg:justify-between gap-20 py-5">
               <div className="flex gap-10">
                 <span className="text-8xl text-white">${product.price}</span>
-                <div className="dropdown dropdown-end pr-5">
+                {/* <div className="dropdown dropdown-end pr-5">
                   <label tabIndex={0} className="btn bg-[#2C302E] m-1">
                   {CategoryProp.properties.map((ev) => (
                       <span key={ev._id}>
@@ -58,10 +60,10 @@ export default function ProductPage({ product, newProducts, CategoryProp }) {
                   </ul>
                   <div>
                     <span>
-                      {/* {selectedColor} */}
+                      {selectedColor}
                     </span>
                   </div>
-                </div>
+                </div> */}
               </div>
               <div>
                 <button
