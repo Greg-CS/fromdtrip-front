@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function ProductImg({ images }) {
   const [activeImage, setActiveImage] = useState(images?.[0]);
+  
+  useEffect(() => {
+    setActiveImage(images?.[0]);
+  }, [images])
 
   return (
     <>

@@ -14,16 +14,13 @@ import { useRouter } from "next/router";
 
 export default function ProductPage({ product, newProducts, CategoryProp }) {
   const { addProduct } = useContext(CartContext);
-  // const router = useRouter();
+  const router = useRouter();
   // const [selectedColor, setSelectedColor] = useState("")
 
   // function customerSelect(value) {
   //   setSelectedColor(value);
   // }
 
-    // useEffect(() => {
-    //   router.refresh();
-    // }, []);
 
   return (
     <>
