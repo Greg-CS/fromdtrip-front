@@ -9,29 +9,32 @@ export const ProductBox = ({ _id, title, description, price, images }) => {
   const url = "/product/" + _id;
 
   return (
-    <div className="min-w-fit box-border w-48 h-64 bg-gray-200 border border-white shadow-md backdrop-filter backdrop-blur-lg rounded-lg cursor-pointer transition-all duration-500 grid place-items-center select-none font-bold text-black hover:border-black transform hover:scale-105 active:scale-95 active:rotate-1 md:shadow-lg">
-      <Link href={url} replace>
-        <div className="p-4 h-32 flex items-center justify-center">
-          <img
-            className="max-w-full max-h-40 border-1 border-gray-300 rounded-lg"
-            src={images?.[0]}
-            alt=""
-          />
-        </div>
+  <div className="card-container">
+    <div className="card">
+      <div className="img-content">
+      <Link href={url}>
+        <img
+          className="max-w-full max-h-40 border-1 border-gray-300 rounded-lg"
+          src={images?.[0]}
+          alt=""
+        />
       </Link>
-      <div className="mt-2">
-        <div className="grid gap-1">
-          <Link href={url}>
-            <h2 className="text-sm capitalize text-center">{title}</h2>
-          </Link>
-          <div className="flex justify-around">
-            <span className="items-center">Price</span>
-            <span className="text-sm font-medium items-center">${price}</span>
-          </div>
-        </div>
-        <div className="flex items-center justify-around mt-2">
+      </div>
+      <div className="content bg-black">
+        <p className="text-lg uppercase">{title}</p>
+        <p className="text-xs">
+          {description}
+        </p>
+        <div className="flex justify-between gap-10">
           <button
-            className="flex border-2 border-[#50514F] rounded-lg p-2 bg-[#CBD4C2]"
+            className="flex text-black border-2 border-[#50514F] rounded-lg p-2 bg-[#CBD4C2]"
+          >
+            <Link href={url}>
+              more info
+            </Link>
+          </button>
+          <button
+            className="flex text-black border-2 border-[#50514F] rounded-lg p-2 bg-[#CBD4C2]"
             onClick={() => addProduct(_id)}
           >
             <CartIcon className="h-5 mr-1" />
@@ -40,5 +43,6 @@ export const ProductBox = ({ _id, title, description, price, images }) => {
         </div>
       </div>
     </div>
+  </div>
   );
 };
