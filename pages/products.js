@@ -44,7 +44,7 @@ export default function ProductsPage({products, CategoryProp}) {
           </div>
         <ProductsGrid products={filteredProducts} />
       </div>
-      <div className="divider-shop w-full h-[300px]">
+      <div className="divider-shop w-full h-[400px]">
       </div>
     </>
   );

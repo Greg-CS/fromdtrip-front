@@ -32,12 +32,23 @@ export function CartContextProvider({ children }) {
     });
   }
 
+
+  function addSize(productID, size) {
+    setCartProducts(prev => [...prev, productID, size]);
+    console.log(cartProducts)
+  }
+
+  function addColor(productID, Color) {
+    setCartProducts(prev => [...prev, productID, Color])
+    console.log(cartProducts)
+  }
+
   function clearCart() {
     setCartProducts([]);
   }
 
   return (
-    <CartContext.Provider value={{ cartProducts, setCartProducts, addProduct, removeProduct, clearCart }}>
+    <CartContext.Provider value={{ cartProducts, setCartProducts, addProduct, removeProduct, clearCart, addSize }}>
       {children}
     </CartContext.Provider>
   );

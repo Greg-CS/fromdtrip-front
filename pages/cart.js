@@ -16,6 +16,7 @@ export default function CartPage() {
   const [streetAddress, setStreetAddress] = useState('');
   const [country, setCountry] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
+  const [productSizes, setProductSizes] = useState({});
 
   useEffect(() => {
     if (cartProducts.length > 0) {
@@ -72,23 +73,21 @@ export default function CartPage() {
   if (isSuccess) {
     return (
       <>
-          <div className="text-center">
-            <div className="bg-white min-h-screen">
-              <h1 className="text-2xl font-bold">Thanks for your order!</h1>
-              <p>We will email you when your order will be sent.</p>
-            </div>
+        <div className="bg-[#474A48] min-h-screen text-center text-white">
+          <div className="custom-shape-divider-top-1688534628 bg-[#474A48]">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="#2C302E">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill"></path>
+            </svg>
           </div>
+          <h1 className="text-2xl font-bold">Thanks for your order!</h1>
+          <p>We will email you when your order will be sent.</p>
+        </div>
       </>
     );
   }
 
   return (
     <>
-      <div className="custom-shape-divider-top-1688534628 bg-[#474A48]">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="#2C302E">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill"></path>
-        </svg>
-      </div>
       <div className="bg-[#474A48] grid grid-cols-1 gap-4 md:grid-cols-2 pt-4 pb-5">
         <div className="bg-[#A7A2A9] text-white p-6 mx-5 rounded-xl">
           <h2 className="text-2xl font-bold">Cart</h2>
@@ -100,6 +99,7 @@ export default function CartPage() {
                   <th>Product</th>
                   <th>Quantity</th>
                   <th>Price</th>
+                  <th>Size</th>
                 </tr>
               </thead>
               <tbody>
@@ -107,7 +107,7 @@ export default function CartPage() {
                   <tr key={product._id}>
                     <td className="flex justify-center mt-10">
                       <div className="w-40">
-                        <img src={product.images[0]} alt={product.name} />
+                        <img src={product.images[0]} alt={product.name} className='rounded-md' />
                       </div>
                       <div className="ml-4">
                         <p className="font-bold">{product.name}</p>
@@ -125,14 +125,34 @@ export default function CartPage() {
                       </Button>
                     </td>
                     <td className="font-bold text-center">${product.price}</td>
+                    <td className=''>
+                    <select
+                      className='w-full text-center p-2 rounded-md bg-[#A7A2A9] text-white'
+                      name={`size-${product._id}`}
+                      id={`size-${product._id}`}
+                      value={productSizes[product._id] || 'L'} // Default to 'L' size
+                      onChange={(e) => {
+                        const newSize = e.target.value;
+                        setProductSizes((prevSizes) => ({
+                          ...prevSizes,
+                          [product._id]: newSize,
+                        }));
+                      }}
+                    >
+                      <option value="S">S</option>
+                      <option value="M">M</option>
+                      <option value="L">L</option>
+                      <option value="XL">XL</option>
+                    </select>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </Table>
           )}
-          <div className="flex justify-between items-center mt-4">
-            <p className="font-bold">Total</p>
-            <p className="font-bold">${total}</p>
+          <div className="flex justify-between items-center mt-12">
+            <p className="font-bold text-6xl">Total:</p>
+            <p className="font-bold text-6xl">${total}</p>
           </div>
         </div>
         <div className="bg-[#A7A2A9] text-white p-6 mx-5 rounded-xl">
