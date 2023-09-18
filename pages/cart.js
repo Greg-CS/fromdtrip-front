@@ -90,7 +90,7 @@ export default function CartPage() {
     <>
       <div className="bg-[#474A48] grid grid-cols-1 gap-4 md:grid-cols-2 pt-4 pb-5">
         <div className="bg-[#A7A2A9] text-white p-6 mx-5 rounded-xl">
-          <h2 className="text-2xl font-bold">Cart</h2>
+          <h2 className="text-2xl font-bold">Shopping Cart</h2>
           {!cartProducts?.length && <p>No products in cart</p>}
           {products?.length > 0 && (
             <Table>
@@ -237,8 +237,6 @@ export default function CartPage() {
                 </Button>
               </div>
         </div>
-      </div>
-      <div className="divider-cart w-full h-[300px]">
       </div>
     </>
   );

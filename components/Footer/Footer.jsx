@@ -1,8 +1,8 @@
 import React from 'react'
-import { FaTiktok, FaInstagram } from 'react-icons/fa'
+
 export const Footer = () => {
   return (
-    <footer className='footer bg-black items-center font-mono grid lg:flex justify-around p-10'>
+    <footer className='footer bg-black items-center grid lg:flex justify-around p-10'>
       <div className='grid gap-10'>
         <img src='/img/Logo.png' alt='footer logo' className='h-[50px] w-[50px]'/>
         <span className='text-[20px] text-white'>
@@ -30,37 +30,43 @@ export const Footer = () => {
         </svg>
         </div>
       </div>
-      <div className='grid gap-5 text-white'>
-        <div className='py-10'>
-          <span className='text-[20px] text-white'>
-            Help
-          </span>
+      <div className='grid grid-cols-2 gap-24'>
+        <div className='grid gap-10 text-white'>
+          <div className='h-12'>
+            <span className='text-[20px] text-white font-extrabold'>
+              Help
+            </span>
+          </div>
+          <div className='grid gap-5'>
+            <span>
+              Size guide
+            </span>
+            <span>
+              Shipping information
+            </span>
+            <span>
+              Refund Policy
+            </span>
+            <span>
+              Wear and tear FAQ
+            </span>
+          </div>
         </div>
-        <span>
-          Size guide
-        </span>
-        <span>
-          Shipping information
-        </span>
-        <span>
-          Refund Policy
-        </span>
-        <span>
-          Wear and tear FAQ
-        </span>
-      </div>
-      <div className='grid gap-5 text-white'>
-        <div className='py-10'>
-          <span className='text-[20px] text-white'>
-            About us
-          </span>
+        <div className='grid gap-10 text-white'>
+          <div className='h-12'>
+            <span className='text-[20px] text-white font-extrabold'>
+              About us
+            </span>
+          </div>
+          <div className='grid gap-5'>
+            <span>
+              Values
+            </span>
+            <span>
+              Contact us
+            </span>
+          </div>
         </div>
-        <span>
-          Values
-        </span>
-        <span>
-          Contact us
-        </span>
       </div>
     </footer>
   );

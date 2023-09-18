@@ -65,7 +65,7 @@ export const Navbar = () => {
     <>
       <div className="navbar bg-[white] text-black">
         <div className="flex-1">
-          <Link className="btn btn-ghost normal-case text-xl" href="/">
+          <Link className="" href="/">
             <div className="spinning-div rounded-full">
               <img className="h-full w-full" src={'/img/Logo.png'}/>
             </div>

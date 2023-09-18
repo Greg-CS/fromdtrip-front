@@ -12,8 +12,9 @@ import { StayInTouch } from "../components/StayInTouch/StayInTouch";
 export default function Home({ featuredProduct, newProducts, CategoryProp }) {
   return (
     <>
-      <Hero/>
-      {/* <Featured product={featuredProduct} /> */}
+      {/* <Featured/>
+      <Hero/> */}
+      <Featured product={featuredProduct} />
       <NewProducts products={newProducts} />
       <About/>
       <JoinUs/>
@@ -29,7 +30,7 @@ export async function getServerSideProps() {
   const featuredProduct = await Product.findById(featuredProductId);
   const newProducts = await Product.find({}, null, {
     sort: { _id: -1 },
-    limit: 3,
+    limit: 4,
     timeOut: 20000
   });
   const CategoryProp = await Category.find({}, null, {
