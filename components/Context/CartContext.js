@@ -4,8 +4,11 @@ import { createContext, useState } from "react";
 export const CartContext = createContext({});
 
 export function CartContextProvider({ children }) {
+
   const ls = typeof window !== "undefined" ? window.localStorage : null;
   const [cartProducts, setCartProducts] = useState([]);
+  const [size, setSize] = useState([]);
+
   useEffect(() => {
     if(cartProducts?.length > 0) {
       ls?.setItem("cart", JSON.stringify(cartProducts));
@@ -34,12 +37,13 @@ export function CartContextProvider({ children }) {
 
 
   function addSize(productID, size) {
-    setCartProducts(prev => [...prev, productID, size]);
-    console.log(cartProducts)
+    setCartProducts(prev => [...prev, productID]);
+    setSize(prev => [...prev, size]);
+    console.log(cartProducts, size)
   }
 
   function addColor(productID, Color) {
-    setCartProducts(prev => [...prev, productID, Color])
+    setCartProducts(prev => [...prev, productID])
     console.log(cartProducts)
   }
 
@@ -48,7 +52,7 @@ export function CartContextProvider({ children }) {
   }
 
   return (
-    <CartContext.Provider value={{ cartProducts, setCartProducts, addProduct, removeProduct, clearCart, addSize }}>
+    <CartContext.Provider value={{ cartProducts, setCartProducts, setSize, addProduct, removeProduct, clearCart, addSize }}>
       {children}
     </CartContext.Provider>
   );
