@@ -7,13 +7,15 @@ import { Input } from '../components/Input/Input';
 import { NewProducts } from "../components/Products/NewProducts";
 import { mongooseConnect } from "../lib/mongoose";
 import { Product } from "../models/Product";
+import { Category } from "../models/Category";
 import Link from 'next/link';
 
 // Define the CartPage component
-export default function CartPage({ newProducts }) {
+export default function CartPage({ newProducts, CategoryProp }) {
+
   // Import cart-related functions and data from the CartContext
   const { cartProducts, addProduct, removeProduct, clearCart } = useContext(CartContext);
-  
+
   // State variables for managing form data and cart details
   const [products, setProducts] = useState([]);
   const [name, setName] = useState('');
@@ -23,7 +25,9 @@ export default function CartPage({ newProducts }) {
   const [streetAddress, setStreetAddress] = useState('');
   const [country, setCountry] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
-  const [productSizes, setProductSizes] = useState({});
+  const [prodcutCatId, setProductCatId] = useState([]);
+  const [filteredCategories, setFilteredCategories] = useState([]);
+  const [specificValue, setSpecificValue] = useState([]);
 
   useEffect(() => {
     async function fetchProductsAndCheckSuccess() {
@@ -31,6 +35,14 @@ export default function CartPage({ newProducts }) {
         if (cartProducts.length > 0) {
           const response = await axios.post('/api/cart', { ids: cartProducts });
           setProducts(response.data);
+          console.log(products)
+          const specificData = response.data.category;
+          setSpecificValue(specificData);
+          console.log(specificValue)
+        // Assuming products is an array, get the category from the first product
+          if (cartProducts.length > 0) {
+            setProductCatId(response.data[0].category);
+          }
         }
         
         if (typeof window !== 'undefined' && window.location.href.includes('success')) {
@@ -41,11 +53,21 @@ export default function CartPage({ newProducts }) {
       } catch (error) {
         handleError('Error in useEffect:', error);
       }
+
     }
   
     fetchProductsAndCheckSuccess();
   }, [cartProducts, clearCart]);
   
+  // Use useEffect to filter CategoryProp based on prodcutCatId
+  useEffect(() => {
+    if (prodcutCatId != null) {
+      // Filter CategoryProp based on prodcutCatId
+      const newCat = CategoryProp.filter((category) => category._id === prodcutCatId);
+      setFilteredCategories(newCat);
+      console.log(filteredCategories)
+    }
+  }, [prodcutCatId, CategoryProp]);
 
   // Function to add more of a specific product to the cart
   function moreOfThisProduct(id) {
@@ -134,19 +156,19 @@ export default function CartPage({ newProducts }) {
                     <th>Product</th>
                     <th>Quantity</th>
                     <th>Price</th>
-                    <th>Size</th>
+                    <th>Add. Options</th>
                   </tr>
                 </thead>
                 <tbody>
                   {products.map((product) => (
                     <tr key={product._id} className='grid grid-cols-4 gap-10 items-center'>
                       {/* Display product details */}
-                      <td className="flex justify-center mt-10">
-                        <div className="w-40">
-                          <img src={product.images[0]} alt={product.name} className='rounded-md border-2 border-black' />
+                      <td className="grid mt-10">
+                        <div>
+                          <img src={product.images[0]} alt={product.title} className='rounded-full border-2 w-40 border-black' />
                         </div>
-                        <div className="ml-4">
-                          <p className="font-bold">{product.name}</p>
+                        <div className="text-center pt-3">
+                          <p className="font-bold text-black">{product.title}</p>
                         </div>
                       </td>
                       <td className="text-center">
@@ -162,27 +184,30 @@ export default function CartPage({ newProducts }) {
                         </Button>
                       </td>
                       <td className="font-bold text-center">${product.price}</td>
-                      <td className=''>
-                        {/* Dropdown for selecting product size */}
-                        <select
-                          className='w-full text-center p-2 rounded-md bg-black text-white'
-                          name={`size-${product._id}`}
-                          id={`size-${product._id}`}
-                          value={productSizes[product._id] || 'L'} // Default to 'L' size
-                          onChange={(e) => {
-                            const newSize = e.target.value;
-                            setProductSizes((prevSizes) => ({
-                              ...prevSizes,
-                              [product._id]: newSize,
-                            }));
-                          }}
-                        >
-                          <option value="S">S</option>
-                          <option value="M">M</option>
-                          <option value="L">L</option>
-                          <option value="XL">XL</option>
-                        </select>
-                      </td>
+                      {/* {filteredCategories.map((cat) => (
+                        <td key={cat._id}>
+                          <ul className='grid grid-cols-2 gap-5'>
+                            {cat.properties.map((options) => {
+                              return (
+                                <li key={options._id}>
+                                  <p className='text-sm'>{options.name}</p>
+                                  <div>
+                                    <select className='bg-white border-2 p-1 rounded-lg border-black'>
+                                      {options.values.map((values) => {
+                                        return (
+                                          <option key={values._id}>
+                                            {values}
+                                          </option>
+                                        )
+                                      })}
+                                    </select>
+                                  </div>
+                                </li>
+                              )
+                            })}
+                          </ul>
+                        </td>
+                      ))} */}
                     </tr>
                   ))}
                 </tbody>
@@ -285,8 +310,32 @@ export default function CartPage({ newProducts }) {
   );
 }
 
+// Look for category id in cart items 
+// then look that id up on the category table
+// then display the category name on the cart page
+// and the subsequent props from that category
+//
+// export async function getServerSideProps() {
+//   await mongooseConnect();
+//   const CategoryItemsIds = await Product.Category.find({}, null, {
+//     sort: { _id: -1 },
+//     limit: 4,
+//     timeOut: 20000
+//   })
+
+
 export async function getServerSideProps() {
   await mongooseConnect();
+  // const CategoryItemsIds = await Product.Category.find({}, null, {
+  //   sort: { _id: -1 },
+  //   limit: 4,
+  //   timeOut: 20000
+  // })
+  const CategoryProp = await Category.find({}, null, {
+    sort: { _id: -1 },
+    // can i leave the limit as all of the available?
+    timeOut: 20000
+  })
   const newProducts = await Product.find({}, null, {
     sort: { _id: -1 },
     limit: 4,
@@ -295,6 +344,7 @@ export async function getServerSideProps() {
   return {
     props: {
       newProducts: JSON.parse(JSON.stringify(newProducts)),
+      CategoryProp: JSON.parse(JSON.stringify(CategoryProp)),
     },
   };
 }

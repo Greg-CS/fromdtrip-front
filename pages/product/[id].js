@@ -12,12 +12,6 @@ import { Currencies } from "../../components/Currencies/Currencies";
 
 export default function ProductPage({ product, newProducts, CategoryProp }) {
   const { addProduct, addSize } = useContext(CartContext);
-  const [selectedSize, setSelectedSize] = useState("S"); // Change this to selectedSize
-
-  function customerSelectSize(value) {
-    setSelectedSize(value); // Change this to setSelectedSize
-    addSize(product._id, selectedSize)
-  }
 
 
   return (
@@ -35,57 +29,6 @@ export default function ProductPage({ product, newProducts, CategoryProp }) {
             <div className="flex gap-16 items-center py-10">
               <div className="grid lg:flex gap-10 items-center">
                 <span className="text-8xl text-white">${product.price}</span>
-                <span className="text-white">Size:</span>
-                  <div className="dropdown dropdown-end pr-5">
-                    <label tabIndex={0} className="btn bg-[#2C302E] m-1">
-                      <span className="text-white">{selectedSize}</span>
-                    </label>
-                    <ol
-                      tabIndex={0}
-                      className="dropdown-content z-[1] menu p-2 shadow bg-[#575A5E] text-white font-mono border-2 border-base-50 rounded-box w-24 items-center"
-                    >
-                      <li className="px-2 py-2">
-                        <span
-                          className={`text-white ${
-                            selectedSize === "S" ? "active:bg-slate-900" : ""
-                          }`}
-                          onClick={() => customerSelectSize("S")}
-                        >
-                          S
-                        </span>
-                      </li>
-                      <li className="px-2 py-2">
-                        <span
-                          className={`text-white ${
-                            selectedSize === "M" ? "active:bg-slate-900" : ""
-                          }`}
-                          onClick={() => customerSelectSize("M")}
-                        >
-                          M
-                        </span>
-                      </li>
-                      <li className="px-2 py-2">
-                        <span
-                          className={`text-white ${
-                            selectedSize === "L" ? "active:bg-slate-900" : ""
-                          }`}
-                          onClick={() => customerSelectSize("L")}
-                        >
-                          L
-                        </span>
-                      </li>
-                      <li className="px-2 py-2">
-                        <span
-                          className={`text-white ${
-                            selectedSize === "XL" ? "active:bg-slate-900" : ""
-                          }`}
-                          onClick={() => customerSelectSize("XL")}
-                        >
-                          XL
-                        </span>
-                      </li>
-                    </ol>
-                  </div>
               </div>
               <div>
                 <button

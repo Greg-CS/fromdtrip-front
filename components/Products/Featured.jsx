@@ -10,8 +10,6 @@ export const Featured = ({ product }) => {
     addProduct(product._id);
   }
 
-  console.log(product)
-
   return (
       <section className="bg-white">
         <div className="grid lg:flex gap-24 pt-36 lg:pt-0 px-6 md:px-36 min-h-screen items-center">
