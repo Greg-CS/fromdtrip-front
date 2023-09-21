@@ -9,6 +9,9 @@ import { mongooseConnect } from "../lib/mongoose";
 import { Product } from "../models/Product";
 import { Category } from "../models/Category";
 import Link from 'next/link';
+import { OptionsDisplay } from '../components/OptionsDisplay/OptionsDisplay';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Define the CartPage component
 export default function CartPage({ newProducts, CategoryProp }) {
@@ -25,9 +28,15 @@ export default function CartPage({ newProducts, CategoryProp }) {
   const [streetAddress, setStreetAddress] = useState('');
   const [country, setCountry] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState(null);
+
+
   const [prodcutCatId, setProductCatId] = useState([]);
   const [filteredCategories, setFilteredCategories] = useState([]);
-  const [specificValue, setSpecificValue] = useState([]);
+
+  const [size, setSize] = useState('');
+  const [itemColor, setItemColor] = useState('');
+  const [embroidedColor, setEmbroidedColor] = useState('');
 
   useEffect(() => {
     async function fetchProductsAndCheckSuccess() {
@@ -35,14 +44,6 @@ export default function CartPage({ newProducts, CategoryProp }) {
         if (cartProducts.length > 0) {
           const response = await axios.post('/api/cart', { ids: cartProducts });
           setProducts(response.data);
-          console.log(products)
-          const specificData = response.data.category;
-          setSpecificValue(specificData);
-          console.log(specificValue)
-        // Assuming products is an array, get the category from the first product
-          if (cartProducts.length > 0) {
-            setProductCatId(response.data[0].category);
-          }
         }
         
         if (typeof window !== 'undefined' && window.location.href.includes('success')) {
@@ -60,16 +61,17 @@ export default function CartPage({ newProducts, CategoryProp }) {
   }, [cartProducts, clearCart]);
   
   // Use useEffect to filter CategoryProp based on prodcutCatId
-  useEffect(() => {
-    if (prodcutCatId != null) {
-      // Filter CategoryProp based on prodcutCatId
-      const newCat = CategoryProp.filter((category) => category._id === prodcutCatId);
-      setFilteredCategories(newCat);
-      console.log(filteredCategories)
-    }
-  }, [prodcutCatId, CategoryProp]);
+  // useEffect(() => {
+  //   if (prodcutCatId != null) {
+  //     // Filter CategoryProp based on prodcutCatId
+  //     const newCat = CategoryProp.filter((category) => category._id === prodcutCatId);
+  //     setFilteredCategories(newCat);
+  //     console.log(filteredCategories)
+  //   }
+  // }, [prodcutCatId, CategoryProp]);
 
   // Function to add more of a specific product to the cart
+  
   function moreOfThisProduct(id) {
     addProduct(id);
   }
@@ -88,6 +90,9 @@ export default function CartPage({ newProducts, CategoryProp }) {
       postalCode,
       streetAddress,
       country,
+      size,
+      itemColor,
+      embroidedColor,
       cartProducts,
     });
 
@@ -104,7 +109,90 @@ export default function CartPage({ newProducts, CategoryProp }) {
     total += price;
   }
 
+  // get product category id
+  // let categoryExample;
+
+  // for (const productCat of cartProducts) {
+  //   const Cat = products.find(p => p._id === productCat)?.category || 0;
+  //   categoryExample = Cat;
+    
+  // }
+
+  // console.log(categoryExample)
+
   // Render the cart and checkout form
+  
+  const handleName = () => {
+    if (name === '') {
+      toast.error('Name cannot be blank'); // Show toast when input is blank
+    }
+  }
+
+  const handleEmail = () => {
+    if (email === '') {
+      toast.error('Email cannot be blank'); // Show toast when input is blank
+    }
+  }
+
+  const handleCity = () => {
+    if (city === '') {
+      toast.error('City cannot be blank'); // Show toast when input is blank
+    }
+  }
+
+  const handlePostalCode = () => {
+    if (postalCode === '') {
+      toast.error('Postal Code cannot be blank'); // Show toast when input is blank
+    }
+  }
+
+  const handleStreetAddress = () => {
+    if (streetAddress === '') {
+      toast.error('Street Address cannot be blank'); // Show toast when input is blank
+    }
+  }
+
+  const handleCountry = () => {
+    if (country === '') {
+      toast.error('Country cannot be blank'); // Show toast when input is blank
+    }
+  }
+
+  const handleSize = () => {
+    if (size === '') {
+      toast.error('Size cannot be blank'); // Show toast when input is blank
+    }
+  }
+
+  const handleItemColor = () => {
+    if (itemColor === '') {
+      toast.error('Item Color cannot be blank'); // Show toast when input is blank
+    }
+  }
+
+  const handleEmbroidedColor = () => {
+    if (embroidedColor === '') {
+      toast.error('Embroided Color cannot be blank'); // Show toast when input is blank
+    }
+  }
+
+
+  const stateHandler = () => {
+    handleName(),
+    handleEmail(),
+    handleCity(),
+    handlePostalCode(),
+    handleStreetAddress(),
+    handleCountry(),
+    handleSize(),
+    handleItemColor(),
+    handleEmbroidedColor()
+
+    if (name && email && city && postalCode && streetAddress && country && size && itemColor && embroidedColor != null) {
+      goToPayment()
+    }
+  }
+  
   return (
     <>
       {isSuccess ?
@@ -152,7 +240,7 @@ export default function CartPage({ newProducts, CategoryProp }) {
             {products?.length > 0 && (
               <Table>
                 <thead>
-                  <tr className='grid grid-cols-4 gap-10'>
+                  <tr className='hidden lg:grid grid-cols-4 gap-10'>
                     <th>Product</th>
                     <th>Quantity</th>
                     <th>Price</th>
@@ -161,10 +249,10 @@ export default function CartPage({ newProducts, CategoryProp }) {
                 </thead>
                 <tbody>
                   {products.map((product) => (
-                    <tr key={product._id} className='grid grid-cols-4 gap-10 items-center'>
+                    <tr key={product._id} className='grid grid-cols-1 lg:grid-cols-4 gap-10 items-center border-b-2 border-b-black'>
                       {/* Display product details */}
                       <td className="grid mt-10">
-                        <div>
+                        <div className='justify-self-center'>
                           <img src={product.images[0]} alt={product.title} className='rounded-full border-2 w-40 border-black' />
                         </div>
                         <div className="text-center pt-3">
@@ -184,39 +272,47 @@ export default function CartPage({ newProducts, CategoryProp }) {
                         </Button>
                       </td>
                       <td className="font-bold text-center">${product.price}</td>
-                      {/* {filteredCategories.map((cat) => (
-                        <td key={cat._id}>
-                          <ul className='grid grid-cols-2 gap-5'>
-                            {cat.properties.map((options) => {
-                              return (
-                                <li key={options._id}>
-                                  <p className='text-sm'>{options.name}</p>
-                                  <div>
-                                    <select className='bg-white border-2 p-1 rounded-lg border-black'>
-                                      {options.values.map((values) => {
-                                        return (
-                                          <option key={values._id}>
-                                            {values}
-                                          </option>
-                                        )
-                                      })}
-                                    </select>
-                                  </div>
-                                </li>
-                              )
-                            })}
-                          </ul>
-                        </td>
-                      ))} */}
+                      <td className='grid gap-3 py-10 justify-self-center'>
+                        <input
+                          type="text"
+                          placeholder="Size"
+                          value={size}
+                          onChange={(e) => setSize(e.target.value)}
+                          className='border-2 border-black rounded-md bg-white text-center w-36'
+                        />
+                        <input
+                          type="text"
+                          placeholder="Item Color"
+                          value={itemColor}
+                          onChange={(e) => setItemColor(e.target.value)}
+                          className='border-2 border-black rounded-md bg-white text-center w-36'
+                        />
+                        <input
+                          type="text"
+                          placeholder="Embroided Color"
+                          value={embroidedColor}
+                          onChange={(e) => setEmbroidedColor(e.target.value)}
+                          className='border-2 border-black rounded-md bg-white text-center w-36'
+                        />
+                      </td>
+                      {/* <OptionsDisplay {...products}/> */}
                     </tr>
                   ))}
                 </tbody>
               </Table>
             )}
             {/* Display the total cost */}
-            <div className="flex justify-between items-center mt-12">
-              <p className="font-bold text-6xl">Total:</p>
-              <p className="font-bold text-6xl">${total}</p>
+            <div className="grid justify-between items-center mt-12">
+              <label className='flex  gap-5 items-center'>
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 50 50">
+                    <path d="M25,2C12.297,2,2,12.297,2,25s10.297,23,23,23s23-10.297,23-23S37.703,2,25,2z M25,11c1.657,0,3,1.343,3,3s-1.343,3-3,3 s-3-1.343-3-3S23.343,11,25,11z M29,38h-2h-4h-2v-2h2V23h-2v-2h2h4v2v13h2V38z"></path>
+                </svg>
+                <p className="font-bold text-xs">if your buying 2 or more of the same item dont worry we will know if you use a comma for example: (L, M) under size</p>
+              </label>
+              <div className='flex py-3 gap-5'>
+                <p className="font-bold text-6xl">Total:</p>
+                <p className="font-bold text-6xl">${total}</p>
+              </div>
             </div>
           </div>
 
@@ -228,11 +324,13 @@ export default function CartPage({ newProducts, CategoryProp }) {
                     Name
                   </label>
                   <Input
-                    // placeholder="Name"
                     white
-                    type={"text"}
+                    type="text"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                    placeholder="Enter your name"
                   />
                 </div>
                 <div className="mt-4">
@@ -294,7 +392,7 @@ export default function CartPage({ newProducts, CategoryProp }) {
                   />
                 </div>
                 <div className="mt-4">
-                  <Button black="true" onClick={goToPayment}>
+                  <Button black="true" onClick={stateHandler}>
                     Checkout
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                       <path id="fire" strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
@@ -306,6 +404,7 @@ export default function CartPage({ newProducts, CategoryProp }) {
         </div>
       </>
       }
+      <ToastContainer/>
     </>
   );
 }

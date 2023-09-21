@@ -6,60 +6,6 @@ import Link from "next/link";
 export const Navbar = () => {
   
   const { cartProducts } = useContext(CartContext);
-  const [isToggled, setToggle] = useState(false);
-
-  const navContainer = {
-    visible: {
-      //x: 0,
-      opacity: 1,
-      transition: {
-        x: { velocity: 100 },
-        duration: 0.3
-      }
-    },
-    hidden: {
-      //x: -250,
-      opacity: 0,
-      transition: {
-        x: { velocity: 100 },
-        duration: 0.3
-      }
-    }
-  };
-
-  const navList = {
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.2,
-        staggerChildren: 0.07
-      }
-    },
-    hidden: {
-      opacity: 0,
-      transition: {
-        staggerChildren: 0.05,
-        staggerDirection: -1
-      }
-    }
-  };
-
-  const navItem = {
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        y: { stiffness: 1000, velocity: -100 }
-      }
-    },
-    hidden: {
-      y: 50,
-      opacity: 0,
-      transition: {
-        y: { stiffness: 1000, velocity: -100 }
-      }
-    }
-  };
 
   return (
     <>
@@ -71,7 +17,7 @@ export const Navbar = () => {
             </div>
           </Link>
         </div>
-        <div className="flex-none hidden lg:flex">
+        <div className="flex-none flex">
           <div className="flex gap-10">
             <Link href="/products">All products</Link>
             {/* <Link href="/categories">Categories</Link> */}
@@ -101,31 +47,6 @@ export const Navbar = () => {
             </label>
           </a>
         </div>
-        <button className="flex lg:hidden" onClick={() => setToggle(!isToggled)}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="black"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-        </button>
-        {isToggled ?
-        <div>
-          
-        </div>
-        :
-        <div>
-
-        </div>
-        }
       </div>
     </>
   );

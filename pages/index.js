@@ -18,7 +18,7 @@ export default function Home({ featuredProduct, newProducts, CategoryProp }) {
       <NewProducts products={newProducts} />
       <About/>
       <JoinUs/>
-      <StayInTouch/>
+      {/* <StayInTouch/> */}
       {/* <Categories Category={CategoryProp} /> */}
     </>
   );
@@ -30,7 +30,7 @@ export async function getServerSideProps() {
   const featuredProduct = await Product.findById(featuredProductId);
   const newProducts = await Product.find({}, null, {
     sort: { _id: -1 },
-    limit: 4,
+    limit: 3,
     timeOut: 20000
   });
   const CategoryProp = await Category.find({}, null, {

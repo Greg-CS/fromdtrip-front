@@ -22,9 +22,9 @@ export const About = () => {
             skater or just someone who wants to rock killer street style, fromdtrip&apos;s got your back. 
             Join us in redefining street fashion, one stitch at a time.
             </p>
-            <button className='btn bg-[#307473] text-white'>
+            {/* <button className='btn bg-[#307473] text-white'>
                 join us
-            </button>
+            </button> */}
         </div>
     </div>
   )

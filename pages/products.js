@@ -38,7 +38,7 @@ export default function ProductsPage({products, CategoryProp}) {
             </div>
           </div>
         <ProductsGrid products={filteredProducts} />
-        <StayInTouch/>
+        {/* <StayInTouch/> */}
       </div>
   );
 }
@@ -46,7 +46,6 @@ export default function ProductsPage({products, CategoryProp}) {
 export async function getServerSideProps() {
     await mongooseConnect();
     const products = await Product.find({}, null, {sort:{ '_id':-1}});
-    console.log(products);
     const CategoryProp = await Category.find({}, null, {
       sort: { _id: -1 },
       timeOut: 20000

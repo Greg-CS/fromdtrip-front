@@ -7,7 +7,6 @@ export function CartContextProvider({ children }) {
 
   const ls = typeof window !== "undefined" ? window.localStorage : null;
   const [cartProducts, setCartProducts] = useState([]);
-  const [size, setSize] = useState([]);
 
   useEffect(() => {
     if(cartProducts?.length > 0) {
@@ -35,24 +34,12 @@ export function CartContextProvider({ children }) {
     });
   }
 
-
-  function addSize(productID, size) {
-    setCartProducts(prev => [...prev, productID]);
-    setSize(prev => [...prev, size]);
-    console.log(cartProducts, size)
-  }
-
-  function addColor(productID, Color) {
-    setCartProducts(prev => [...prev, productID])
-    console.log(cartProducts)
-  }
-
   function clearCart() {
     setCartProducts([]);
   }
 
   return (
-    <CartContext.Provider value={{ cartProducts, setCartProducts, setSize, addProduct, removeProduct, clearCart, addSize }}>
+    <CartContext.Provider value={{ cartProducts, setCartProducts, addProduct, removeProduct, clearCart }}>
       {children}
     </CartContext.Provider>
   );

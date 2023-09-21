@@ -18,12 +18,14 @@ export default async function handler(req, res) {
     postalCode,
     streetAddress,
     country,
+    size,
+    itemColor,
+    embroidedColor,
     cartProducts,
   } = req.body;
 
   // Connect to MongoDB
   await mongooseConnect();
-
   // Extract unique product IDs from the cart
   const productsId = cartProducts;
   const uniqueIds = [...new Set(productsId)];
@@ -61,6 +63,9 @@ export default async function handler(req, res) {
     postalCode,
     streetAddress,
     country,
+    size,
+    itemColor,
+    embroidedColor,
     paid: true,
   });
 
