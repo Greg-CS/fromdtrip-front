@@ -7,10 +7,12 @@ export function CartContextProvider({ children }) {
 
   const ls = typeof window !== "undefined" ? window.localStorage : null;
   const [cartProducts, setCartProducts] = useState([]);
+  const [productSpecifics, setProductSpecifics] = useState({});
 
   useEffect(() => {
     if(cartProducts?.length > 0) {
       ls?.setItem("cart", JSON.stringify(cartProducts));
+      ls?.setItem("item specifics", JSON.stringify(productSpecifics));
     }
   }, [cartProducts]);
   
@@ -20,8 +22,9 @@ export function CartContextProvider({ children }) {
     }
   }, []);
 
-  function addProduct(productID) {
+  function addProduct(productID, selectedButtons) {
     setCartProducts(prev => [...prev, productID]);
+    setProductSpecifics(prev => ({...prev, selectedButtons}));
   }
 
   function removeProduct(productId) {
@@ -39,7 +42,7 @@ export function CartContextProvider({ children }) {
   }
 
   return (
-    <CartContext.Provider value={{ cartProducts, setCartProducts, addProduct, removeProduct, clearCart }}>
+    <CartContext.Provider value={{ cartProducts, productSpecifics, setCartProducts, addProduct, removeProduct, clearCart }}>
       {children}
     </CartContext.Provider>
   );

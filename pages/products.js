@@ -5,6 +5,8 @@ import { Category } from "../models/Category";
 import { ProductsGrid } from "../components/Products/ProductsGrid";
 import { StayInTouch } from "../components/StayInTouch/StayInTouch";
 export default function ProductsPage({products, CategoryProp}) {
+  console.log(products)
+  
   const [filteredProducts, setFilteredProducts] = useState(products);
 
   const handleFilter = (categoryId) => {

@@ -10,7 +10,7 @@ export default function ProductImg({ images }) {
   return (
     <>
       <div className="text-center">
-        <img src={activeImage} className="max-w-full max-h-200 rounded-full border-2 border-black" alt="" />
+        <img src={activeImage} className="w-[16rem] lg:w-[32rem] h-[16rem] lg:h-[32rem] rounded-full border-2 border-black" alt="product image" />
       </div>
       <div className="flex gap-10 mt-4">
         {images.map((image) => (
@@ -18,7 +18,7 @@ export default function ProductImg({ images }) {
             key={image}
             className={`border-2 ${
               image === activeImage ? "border-black" : "border-transparent"
-            } cursor-pointer rounded-xl p-1`}
+            } cursor-pointer rounded-full p-1 h-fit`}
             onClick={() => setActiveImage(image)}
           >
             <img src={image} className="w-10 h-10 rounded-full border-2 border-black" alt="" />

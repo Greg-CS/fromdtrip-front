@@ -4,6 +4,7 @@ import { Footer } from "../../components/Footer/Footer";
 import Head from 'next/head';
 import { Analytics } from "@vercel/analytics/react";
 export const Layout = ({children}) => {
+
   return (
     <>
       <Head>
@@ -15,7 +16,6 @@ export const Layout = ({children}) => {
         <meta property="og:title" content="Fromdtrip" />
         <meta property="og:description" content="We sell trippy clothing" />
         <meta property="og:image" content="/img/Logo.png" />
-
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.fromdtrip.com/" />
         <meta property="twitter:title" content="Fromdtrip" />

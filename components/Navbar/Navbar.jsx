@@ -13,13 +13,13 @@ export const Navbar = () => {
         <div className="flex-1">
           <Link className="" href="/">
             <div className="spinning-div rounded-full">
-              <img className="h-full w-full" src={'/img/Logo.png'}/>
+              <img className="h-full w-full" src={'/img/Logo.png'} alt="logo"/>
             </div>
           </Link>
         </div>
         <div className="flex-none flex">
           <div className="flex gap-10">
-            <Link href="/products">All products</Link>
+            <Link href="/products" className="text-2xl font-extrabold">All products</Link>
             {/* <Link href="/categories">Categories</Link> */}
             {/* <Link href="/signup">Account</Link> */}
           </div>
