@@ -17,7 +17,8 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function CartPage({ newProducts, CategoryProp }) {
 
   // Import cart-related functions and data from the CartContext
-  const { cartProducts, addProduct, removeProduct, clearCart } = useContext(CartContext);
+  const { cartProducts, productSpecifics, addProduct, removeProduct, clearCart } = useContext(CartContext);
+  console.log(cartProducts)
 
   // State variables for managing form data and cart details
   const [products, setProducts] = useState([]);
@@ -52,7 +53,7 @@ export default function CartPage({ newProducts, CategoryProp }) {
           setIsSuccess(false);
         }
       } catch (error) {
-        handleError('Error in useEffect:', error);
+        console.log(error);
       }
 
     }
@@ -108,17 +109,6 @@ export default function CartPage({ newProducts, CategoryProp }) {
     const price = products.find(p => p._id === productId)?.price || 0;
     total += price;
   }
-
-  // get product category id
-  // let categoryExample;
-
-  // for (const productCat of cartProducts) {
-  //   const Cat = products.find(p => p._id === productCat)?.category || 0;
-  //   categoryExample = Cat;
-    
-  // }
-
-  // console.log(categoryExample)
 
   // Render the cart and checkout form
   

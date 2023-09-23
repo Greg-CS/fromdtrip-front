@@ -9,14 +9,26 @@ export function CartContextProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
 
   useEffect(() => {
-    if(cartProducts?.length > 0) {
+    if (cartProducts?.length > 0) {
       ls?.setItem("cart", JSON.stringify(cartProducts));
     }
   }, [cartProducts]);
   
   useEffect(() => {
+    if (productSpecifics) {
+      ls?.setItem("ItemSpecifics", JSON.stringify(productSpecifics));
+    }
+  }, [productSpecifics]);
+
+  useEffect(() => {
     if(ls && ls.getItem('cart')) {
       setCartProducts(JSON.parse(ls.getItem('cart')))
+    }
+  }, []);
+
+  useEffect(() => {
+    if (ls && ls.getItem('ItemSpecifics')) {
+      setProductSpecifics(JSON.parse(ls.getItem('ItemSpecifics')));
     }
   }, []);
 
@@ -32,6 +44,10 @@ export function CartContextProvider({ children }) {
       }
       return prev;
     });
+  }
+
+  function addProductSpecifics(selectedButtons) {
+    setProductSpecifics(prev => [...prev, selectedButtons]);
   }
 
   function clearCart() {
