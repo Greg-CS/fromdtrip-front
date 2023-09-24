@@ -48,13 +48,13 @@ export const ProductBox = ({ _id, title, description, price, images }) => {
               more info
             </Link>
           </button>
-          <button
+          {/* <button
             className="flex text-black border-2 border-[#50514F] rounded-lg p-2 bg-[#CBD4C2]"
             onClick={() => addProduct(_id)}
           >
             <CartIcon className="h-5 mr-1" />
             Add to cart
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

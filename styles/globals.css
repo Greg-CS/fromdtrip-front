@@ -178,11 +178,6 @@ font-size: 0.875rem;
 line-height: 1.25rem;
 }
 
-.actions {
-margin: 0.75rem 1rem;
-}
-
-
 @keyframes animate {
 from {
 transform: scale(1);

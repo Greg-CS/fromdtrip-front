@@ -18,9 +18,7 @@ export default async function handler(req, res) {
     postalCode,
     streetAddress,
     country,
-    size,
-    itemColor,
-    embroidedColor,
+    productSpecifics,
     cartProducts,
   } = req.body;
 
@@ -63,9 +61,7 @@ export default async function handler(req, res) {
     postalCode,
     streetAddress,
     country,
-    size,
-    itemColor,
-    embroidedColor,
+    productSpecifics,
     paid: true,
   });
 

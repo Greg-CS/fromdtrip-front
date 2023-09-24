@@ -8,9 +8,7 @@ const OrderSchema = new Schema(
     postalCode: String,
     streetAddress: String,
     country: String,
-    size: String,
-    itemColor: String,
-    embroidedColor: String,
+    productSpecifics: Object,
     paid: Boolean,
   },
   {

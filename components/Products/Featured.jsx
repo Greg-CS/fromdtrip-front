@@ -24,12 +24,12 @@ export const Featured = ({ product }) => {
               </span>
             </button>
             </Link>
-            <button className="flex gap-3 btn bg-white hover:bg-white text-black font-bold border-black border-2" onClick={addFeaturedToCart}>
+            {/* <button className="flex gap-3 btn bg-white hover:bg-white text-black font-bold border-black border-2" onClick={addFeaturedToCart}>
               <CartIcon className="w-5 h-5 mr-1" /> 
               <span>
                 Add to Cart
               </span>
-            </button>
+            </button> */}
           </div>
           </div>
           <Link href={url}>

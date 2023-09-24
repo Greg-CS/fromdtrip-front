@@ -24,9 +24,9 @@ export const JoinUs = () => {
         <h1 className='uppercase'>
             Join us in instagram
         </h1>
-        <span className='uppercase'>
+        <a href='https://www.instagram.com/fromdtrip/' className='uppercase'>
             @fromdtrip
-        </span>
+        </a>
         <div className='grid grid-cols-3 justify-items-center py-10'>
             {images.map((img) => (
                 <img key={img.id}  src={img.img} alt={img.alt} className='w-full h-full' />
