@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-
+import { ReactShare } from "../../components/Socials/Socials"
 import { mongooseConnect } from "../../lib/mongoose";
 import { Product } from "../../models/Product";
 import { Category } from "../../models/Category";
@@ -10,10 +10,13 @@ import { CartContext } from "../../components/Context/CartContext";
 import { NewProducts } from "../../components/Products/NewProducts";
 import { Currencies } from "../../components/Currencies/Currencies";
 
+import { useRouter } from "next/router";
+
 export default function ProductPage({ product, newProducts, CategoryProp }) {
+
   const { addProduct, addProductSpecifics } = useContext(CartContext);
   const [selectedButtons, setSelectedButtons] = useState({});
-
+  const router = useRouter();
   const handleButtonClick = (categoryName, value) => {
     setSelectedButtons((prevState) => ({
       ...prevState,
@@ -121,6 +124,10 @@ export default function ProductPage({ product, newProducts, CategoryProp }) {
               <span className="text-4xl font-bold uppercase">
                 Socials
               </span>
+              <ReactShare
+                url={"fromdtrip.com"}
+                title="Check out this trippy website!"
+              />
             </div>
           </div>
         </div>
