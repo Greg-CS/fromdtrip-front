@@ -25,10 +25,10 @@ export const ProductBox = ({ _id, title, description, price, images }) => {
   return (
     <div className="card-container">
       <div className="card h-[650px] w-[400px] lg:h-[100%] lg:w-[100%]">
-        <div className="card-icon border-2 border-gray-300 rounded-xl">
+        <div className="border-2 border-gray-300 card-icon rounded-xl">
         <Link href={url}>
           <img
-            className="max-w-full max-h-40 border-1 border-gray-300 rounded-lg"
+            className="max-w-full border-gray-300 rounded-lg max-h-40 border-1"
             src={images?.[0]}
             alt=""
           />
@@ -36,25 +36,6 @@ export const ProductBox = ({ _id, title, description, price, images }) => {
         </div>
         <div className="card-body">
           <p className="text-lg uppercase">{title}</p>
-          <p className="text-md py-10">
-            {truncatedDescription}
-          </p>
-        </div>
-        <div className="card-footer">
-          <button
-            className="flex text-black border-2 border-[#50514F] rounded-lg p-2 bg-[#CBD4C2]"
-          >
-            <Link href={url}>
-              more info
-            </Link>
-          </button>
-          <button
-            className="flex text-black border-2 border-[#50514F] rounded-lg p-2 bg-[#CBD4C2]"
-            onClick={() => addProduct(_id)}
-          >
-            <CartIcon className="h-5 mr-1" />
-            Add to cart
-          </button>
         </div>
       </div>
     </div>

@@ -20,14 +20,14 @@ const images = [
 
 export const JoinUs = () => {
   return (
-    <section className='bg-white text-center text-black text-3xl font-mono pt-32'>
+    <section className='pt-32 text-3xl text-center text-[#EAAC8B]' style={{background: 'linear-gradient(180deg, rgba(109,89,122,1) 0%, rgba(0,0,0,1) 100%)'}}>
         <h1 className='uppercase'>
             Join us in instagram
         </h1>
         <a className='uppercase' href='https://www.instagram.com/fromdtrip/'>
             @fromdtrip
         </a>
-        <div className='grid grid-cols-3 justify-items-center py-10'>
+        <div className='grid grid-cols-3 py-10 justify-items-center'>
             {images.map((img) => (
                 <img key={img.id}  src={img.img} alt={img.alt} className='w-full h-full' />
             ))}

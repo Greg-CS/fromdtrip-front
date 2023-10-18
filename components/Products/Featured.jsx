@@ -11,35 +11,31 @@ export const Featured = ({ product }) => {
   }
 
   return (
-      <section className="bg-white">
-        <div className="grid lg:flex gap-24 pt-36 lg:pt-0 px-6 md:px-36 min-h-screen items-center">
-          <div className="mr-auto place-self-center lg:col-span-7">
-          <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-5xl text-black">Checkout our new product</h1>
-          <p className="max-w-2xl mb-6 font-light lg:mb-8 md:text-lg lg:text-xl text-black" style={{lineHeight: '50px'}}>a stylish and comfortable shirt that&apos;s perfect for any occasion! This premium-quality shirt is crafted with care, using soft and breathable fabric to ensure maximum comfort throughout the day.</p>
+    <section className="bg-[#6D597A] text-[#EAAC8B]" style={{ backgroundImage: "url(/img/topography.svg)", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+      <div className="grid items-center min-h-screen gap-24 px-6 lg:flex pt-36 lg:pt-0 md:px-36">
+        <div className="mr-auto place-self-center lg:col-span-7">
+          <h1 className="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-5xl">Checkout our new product</h1>
+          <p className="max-w-2xl p-2 mb-6 bg-[#355070] font-semibold border-2 border-[#B56576] lg:mb-8 md:text-lg lg:text-xl rounded-2xl" style={{ lineHeight: '50px' }}>a stylish and comfortable shirt that&apos;s perfect for any occasion! This premium-quality shirt is crafted with care, using soft and breathable fabric to ensure maximum comfort throughout the day.</p>
           <div className="flex gap-5">
             <Link href={url}>
-            <button className="flex gap-3 btn bg-white hover:bg-white text-black font-bold border-black border-2" onClick={addFeaturedToCart}>
-              <span>
-                Read More
-              </span>
-            </button>
+              <button className="flex gap-3 font-bold bg-[#6D597A] hover:bg-[#B56576] hover:border-[#E56B6F] border-2 border-[#E56B6F] btn">
+                <span>
+                  Read More
+                </span>
+              </button>
             </Link>
-            <button className="flex gap-3 btn bg-white hover:bg-white text-black font-bold border-black border-2" onClick={addFeaturedToCart}>
-              <CartIcon className="w-5 h-5 mr-1" /> 
-              <span>
-                Add to Cart
-              </span>
-            </button>
           </div>
-          </div>
+        </div>
+        <div className="h-[21rem] lg:h-[41rem] mb-10 lg:mb-0 w-[21rem] lg:w-[41rem] flex justify-center rounded-2xl border-2 items-center" style={{ backgroundImage: "url(/img/topography.svg)", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
           <Link href={url}>
             <img
               src="https://fromdtrip-ecommerce-bucket.s3.amazonaws.com/1684115693368.jpg"
               alt="featured"
-              className="mx-auto h-[22rem] w-[22rem] rounded-full border-2 border-black shadow-2xl"
-            />          
+              className="mx-auto h-[20rem] lg:h-[40rem] w-[20rem] lg:w-[40rem] rounded-2xl"
+            />
           </Link>
         </div>
-      </section>
+      </div>
+    </section>
   );
 };

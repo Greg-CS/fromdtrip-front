@@ -22,7 +22,7 @@
     "micro": "^10.0.1",
     "micro-cors": "^0.1.1",
     "mongoose": "^7.2.1",
-    "next": "13.4.3",
+    "next": "^13.5.5",
     "next-auth": "^4.22.1",
     "next-seo": "^6.0.0",
     "next-sitemap": "^4.1.3",
