@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 export const Footer = () => {
+  const router = useRouter();
+  const [isCart, setIsCart] = useState(false);
+
+  useEffect(() => {
+    if (router.pathname === "/cart") {
+      setIsCart(true)
+    } else {
+      setIsCart(false)
+    }
+  }, [router.pathname])
+
   return (
-    <footer className='grid items-center justify-around p-10 bg-black footer lg:flex'>
+    <footer className={`items-center justify-around p-10 bg-black footer  ${isCart ? "hidden" : "grid lg:flex"}`}>
       <div className='grid gap-10'>
         <img src='/img/Logo.png' alt='footer logo' className='h-[50px] w-[50px]' />
         <span className='text-[20px] text-white'>
@@ -86,6 +99,6 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
+    </footer >
   );
 }

@@ -12,16 +12,14 @@ export default async function handler(req, res) {
 
   // Extract request body data
   const {
-    name,
+    firstName,
+    lastName,
     email,
     city,
     postalCode,
-    streetAddress,
+    address,
     country,
-    size,
-    itemColor,
-    embroidedColor,
-    cartProducts,
+    productSpecifics
   } = req.body;
 
   // Connect to MongoDB
@@ -57,15 +55,15 @@ export default async function handler(req, res) {
   // Create an order document in the database
   const orderDoc = await Order.create({
     line_items,
-    name,
+    firstName,
+    lastName,
     email,
     city,
     postalCode,
-    streetAddress,
+    address,
     country,
     size,
-    itemColor,
-    embroidedColor,
+    productSpecifics,
     paid: true,
   });
 

@@ -8,7 +8,7 @@ export const ReactShare = ({ url, title }) => {
     const redditShareUrl = `https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
 
     return (
-        <div className="flex gap-10 pt-5 share-buttons">
+        <div className="grid justify-center gap-10 pt-5 lg:flex share-buttons">
             <a href={facebookShareUrl} target="_blank" rel="noopener noreferrer">
                 <FaFacebook size={"50px"} />
             </a>

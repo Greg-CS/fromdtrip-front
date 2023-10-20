@@ -9,6 +9,7 @@ export const Navbar = () => {
 
   const router = useRouter();
   const { cartProducts, addProduct, removeProduct, clearCart } = useContext(CartContext);
+  console.log(cartProducts)
   const [isCart, setIsCart] = useState(false);
   const [products, setProducts] = useState([]);
   const [drawerOpen, setIsDrawerOpen] = useState(false);
@@ -58,7 +59,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className="navbar bg-[#355070] text-[#EAAC8B]">
+      <div className={`navbar bg-[#355070] text-[#EAAC8B] ${isCart ? " hidden" : ""}`}>
         <div className="flex-1 gap-5">
           <Link className="" href="/">
             <div className="rounded-full spinning-div">
@@ -75,7 +76,7 @@ export const Navbar = () => {
           <div className="flex gap-10">
             <Link href="/products" className="text-2xl font-extrabold">All products</Link>
           </div>
-          <button className={`indicator ${isCart ? "hidden" : ""}`} onClick={handleDrawer}>
+          <button className="indicator" onClick={handleDrawer}>
             <label className="relative m-1 btn btn-ghost btn-circle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +138,7 @@ export const Navbar = () => {
                             -
                           </Button>
                           <span className="px-2 border-x-2 border-[#EAAC8B]">
-                            {cartProducts.filter((p) => p === product._id).length}
+                            {cartProducts.filter(id => id === product._id).length}
                           </span>
                           <Button onClick={() => moreOfThisProduct(product._id)}>
                             +

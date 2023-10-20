@@ -32,19 +32,19 @@ export default function ProductPage({ product, newProducts, CategoryProp }) {
   return (
     <>
       <div className="bg-[#355070] p-12 text-[#EAAC8B]">
-        <div className="grid lg:flex lg:justify-between p-2 rounded-2xl lg:p-12 bg-[#6D597A] lg:rounded-2xl">
+        <div className=" lg:flex lg:justify-between p-2 rounded-2xl lg:p-12 gap-4 bg-[#6D597A] lg:rounded-2xl">
           <div className="grid justify-center w-full lg:w-8/12">
             <ProductImages images={product.images} />
           </div>
           <div className="w-full lg:w-4/12">
-            <div className="flex items-center gap-5 pb-5">
+            <div className="grid items-center gap-5 pb-5 lg:flex">
               <h2 className="text-4xl font-bold uppercase">
                 {product.title}
               </h2>
               <span className="p-4 border-2 border-transparent text-[#EAAC8B] text-2xl font-bold badge bg-[#B56576] badge-neutral badge-lg" style={{ textWrap: "nowrap" }}>${product.price} USD</span>
             </div>
             <div className="divider" />
-            <div className="grid">
+            <div className="lg:grid">
               <p className="lg:text-xl">{product.description}</p>
               <div className="flex justify-end">
                 <button
@@ -86,19 +86,19 @@ export default function ProductPage({ product, newProducts, CategoryProp }) {
                 :
                 null
             }
-            <div className="grid grid-cols-1 gap-10 pt-5 text-center lg:grid-cols-2 justify-items-center lg:text-left lg:flex">
+            <div className="grid grid-cols-1 pt-5 justify-items-center lg:justify-items-start lg:text-left">
               {CategoryProp.properties.map((Cat) => {
                 return (
-                  <div key={Cat.name} className="">
+                  <div key={Cat.name} className="py-3">
                     <label className="text-xl">
                       {Cat.name}
                     </label>
-                    <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+                    <div className="grid grid-cols-3 gap-10 pt-1 lg:grid-cols-4 justify-evenly">
                       {Cat.values.map((v) => {
                         return (
                           <div key={v}>
                             <button
-                              className={`bg-[#B56576] p-2 rounded-2xl text-md hover:bg-[#EAAC8B] hover:text-[#355070] ${selectedButtons[Cat.name] === v ? 'bg-[#EAAC8B] text-[#355070]' : ''
+                              className={`bg-[#B56576] h-auto w-16 p-2 rounded-2xl text-md hover:bg-[#EAAC8B] hover:text-[#355070] ${selectedButtons[Cat.name] === v ? 'bg-[#EAAC8B] text-[#355070]' : ''
                                 }`}
                               onClick={() => handleButtonClick(Cat.name, v)}
                             >
@@ -122,7 +122,7 @@ export default function ProductPage({ product, newProducts, CategoryProp }) {
             <div className="divider" />
             <div>
               <span className="text-4xl font-bold uppercase">
-                Socials
+                Share on your socials
               </span>
               <ReactShare
                 url={"fromdtrip.com"}

@@ -5,14 +5,15 @@ import { mongooseConnect } from "../lib/mongoose";
 import { About } from "../components/About/About";
 import { JoinUs } from "../components/JoinUs/JoinUs";
 import { StayInTouch } from "../components/StayInTouch/StayInTouch";
+import ParticleRing from "../components/Animations/ParticleRing";
 
 export default function Home({ featuredProduct, newProducts }) {
   return (
     <>
-      <Featured product={featuredProduct} />
+      <ParticleRing />
       <NewProducts products={newProducts} />
-      <About/>
-      <JoinUs/>
+      <About />
+      <JoinUs />
       {/* <StayInTouch/> */}
     </>
   );
@@ -24,7 +25,7 @@ export async function getServerSideProps() {
   const featuredProduct = await Product.findById(featuredProductId);
   const newProducts = await Product.find({}, null, {
     sort: { _id: -1 },
-    limit: 3,
+    limit: 5,
     timeOut: 20000
   });
   return {
