@@ -39,7 +39,7 @@ export const Navbar = () => {
     }
 
     fetchProductsAndCheckSuccess();
-  }, [cartProducts, clearCart]);
+  }, [cartProducts]);
 
 
   useEffect(() => {
@@ -56,7 +56,6 @@ export const Navbar = () => {
     const price = products.find(p => p._id === productId)?.price || 0;
     total += price;
   }
-
   return (
     <>
       <div className={`navbar bg-[#355070] text-[#EAAC8B] ${isCart ? " hidden" : ""}`}>
@@ -116,15 +115,18 @@ export const Navbar = () => {
           {/* ^if theres no products selected by client card will display empty^ */}
 
           {products?.length > 0 && (
-            <div className="">
-              <div>
+            <>
+
+              {/* Cart item map */}
+
+              <div id="cart-items">
                 {products.map((product) => (
                   <>
                     <div key={product._id} className='flex items-center justify-between'>
                       {/* Display product details */}
                       <div className="grid p-5">
                         <div className='justify-self-center'>
-                          <img src={product.images} alt={product.title} className='w-20 border-2 border-black rounded-2xl' />
+                          <img src={product.images[0]} alt={product.title} className='w-20 border-2 border-black rounded-2xl' />
                         </div>
                         <div className="pt-3 text-center">
                           <p className="font-bold">{product.title}</p>
@@ -150,28 +152,34 @@ export const Navbar = () => {
                   </>
                 ))}
               </div>
-            </div>
+
+              {/* Cart total */}
+
+              <div id="cart-total">
+                <div className="flex justify-between p-5">
+                  <span className="text-2xl">Taxes:</span>
+                  <span className="text-2xl">$0.00 USD</span>
+                </div>
+                <div className="flex items-center justify-between p-5">
+                  <span className="text-2xl">Shipping:</span>
+                  <span className="text-md">Calculated at checkout</span>
+                </div>
+                <div className="flex justify-between p-5">
+                  <span className="text-2xl">Total:</span>
+                  <span className="text-2xl">${total}.00 USD</span>
+                </div>
+              </div>
+              <div className="p-5 divider" />
+              
+              {/* proceed to checkout btn */}
+              
+              <div id="checkout" className="m-5 w-fit">
+                <Link href={'/cart'}>
+                  <button onClick={handleDrawer} className="btn bg-[#E56B6F] rounded-2xl text-[#EAAC8B] border-2 border-transparent">Proceed to Checkout</button>
+                </Link>
+              </div>
+            </>
           )}
-          <div>
-            <div className="flex justify-between p-5">
-              <span className="text-2xl">Taxes:</span>
-              <span className="text-2xl">$0.00 USD</span>
-            </div>
-            <div className="flex items-center justify-between p-5">
-              <span className="text-2xl">Shipping:</span>
-              <span className="text-md">Calculated at checkout</span>
-            </div>
-            <div className="flex justify-between p-5">
-              <span className="text-2xl">Total:</span>
-              <span className="text-2xl">${total}.00 USD</span>
-            </div>
-          </div>
-          <div className="p-5 divider" />
-          <div className="m-5 w-fit">
-            <Link href={'/cart'}>
-              <button onClick={handleDrawer} className="btn bg-[#E56B6F] rounded-2xl text-[#EAAC8B] border-2 border-transparent">Proceed to Checkout</button>
-            </Link>
-          </div>
         </div>
         :
         null

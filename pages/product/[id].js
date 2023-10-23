@@ -55,7 +55,7 @@ export default function ProductPage({ product, newProducts, CategoryProp }) {
                       // Perform your "Add to Cart" action here
                       // You can enable the button here and add your logic to add items to the cart.
                       // For example, you can set a state variable to enable the button and dispatch an action to add the items to the cart.
-                      addProduct(product, selectedButtons);
+                      addProduct(product._id);
                       addProductSpecifics(selectedButtons, product._id);
                     }
                   }}

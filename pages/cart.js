@@ -259,16 +259,15 @@ export default function CartPage({ newProducts }) {
                             <p className="font-bold ">{product.title}</p>
                             <div className='grid'>
                               {productSpecifics
-                                .filter(specs => specs.productId === product._id) // Filter for specifics matching the current product
+                                .filter(specs => specs.productId === product._id)
                                 .map((obj, index) => {
-                                  // Get the keys and values of the current object
                                   const entries = Object.entries(obj);
-
                                   return (
                                     <div key={index}>
                                       {entries.map(([key, value]) => (
-                                        <div key={key} className='text-xs text-left'>
-                                          <span>{key}:</span> <span>{value}</span>
+                                        <div key={key} className='text-lg text-white text-left'>
+                                          <span>{key}: </span>
+                                          <span>{value}</span>
                                         </div>
                                       ))}
                                     </div>
