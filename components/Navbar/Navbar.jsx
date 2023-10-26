@@ -8,8 +8,7 @@ import axios from "axios";
 export const Navbar = () => {
 
   const router = useRouter();
-  const { cartProducts, addProduct, removeProduct, clearCart } = useContext(CartContext);
-  console.log(cartProducts)
+  const { cartProducts, addProduct, removeProduct, clearCart, removeProductSpecifics } = useContext(CartContext);
   const [isCart, setIsCart] = useState(false);
   const [products, setProducts] = useState([]);
   const [drawerOpen, setIsDrawerOpen] = useState(false);
@@ -99,7 +98,7 @@ export const Navbar = () => {
         </div>
       </div>
       {drawerOpen ?
-        <div className="fixed top-0 right-0 min-h-screen bg-[#6D597A] w-[22rem] border-l-2 border-[#B56576] z-10 text-[#EAAC8B]">
+        <div className="fixed top-0 right-0 min-h-screen bg-[#6D597A] w-[22rem] border-l-2 border-[#B56576] z-10 text-[#EAAC8B] overflow-y-auto">
           <div className="flex items-center justify-between p-5">
             <span className="text-2xl font-bold">
               My Cart
@@ -175,7 +174,7 @@ export const Navbar = () => {
               
               <div id="checkout" className="m-5 w-fit">
                 <Link href={'/cart'}>
-                  <button onClick={handleDrawer} className="btn bg-[#E56B6F] rounded-2xl text-[#EAAC8B] border-2 border-transparent">Proceed to Checkout</button>
+                  <button onClick={handleDrawer} className="btn bg-[#E56B6F] hover:bg-[#355070] rounded-2xl text-[#EAAC8B] border-2 border-transparent hover:border-transparent">Proceed to Checkout</button>
                 </Link>
               </div>
             </>

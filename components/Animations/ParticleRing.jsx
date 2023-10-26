@@ -4,7 +4,7 @@ import { OrbitControls, Sphere } from "@react-three/drei";
 import { pointsInner, pointsOuter } from "../../utils/utils";
 import { Featured } from "../Products/Featured";
 
-const ParticleRing = (products) => {
+const ParticleRing = ({products}) => {
     return (
         <div className="relative">
             <Canvas
@@ -20,7 +20,7 @@ const ParticleRing = (products) => {
                 <PointCircle />
             </Canvas>
 
-            <div className="absolute top-[60%] md:top-[60%] lg:top-[75%] 2xl:top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] ">
+            <div className="absolute top-[60%] md:top-[60%] lg:top-[50%] 2xl:top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] ">
                 <Featured product={products} />
             </div>
         </div>

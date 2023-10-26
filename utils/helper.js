@@ -9,4 +9,4 @@ function truncateDescription(description, limit) {
 
 const descriptionLimit = 20;
 
-const truncatedDescription = truncateDescription(description, descriptionLimit || 50);
+export const truncatedDescription = truncateDescription(description, descriptionLimit || 50);

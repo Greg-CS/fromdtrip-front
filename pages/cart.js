@@ -2,12 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button } from '../components/Button/Button';
 import { CartContext } from '../components/Context/CartContext';
-import { Table } from '../components/Table/Table';
-import { Input } from '../components/Input/Input';
 import { NewProducts } from "../components/Products/NewProducts";
 import { mongooseConnect } from "../lib/mongoose";
 import { Product } from "../models/Product";
-import { Category } from "../models/Category";
 import Link from 'next/link';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,9 +14,9 @@ export default function CartPage({ newProducts }) {
 
   // Import cart-related functions and data from the CartContext
   const { cartProducts, productSpecifics, clearCart } = useContext(CartContext);
-
   // State variables for managing form data and cart details
   const [products, setProducts] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const [email, setEmail] = useState('');
   const [country, setCountry] = useState('');
@@ -111,6 +108,10 @@ export default function CartPage({ newProducts }) {
     }
   }
 
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       {isSuccess ?
@@ -143,7 +144,7 @@ export default function CartPage({ newProducts }) {
         <div className="grid lg:flex justify-evenly py-5 min-h-screen bg-[#6D597A] text-[#EAAC8B]">
           {/* Checkout form */}
           <div className="w-auto p-0 lg:p-6 lg:w-6/12 rounded-xl">
-            <div className='grid justify-end'>
+            <div className='grid justify-end justify-items-center lg:justify-items-start'>
               <Link className="" href="/">
                 <div className="rounded-full spinning-div">
                   <img className="w-full h-full" src={'/img/Logo.png'} alt="logo" />
@@ -156,6 +157,55 @@ export default function CartPage({ newProducts }) {
                 </svg>
 
                 <span className='font-bold'>Payment</span>
+              </div>
+              <div className='lg:hidden'>
+                <button
+                  onClick={toggleAccordion}
+                  className="w-full flex justify-between items-center py-2 focus:outline-none"
+                >
+                  <span className="text-lg">Cart products</span>
+                  <span
+                    className={`transform transition duration-150 ease-in-out ${
+                      isOpen ? 'rotate-0' : 'rotate-180'
+                    }`}
+                  >
+                    ▼
+                  </span>
+                </button>
+                <div className={`accordion-body my-2 grid gap-3 items-center ${isOpen ? 'open' : 'closed'}`}>
+                {products.map((product) => {
+                  return (
+                    <>
+                      <div className='row-span-3 cols-span-2'>
+                      <img src={product.images[0]} alt={product.title} className='w-[5rem] h-[5rem] rounded-2xl' />
+                      </div>
+                      <div>
+                          <p className="font-bold ">{product.title}</p>
+                      </div>
+                      <div>
+                          {productSpecifics
+                              .filter(specs => specs.productId === product._id)
+                              .map((obj, index) => {
+                              const entries = Object.entries(obj);
+                              return (
+                                  <>
+                                  <div key={index}>
+                                  {entries.map(([key, value]) => (
+                                      <div key={key} className='text-xs flex justify-between'>
+                                      <span>{key}: </span>
+                                      <span>{value}</span>
+                                      </div>
+                                  ))}
+                                  </div>
+                                  </>
+                              );
+                          })}
+                      </div>
+                      <div className='divider'/>
+                    </>
+                  )
+                  })}
+                </div>
               </div>
               <div className="grid text-center lg:text-left">
                 <span className='pb-3 text-2xl font-bold'>
@@ -233,7 +283,7 @@ export default function CartPage({ newProducts }) {
               </div>
             </div>
           </div>
-          <div className="divider divider-horizontal" />
+          <div className="hidden lg:flex divider divider-horizontal" />
 
           {/* Cart details */}
           <div className="hidden p-6 lg:grid lg:w-6/12 rounded-xl">
@@ -265,7 +315,7 @@ export default function CartPage({ newProducts }) {
                                   return (
                                     <div key={index}>
                                       {entries.map(([key, value]) => (
-                                        <div key={key} className='text-lg text-white text-left'>
+                                        <div key={key} className='text-xs flex justify-between'>
                                           <span>{key}: </span>
                                           <span>{value}</span>
                                         </div>

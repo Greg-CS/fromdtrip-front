@@ -10,7 +10,7 @@ import ParticleRing from "../components/Animations/ParticleRing";
 export default function Home({ featuredProduct, newProducts }) {
   return (
     <>
-      <ParticleRing />
+      <ParticleRing products={featuredProduct}/>
       <NewProducts products={newProducts} />
       <About />
       <JoinUs />

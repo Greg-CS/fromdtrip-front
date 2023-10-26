@@ -19,6 +19,7 @@ export default async function handler(req, res) {
     postalCode,
     address,
     country,
+    cartProducts,
     productSpecifics
   } = req.body;
 

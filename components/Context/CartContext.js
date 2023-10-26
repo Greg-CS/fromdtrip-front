@@ -41,6 +41,7 @@ export function CartContextProvider({children}) {
   function addProduct(productId) {
     setCartProducts(prev => [...prev,productId]);
   }
+
   function removeProduct(productId) {
     const productIndex = cartProducts.indexOf(productId);
     if (productIndex !== -1) {
@@ -49,11 +50,19 @@ export function CartContextProvider({children}) {
       setCartProducts(newCartProducts);
     }
   }
+
+  function removeProductSpecifics(selectedButtons, productID) {
+    const productSpecific = { productId: productID, ...selectedButtons };
+    let updatedArray = [];
+    updatedArray = productSpecifics.filter((item) => item.productId !== productSpecific.productId);
+    setProductSpecifics(updatedArray);
+  }
+
   function clearCart() {
     setCartProducts([]);
   }
   return (
-    <CartContext.Provider value={{cartProducts,setCartProducts,addProduct, addProductSpecifics,removeProduct,clearCart}}>
+    <CartContext.Provider value={{cartProducts, productSpecifics,setCartProducts,addProduct, addProductSpecifics,removeProduct,removeProductSpecifics,clearCart}}>
       {children}
     </CartContext.Provider>
   );
