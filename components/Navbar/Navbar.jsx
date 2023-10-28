@@ -3,8 +3,8 @@ import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Button } from "../Button/Button"
 import axios from "axios";
+
 export const Navbar = () => {
 
   const router = useRouter();
@@ -13,7 +13,21 @@ export const Navbar = () => {
   const [products, setProducts] = useState([]);
   const [drawerOpen, setIsDrawerOpen] = useState(false);
 
-  const handleDrawer = () => setIsDrawerOpen(!drawerOpen)
+  const [open, setOpen] = useState(false);
+
+  const handleMenu = () => setOpen(!open);
+
+  const handleDrawer = () => setIsDrawerOpen(!drawerOpen);
+
+  useEffect(() => {
+    if (open === true) {
+      setOpen(true);
+      setIsDrawerOpen(false);
+    } else if (drawerOpen === true) {
+      setOpen(false);
+      setIsDrawerOpen(true);
+    }
+  }, [drawerOpen, open]);
 
   function moreOfThisProduct(id) {
     addProduct(id);
@@ -57,13 +71,87 @@ export const Navbar = () => {
   }
   return (
     <>
-      <div className={`navbar bg-[#355070] text-[#EAAC8B] ${isCart ? " hidden" : ""}`}>
-        <div className="flex-1 gap-5">
+      <div
+        className={`navbar bg-[#355070] text-[#EAAC8B] ${
+          isCart ? " hidden" : ""
+        }`}
+      >
+        <button className="flex lg:hidden" onClick={handleMenu}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </button>
+        {open ? (
+          <div className="fixed flex flex-col top-0 min-h-screen bg-[#6D597A] w-[15rem] border-r-2 border-[#B56576] z-10 text-[#EAAC8B] left-0">
+            <div className="flex items-center justify-between p-2 mb-6 gap-9">
+              <h1 className="text-2xl font-bold">Menu</h1>
+              <button onClick={handleMenu} className="btn btn-ghost btn-circle">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div className="grid gap-10 p-2">
+              <Link
+                onClick={handleMenu}
+                href="/"
+                className="text-2xl font-extrabold"
+              >
+                Home
+              </Link>
+              <Link
+                onClick={handleMenu}
+                href="/products"
+                className="text-2xl font-extrabold"
+              >
+                All products
+              </Link>
+              <Link
+                onClick={handleMenu}
+                href="/faq"
+                className="text-2xl font-extrabold"
+              >
+                FAQ
+              </Link>
+              <Link
+                onClick={handleMenu}
+                href="/contact"
+                className="text-2xl font-extrabold"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        ) : null}
+        <div className="justify-center flex-1 gap-5 lg:justify-start">
           <Link className="" href="/">
             <div className="rounded-full spinning-div">
-              <img className="w-full h-full" src={'/img/Logo.png'} alt="logo" />
+              <img className="w-full h-full" src={"/img/Logo.png"} alt="logo" />
             </div>
           </Link>
+
           <span className="hidden lg:flex">
             <Link href="/">
               <h1 className="text-4xl font-extrabold">Fromdtrip</h1>
@@ -72,7 +160,24 @@ export const Navbar = () => {
         </div>
         <div className="flex flex-none">
           <div className="flex gap-10">
-            <Link href="/products" className="text-2xl font-extrabold">All products</Link>
+            <Link
+              href="/faq"
+              className="hidden text-2xl font-extrabold lg:flex"
+            >
+              FAQ
+            </Link>
+            <Link
+              href="/contact"
+              className="hidden text-2xl font-extrabold lg:flex"
+            >
+              Contact Us
+            </Link>
+            <Link
+              href="/products"
+              className="hidden text-2xl font-extrabold lg:flex"
+            >
+              All products
+            </Link>
           </div>
           <button className="indicator" onClick={handleDrawer}>
             <label className="relative m-1 btn btn-ghost btn-circle">
@@ -97,53 +202,85 @@ export const Navbar = () => {
           </button>
         </div>
       </div>
-      {drawerOpen ?
+      {drawerOpen ? (
         <div className="fixed top-0 right-0 min-h-screen bg-[#6D597A] w-[22rem] border-l-2 border-[#B56576] z-10 text-[#EAAC8B] overflow-y-auto">
           <div className="flex items-center justify-between p-5">
-            <span className="text-2xl font-bold">
-              My Cart
-            </span>
+            <span className="text-2xl font-bold">My Cart</span>
             <button onClick={handleDrawer} className="btn btn-ghost btn-circle">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
             </button>
           </div>
-          {!cartProducts?.length && <p className="p-5 text-xl">No products in cart</p>}
+          {!cartProducts?.length && (
+            <p className="p-5 text-xl">No products in cart</p>
+          )}
 
           {/* ^if theres no products selected by client card will display empty^ */}
 
           {products?.length > 0 && (
             <>
-
               {/* Cart item map */}
 
               <div id="cart-items">
                 {products.map((product) => (
                   <>
-                    <div key={product._id} className='flex items-center justify-between'>
+                    <div
+                      key={product._id}
+                      className="flex items-center justify-between"
+                    >
                       {/* Display product details */}
                       <div className="grid p-5">
-                        <div className='justify-self-center'>
-                          <img src={product.images[0]} alt={product.title} className='w-20 border-2 border-black rounded-2xl' />
+                        <div className="justify-self-center">
+                          <img
+                            src={product.images[0]}
+                            alt={product.title}
+                            className="w-20 border-2 border-black rounded-2xl"
+                          />
                         </div>
                         <div className="pt-3 text-center">
                           <p className="font-bold">{product.title}</p>
                         </div>
                       </div>
                       <div className="grid justify-end">
-                        <div className="p-5 text-xl text-right">${product.price}.00 USD</div>
-                        <div className="bg-[#E56B6F] rounded-xl mr-5" style={{ width: 'fit-content', justifySelf: "self-end" }}>
+                        <div className="p-5 text-xl text-right">
+                          ${product.price}.00 USD
+                        </div>
+                        <div
+                          className="bg-[#E56B6F] rounded-xl mr-5"
+                          style={{
+                            width: "fit-content",
+                            justifySelf: "self-end",
+                          }}
+                        >
                           {/* Buttons to adjust product quantity */}
-                          <Button onClick={() => lessOfThisProduct(product._id)}>
+                          <button
+                            onClick={() => lessOfThisProduct(product._id)}
+                          >
                             -
-                          </Button>
+                          </button>
                           <span className="px-2 border-x-2 border-[#EAAC8B]">
-                            {cartProducts.filter(id => id === product._id).length}
+                            {
+                              cartProducts.filter((id) => id === product._id)
+                                .length
+                            }
                           </span>
-                          <Button onClick={() => moreOfThisProduct(product._id)}>
+                          <button
+                            onClick={() => moreOfThisProduct(product._id)}
+                          >
                             +
-                          </Button>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -169,20 +306,23 @@ export const Navbar = () => {
                 </div>
               </div>
               <div className="p-5 divider" />
-              
+
               {/* proceed to checkout btn */}
-              
+
               <div id="checkout" className="m-5 w-fit">
-                <Link href={'/cart'}>
-                  <button onClick={handleDrawer} className="btn bg-[#E56B6F] hover:bg-[#355070] rounded-2xl text-[#EAAC8B] border-2 border-transparent hover:border-transparent">Proceed to Checkout</button>
+                <Link href={"/cart"}>
+                  <button
+                    onClick={handleDrawer}
+                    className="btn bg-[#E56B6F] hover:bg-[#355070] rounded-2xl text-[#EAAC8B] border-2 border-transparent hover:border-transparent"
+                  >
+                    Proceed to Checkout
+                  </button>
                 </Link>
               </div>
             </>
           )}
         </div>
-        :
-        null
-      }
+      ) : null}
     </>
   );
 }

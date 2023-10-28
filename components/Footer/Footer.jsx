@@ -16,7 +16,7 @@ export const Footer = () => {
 
   return (
     <footer id='footer' className={`items-center justify-around p-10 bg-black footer text-[#EAAC8B]  ${isCart ? "hidden" : "grid lg:flex"}`}>
-      <div className='grid gap-10'>
+      <div className='grid gap-10 text-center place-items-center lg:place-items-start lg:text-left'>
         <img src='/img/Logo.png' alt='footer logo' className='h-[50px] w-[50px]' />
         <span className='text-[20px]'>
           Socially and environmentally progressive street wear
