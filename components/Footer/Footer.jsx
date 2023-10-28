@@ -301,7 +301,7 @@ export const Footer = () => {
                     Sunday: [Opening Hours] <br/> <br/>
                     We&apos;re Here for You: <br/> <br/>
 
-                    Fromdtrip is not just a brand; it&apos;s a celebration of Puerto Rico, its culture, and its people. Your thoughts and experiences matter to us, and we are eager to hear from you. Whether you have a question, feedback, or simply want to chat about all things Boricua, please don't hesitate to reach out. We look forward to connecting with you.
+                    Fromdtrip is not just a brand; it&apos;s a celebration of Puerto Rico, its culture, and its people. Your thoughts and experiences matter to us, and we are eager to hear from you. Whether you have a question, feedback, or simply want to chat about all things Boricua, please don&apos;t hesitate to reach out. We look forward to connecting with you.
 
                     Thank you for being a part of our journey, and we can&apos;t wait to make your Fromdtrip experience a memorable one.
 
