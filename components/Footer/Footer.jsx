@@ -64,7 +64,7 @@ export const Footer = () => {
                 <p className="py-4">
                   Fromdtrip Size Guide <br/> <br/>
 
-                  Women's Sizes: <br/> <br/>
+                  Women&apos;s Sizes: <br/> <br/>
 
                   Tops: <br/> <br/>
 
@@ -124,7 +124,7 @@ export const Footer = () => {
                   X-Large: <br/> <br/>
                   Waist: 30-32 inches <br/> <br/>
                   Hips: 40-42 inches <br/> <br/>
-                  Men's Sizes: <br/> <br/>
+                  Men&apos;s Sizes: <br/> <br/>
 
                   Tops: <br/> <br/>
 
@@ -154,7 +154,7 @@ export const Footer = () => {
                   X-Large: <br/> <br/>
                   Waist: 34-36 inches <br/> <br/>
                   Inseam: 36-38 inches <br/> <br/>
-                  Children's Sizes: <br/> <br/>
+                  Children&apos;s Sizes: <br/> <br/>
 
                   Age Range: <br/> <br/>
 
@@ -178,7 +178,7 @@ export const Footer = () => {
             <div className="modal" id="my_modal_8">
               <div className="modal-box bg-[#355070]">
                 <p className="py-4">
-                  At Fromdtrip, we are committed to providing you with a seamless shopping experience, including reliable and efficient shipping services. Below, you'll find important information about our shipping policies. <br/> <br/>
+                  At Fromdtrip, we are committed to providing you with a seamless shopping experience, including reliable and efficient shipping services. Below, you&apos;ll find important information about our shipping policies. <br/> <br/>
 
                   1. Shipping Destinations: <br/> <br/>
 
@@ -235,14 +235,14 @@ export const Footer = () => {
 
                 Our Values and Commitment to the Boricuan Spirit <br/> <br/>
 
-                At Fromdtrip, we're more than just a clothing brand; we are the embodiment of the Boricuan spirit through design and embroidery. We are deeply committed to celebrating the vibrant and resilient culture of Puerto Rico, and we strive to embody these core values in everything we do: <br/> <br/>
+                At Fromdtrip, we&apos;re more than just a clothing brand; we are the embodiment of the Boricuan spirit through design and embroidery. We are deeply committed to celebrating the vibrant and resilient culture of Puerto Rico, and we strive to embody these core values in everything we do: <br/> <br/>
 
                 1. Artistry and Craftsmanship: <br/> <br/>
 
-                We are passionate about the art of design and embroidery. Each piece we create is a work of art, meticulously crafted to capture the essence of Puerto Rico's culture and spirit. <br/> <br/>
+                We are passionate about the art of design and embroidery. Each piece we create is a work of art, meticulously crafted to capture the essence of Puerto Rico&apos;s culture and spirit. <br/> <br/>
                 2. Authenticity and Tradition: <br/> <br/>
 
-                We draw inspiration from the rich traditions and history of Puerto Rico, infusing every design with the island's unique heritage. We stay true to our roots and celebrate the authenticity of Boricuan artistry. <br/> <br/>
+                We draw inspiration from the rich traditions and history of Puerto Rico, infusing every design with the island&apos;s unique heritage. We stay true to our roots and celebrate the authenticity of Boricuan artistry. <br/> <br/>
                 3. Community Connection: <br/> <br/>
 
                 The Boricuan spirit is deeply rooted in community. We aim to connect with the Puerto Rican community, both on the island and in the diaspora, through our designs and the stories they tell. <br/> <br/>
@@ -251,7 +251,7 @@ export const Footer = () => {
                 We take pride in the quality and durability of our products. Every embroidered detail is a testament to our commitment to offering clothing that lasts and continues to inspire. <br/> <br/>
                 5. Sustainability and Responsibility: <br/> <br/>
 
-                Our dedication to sustainability involves responsible sourcing of materials and eco-friendly production methods. We are mindful of our environmental impact and strive to protect Puerto Rico's natural beauty. <br/> <br/>
+                Our dedication to sustainability involves responsible sourcing of materials and eco-friendly production methods. We are mindful of our environmental impact and strive to protect Puerto Rico&apos;s natural beauty. <br/> <br/>
                 6. Inclusivity and Diversity: <br/> <br/>
                 Puerto Rico is a diverse and welcoming place, and we celebrate that diversity by offering designs that resonate with everyone, regardless of their background, age, or gender.  <br/> <br/>
                 7. Empowerment Through Style: <br/> <br/>
@@ -261,7 +261,7 @@ export const Footer = () => {
 
                 Life in Puerto Rico is a constant celebration, and we want our designs to capture that spirit. Our embroidered styles reflect the vibrancy, festivities, music, and culture that make Puerto Rico unique. <br/> <br/>
 
-                Fromdtrip is a celebration of Puerto Rico, and together, we'll continue to stitch the fabric of this beautiful culture with every design we create.
+                Fromdtrip is a celebration of Puerto Rico, and together, we&apos;ll continue to stitch the fabric of this beautiful culture with every design we create.
 
                 </p>
                 <div className="modal-action">
@@ -276,7 +276,7 @@ export const Footer = () => {
                   <p>
                     Contact Us <br/> <br/>
 
-                    At Fromdtrip, we value your feedback, questions, and the opportunity to connect with our community. Our dedicated team is here to assist you in any way we can. Whether you have inquiries about our products, need assistance with an order, or simply want to share your thoughts, we're ready to listen and support you. <br/> <br/>
+                    At Fromdtrip, we value your feedback, questions, and the opportunity to connect with our community. Our dedicated team is here to assist you in any way we can. Whether you have inquiries about our products, need assistance with an order, or simply want to share your thoughts, we&apos;re ready to listen and support you. <br/> <br/>
 
                     How to Reach Us: <br/> <br/>
 
@@ -299,11 +299,11 @@ export const Footer = () => {
                     Monday to Friday: [Opening Hours]
                     Saturday: [Opening Hours]
                     Sunday: [Opening Hours] <br/> <br/>
-                    We're Here for You: <br/> <br/>
+                    We&apos;re Here for You: <br/> <br/>
 
-                    Fromdtrip is not just a brand; it's a celebration of Puerto Rico, its culture, and its people. Your thoughts and experiences matter to us, and we are eager to hear from you. Whether you have a question, feedback, or simply want to chat about all things Boricua, please don't hesitate to reach out. We look forward to connecting with you.
+                    Fromdtrip is not just a brand; it&apos;s a celebration of Puerto Rico, its culture, and its people. Your thoughts and experiences matter to us, and we are eager to hear from you. Whether you have a question, feedback, or simply want to chat about all things Boricua, please don't hesitate to reach out. We look forward to connecting with you.
 
-                    Thank you for being a part of our journey, and we can't wait to make your Fromdtrip experience a memorable one.
+                    Thank you for being a part of our journey, and we can&apos;t wait to make your Fromdtrip experience a memorable one.
 
                     Safe travels and happy shopping!
                   </p>
