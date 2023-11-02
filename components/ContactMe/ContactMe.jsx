@@ -28,8 +28,8 @@ export const ContactMe = () => {
 
     emailjs
       .send(
-        process.env.SERVICE_ID,
-        process.env.TEMPLATE_ID,
+        "service_9et71bb",
+        "template_qvx529g",
         {
           from_name: form.name,
           to_name: "fromdtrip",
@@ -37,7 +37,7 @@ export const ContactMe = () => {
           to_email: "from.the.trip@gmail.com",
           message: form.message,
         },
-        process.env.PUBLIC_KEY,
+        "aVvKUc0BmU_Q0ALAW",
       )
       .then(
         () => {
@@ -92,7 +92,7 @@ export const ContactMe = () => {
                 value={form.name}
                 onChange={handleChange}
                 placeholder="John Dope"
-                className="w-full px-3 py-2 mt-2 rounded-2xl focus:outline-none focus:border-[#6D597A]"
+                className="w-full px-3 py-2 mt-2 rounded-2xl focus:outline-none bg-[#A56475] focus:border-[#6D597A] focus:bg-[#6D597A]"
               />
 
               <label className="mt-5 text-lg md:text-xl lg:text-2xl">
@@ -104,7 +104,7 @@ export const ContactMe = () => {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="john@gmail.com"
-                className="w-full px-3 py-2 mt-2 rounded-2xl focus:outline-none focus:border-[#6D597A]"
+                className="w-full px-3 py-2 mt-2 rounded-2xl focus:outline-none bg-[#A56475] focus:border-[#6D597A] focus:bg-[#6D597A]"
               />
 
               <label className="mt-5 text-lg md:text-xl lg:text-2xl">
@@ -115,7 +115,7 @@ export const ContactMe = () => {
                 value={form.message}
                 onChange={handleChange}
                 placeholder="Hi fromdtrip!"
-                className="w-full px-3 py-2 mt-2 rounded-2xl focus:outline-none focus:border-[#6D597A]"
+                className="w-full px-3 py-2 mt-2 rounded-2xl text-white focus:outline-none bg-[#A56475] focus:border-[#6D597A] focus:bg-[#6D597A]"
               />
 
               <div className="my-10">

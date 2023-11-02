@@ -1,15 +1,20 @@
-import { Featured } from "../components/Products/Featured";
+// import { Featured } from "../components/Products/Featured";
 import { NewProducts } from "../components/Products/NewProducts";
 import { Product } from "../models/Product";
 import { mongooseConnect } from "../lib/mongoose";
 import { About } from "../components/About/About";
 import { JoinUs } from "../components/JoinUs/JoinUs";
-import { StayInTouch } from "../components/StayInTouch/StayInTouch";
+// import { StayInTouch } from "../components/StayInTouch/StayInTouch";
 import ParticleRing from "../components/Animations/ParticleRing";
+import { NewsLetter } from "../components/NewsLetter/NewsLetter";
 
 export default function Home({ featuredProduct, newProducts }) {
+
+
+
   return (
     <>
+      {/* <NewsLetter/> */}
       <ParticleRing products={featuredProduct}/>
       <NewProducts products={newProducts} />
       <About />
