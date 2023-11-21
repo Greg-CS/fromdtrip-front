@@ -63,7 +63,6 @@ export default async function handler(req, res) {
     postalCode,
     address,
     country,
-    size,
     productSpecifics,
     paid: true,
   });

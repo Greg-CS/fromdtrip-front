@@ -4,8 +4,14 @@ export const CartContext = createContext({});
 
 export function CartContextProvider({children}) {
   const ls = typeof window !== "undefined" ? window.localStorage : null;
+  
   const [cartProducts,setCartProducts] = useState([]);
   const [productSpecifics, setProductSpecifics] = useState([]);
+  
+  // const [buttonSpecs, setButtonSpecs] = useState([]);
+  // buttonspecs is an array of objects, each object is a product with its own button specs
+  let buttonSpecs = [];
+  
   useEffect(() => {
     if (cartProducts?.length > 0) {
       ls?.setItem('cart', JSON.stringify(cartProducts));
@@ -35,7 +41,7 @@ export function CartContextProvider({children}) {
     // Create a new object with the productId as a property
     const productSpecific = { productId: productID, ...selectedButtons };
 
-    setProductSpecifics(prev => [...prev, productSpecific]);
+    setProductSpecifics((prev) => [...prev, productSpecific]);
   }
 
   function addProduct(productId) {
@@ -51,11 +57,15 @@ export function CartContextProvider({children}) {
     }
   }
 
-  function removeProductSpecifics(selectedButtons, productID) {
-    const productSpecific = { productId: productID, ...selectedButtons };
+  function removeProductSpecifics(buttonSpecs, productID) {
+    const productSpecific = { productId: productID, ...buttonSpecs };
     let updatedArray = [];
-    updatedArray = productSpecifics.filter((item) => item.productId !== productSpecific.productId);
-    setProductSpecifics(updatedArray);
+    if (productSpecifics !== -1) {
+      updatedArray = [...productSpecifics];
+      updatedArray.splice(productSpecific, 1);
+      setProductSpecifics(updatedArray);
+    }
+    console.log(updatedArray);
   }
 
   function clearCart() {

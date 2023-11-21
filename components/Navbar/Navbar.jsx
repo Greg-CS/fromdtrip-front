@@ -8,11 +8,11 @@ import axios from "axios";
 export const Navbar = () => {
 
   const router = useRouter();
-  const { cartProducts, addProduct, removeProduct, clearCart, removeProductSpecifics } = useContext(CartContext);
+  const { cartProducts, addProduct, addProductSpecifics, removeProduct, productSpecifics, clearCart, removeProductSpecifics } = useContext(CartContext);
   const [isCart, setIsCart] = useState(false);
   const [products, setProducts] = useState([]);
   const [drawerOpen, setIsDrawerOpen] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
 
   const handleMenu = () => setOpen(!open);
@@ -36,6 +36,7 @@ export const Navbar = () => {
   // Function to remove a specific product from the cart
   function lessOfThisProduct(id) {
     removeProduct(id);
+    removeProductSpecifics(id);
   }
 
   useEffect(() => {
@@ -69,6 +70,11 @@ export const Navbar = () => {
     const price = products.find(p => p._id === productId)?.price || 0;
     total += price;
   }
+
+    const toggleAccordion = () => {
+      setIsOpen(!isOpen);
+    };
+
   return (
     <>
       <div
@@ -203,7 +209,7 @@ export const Navbar = () => {
         </div>
       </div>
       {drawerOpen ? (
-        <div className="fixed top-0 right-0 min-h-screen bg-[#6D597A] w-[22rem] border-l-2 border-[#B56576] z-10 text-[#EAAC8B] overflow-y-auto">
+        <div className="fixed top-0 right-0 min-h-screen bg-[#6D597A] w-[22rem] border-l-2 border-[#B56576] z-10 text-[#EAAC8B]">
           <div className="flex items-center justify-between p-5">
             <span className="text-2xl font-bold">My Cart</span>
             <button onClick={handleDrawer} className="btn btn-ghost btn-circle">
@@ -229,9 +235,122 @@ export const Navbar = () => {
 
           {/* ^if theres no products selected by client card will display empty^ */}
 
-          {products?.length > 0 && (
+          <div className="p-2">
+            <button
+              onClick={toggleAccordion}
+              className="flex items-center justify-between w-full py-2 focus:outline-none"
+            >
+              <span className="text-lg">Cart products</span>
+              <span
+                className={`transform transition duration-150 ease-in-out ${
+                  isOpen ? "rotate-0" : "rotate-180"
+                }`}
+              >
+                ▼
+              </span>
+            </button>
+            <div
+              className={`accordion-body my-2 grid gap-3 items-center ${
+                isOpen ? "open" : "closed"
+              }`}
+            >
+              {products.map((product) => {
+                return (
+                  <div key={product._id} className="flex items-center gap-2">
+                    <div className="row-span-3 cols-span-2">
+                      <img
+                        src={product.images[0]}
+                        alt={product.title}
+                        className="w-[5rem] h-[5rem] rounded-2xl"
+                      />
+                    </div>
+                    <div>
+                      <p className="font-bold ">{product.title}</p>
+                    </div>
+                    <div className="grid justify-end">
+                      <div className="p-5 text-right text-md">
+                        ${product.price}.00 USD
+                      </div>
+                      <div
+                        className="bg-[#E56B6F] rounded-xl mr-5 p-2"
+                        style={{
+                          width: "fit-content",
+                          justifySelf: "self-end",
+                        }}
+                      >
+                        {/* Buttons to adjust product quantity */}
+                        <button onClick={() => lessOfThisProduct(product._id)}>
+                          -
+                        </button>
+                        <span className="px-2">
+                          {
+                            cartProducts.filter((id) => id === product._id)
+                              .length
+                          }
+                        </span>
+                        <button onClick={() => moreOfThisProduct(product._id)}>
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    {/* <div>
+                      {productSpecifics
+                        .filter((specs) => specs.productId === product._id)
+                        .map((obj, index) => {
+                          const entries = Object.entries(obj);
+                          return (
+                            <>
+                              <div key={index}>
+                                {entries.map(([key, value]) => (
+                                  <div
+                                    key={key}
+                                    className="flex justify-between text-xs"
+                                  >
+                                    <span>{key}: </span>
+                                    <span>{value}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </>
+                          );
+                        })}
+                    </div> */}
+                    <div className="divider" />
+                  </div>
+                );
+              })}
+
+            </div>
+            <div id="cart-total">
+              <div className="flex justify-between p-5">
+                <span className="text-2xl">Taxes:</span>
+                <span className="text-2xl">$0.00 USD</span>
+              </div>
+              <div className="flex items-center justify-between p-5">
+                <span className="text-2xl">Shipping:</span>
+                <span className="text-md">Calculated at checkout</span>
+              </div>
+              <div className="flex justify-between p-5">
+                <span className="text-2xl">Total:</span>
+                <span className="text-2xl">${total}.00 USD</span>
+              </div>
+            </div>
+            <div className="p-5 divider" />
+
+            <div id="checkout" className="m-5 w-fit">
+              <Link href={"/cart"}>
+                <button
+                  onClick={handleDrawer}
+                  className="btn bg-[#E56B6F] hover:bg-[#355070] rounded-2xl text-[#EAAC8B] border-2 border-transparent hover:border-transparent"
+                >
+                  Proceed to Checkout
+                </button>
+              </Link>
+            </div>
+          </div>
+
+          {/* {products?.length > 0 && (
             <>
-              {/* Cart item map */}
 
               <div id="cart-items">
                 {products.map((product) => (
@@ -240,7 +359,7 @@ export const Navbar = () => {
                       key={product._id}
                       className="flex items-center justify-between"
                     >
-                      {/* Display product details */}
+
                       <div className="grid p-5">
                         <div className="justify-self-center">
                           <img
@@ -258,19 +377,19 @@ export const Navbar = () => {
                           ${product.price}.00 USD
                         </div>
                         <div
-                          className="bg-[#E56B6F] rounded-xl mr-5"
+                          className="bg-[#E56B6F] rounded-xl mr-5 p-2"
                           style={{
                             width: "fit-content",
                             justifySelf: "self-end",
                           }}
                         >
-                          {/* Buttons to adjust product quantity */}
+                          
                           <button
                             onClick={() => lessOfThisProduct(product._id)}
                           >
                             -
                           </button>
-                          <span className="px-2 border-x-2 border-[#EAAC8B]">
+                          <span className="px-2">
                             {
                               cartProducts.filter((id) => id === product._id)
                                 .length
@@ -289,7 +408,6 @@ export const Navbar = () => {
                 ))}
               </div>
 
-              {/* Cart total */}
 
               <div id="cart-total">
                 <div className="flex justify-between p-5">
@@ -307,8 +425,6 @@ export const Navbar = () => {
               </div>
               <div className="p-5 divider" />
 
-              {/* proceed to checkout btn */}
-
               <div id="checkout" className="m-5 w-fit">
                 <Link href={"/cart"}>
                   <button
@@ -320,7 +436,7 @@ export const Navbar = () => {
                 </Link>
               </div>
             </>
-          )}
+          )} */}
         </div>
       ) : null}
     </>
