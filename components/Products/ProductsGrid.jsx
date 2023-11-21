@@ -3,7 +3,7 @@ import { ProductBox } from "./ProductBox";
 
 export const ProductsGrid = ({ products }) => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 p-10 justify-between gap-32 place-items-center">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-[20rem] lg:gap-[5rem] overflow-x-auto py-10">
       {products?.length > 0 &&
         products.map((product) => (
           <ProductBox key={product._id} {...product} />
