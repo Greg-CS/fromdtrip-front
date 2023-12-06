@@ -2,15 +2,14 @@ import mongoose, { model, models, Schema } from "mongoose";
 const OrderSchema = new Schema(
   {
     line_items: Object,
-    name: String,
+    firstName: String,
+    lastName: String,
     email: String,
     city: String,
     postalCode: String,
-    streetAddress: String,
+    address: String,
     country: String,
-    size: String,
-    itemColor: String,
-    embroidedColor: String,
+    productSpecifics: Object,
     paid: Boolean,
   },
   {

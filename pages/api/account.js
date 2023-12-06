@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+const mongoose = require("mongoose");
 
 export default async function handler(req, res) {
   if (req.method === "POST") {

@@ -176,7 +176,7 @@ export default function CartPage({ newProducts }) {
                 {products.map((product) => {
                   return (
                     <>
-                      <div className='row-span-3 cols-span-2'>
+                      <div key={product._id} className='row-span-3 cols-span-2'>
                       <img src={product.images[0]} alt={product.title} className='w-[5rem] h-[5rem] rounded-2xl' />
                       </div>
                       <div>
@@ -211,9 +211,9 @@ export default function CartPage({ newProducts }) {
                 <span className='pb-3 text-2xl font-bold'>
                   Shipping Address
                 </span>
-                <div class="inputBox flex justify-center">
+                <div className="flex justify-center inputBox">
                   <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" autoFocus value={email} placeholder='example@email.com'
-                    onChange={(e) => setEmail(e.target.value)} type="text" />
+                    onChange={(e) => setEmail(e.target.value)} type="email" />
                 </div>
                 <div className='flex items-center justify-center gap-3 py-3 lg:justify-start'>
                   <input type="checkbox" className="checkbox" />
@@ -224,47 +224,51 @@ export default function CartPage({ newProducts }) {
                 Shipping Address
               </span>
               <div className="py-3">
-                <div class="inputBox flex justify-center">
+                <div className="flex justify-center inputBox">
                   <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" value={country} placeholder='Puerto Rico'
                     onChange={(e) => setCountry(e.target.value)} type="text" />
                   <span>Country :</span>
                 </div>
               </div>
               <div className='grid justify-between gap-5 py-3 2xl:flex'>
-                <div class="inputBox flex justify-center">
+                <div className="flex justify-center inputBox">
                   <input className='w-[20rem] lg:w-[30rem] 2xl:w-[21.5rem]' required="" value={firstName}
                     onChange={(e) => setFirstName(e.target.value)} type="text" />
                   <span>First name :</span>
                 </div>
-                <div class="inputBox flex justify-center">
+                <div className="flex justify-center inputBox">
                   <input className='w-[20rem] lg:w-[30rem] 2xl:w-[21.5rem]' required="" value={lastName}
                     onChange={(e) => setLastName(e.target.value)} type="text" />
                   <span>Last name :</span>
                 </div>
               </div>
               <div className='py-3'>
-                <div class="inputBox flex justify-center">
-                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" value={address} onChange={(e) => setAddress(e.target.value)} type="text" />
+                <div className="flex justify-center inputBox">
+                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" value={address} 
+                  onChange={(e) => setAddress(e.target.value)} type="text" />
                   <span>Address :</span>
                 </div>
               </div>
               <div className='py-3'>
-                <div class="inputBox flex justify-center">
+                <div className="flex justify-center inputBox">
                   <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" type="text" />
                   <span>Apartment, suite, etc. (optional) :</span>
                 </div>
               </div>
               <div className='grid justify-between gap-5 py-3 2xl:flex'>
-                <div class="inputBox flex justify-center">
-                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" value={city} onChange={(e) => setCity(e.target.value)} type="text" />
+                <div className="flex justify-center inputBox">
+                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" value={city} 
+                  onChange={(e) => setCity(e.target.value)} type="text" />
                   <span>City :</span>
                 </div>
-                <div class="inputBox flex justify-center">
-                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" value={State} onChange={(e) => setState(e.target.value)} type="text" />
+                <div className="flex justify-center inputBox">
+                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" value={State} 
+                  onChange={(e) => setState(e.target.value)} type="text" />
                   <span>State :</span>
                 </div>
-                <div class="inputBox flex justify-center">
-                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" value={postalCode} onChange={(e) => setPostalCode(e.target.value)} type="text" />
+                <div className="flex justify-center inputBox">
+                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" value={postalCode} 
+                  onChange={(e) => setPostalCode(e.target.value)} type="text" />
                   <span>Zip Code :</span>
                 </div>
               </div>
