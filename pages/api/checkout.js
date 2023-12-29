@@ -2,6 +2,15 @@ import { mongooseConnect } from "../../lib/mongoose";
 import { Order } from "../../models/Order";
 import { Product } from "../../models/Product";
 const stripe = require('stripe')(process.env.STRIPE_SK);
+import nodemailer from 'nodemailer';
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail', // e.g., 'gmail'
+  auth: {
+    user: 'from.dev.trip@gmail.com',
+    pass: 'falm svij kkzl qwoi',
+  },
+});
 
 export default async function handler(req, res) {
   // Check if the request method is POST
@@ -75,6 +84,23 @@ export default async function handler(req, res) {
     success_url: `${process.env.PUBLIC_URL}/cart?success=1`,
     cancel_url: `${process.env.PUBLIC_URL}/cart?canceled=1`,
     metadata: { orderId: orderDoc._id.toString() },
+  });
+
+  const mailOptions = {
+  from: 'from.dev.trip@gmail.com',
+  to: 'gregor.gr20@gmail.com',
+  subject: 'You got an order',
+  text: `You got an order from ${firstName} ${lastName} with email ${email} and address ${address}, ${postalCode} ${city}, ${country}.`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    } else {
+      console.log('Email sent: ' + info.response);
+      res.status(200).send('Email Sent');
+    }
   });
 
   // Respond with the URL for the Stripe session
