@@ -24,7 +24,14 @@ export const ContactMe = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-
+    const { name, email, message } = form;
+    if (name === "" || email === "" || message === "") {
+      toast.error("Error! Make sure all fields are filled.", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 3000,
+      });
+      setLoading(false);
+    } else {
     emailjs
       .send(
         process.env.SERVICE_ID,
@@ -64,6 +71,7 @@ export const ContactMe = () => {
           });
         },
       );
+    }
   };
 
   const containerVariants = {
