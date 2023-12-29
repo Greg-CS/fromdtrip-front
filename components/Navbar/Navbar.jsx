@@ -229,125 +229,124 @@ export const Navbar = () => {
               </svg>
             </button>
           </div>
-          {!cartProducts?.length && (
-            <p className="p-5 text-xl">No products in cart</p>
-          )}
-
-          {/* ^if theres no products selected by client card will display empty^ */}
-
-          <div className="p-2">
-            <button
-              onClick={toggleAccordion}
-              className="flex items-center justify-between w-full py-2 focus:outline-none"
-            >
-              <span className="text-lg">Cart products</span>
-              <span
-                className={`transform transition duration-150 ease-in-out ${
-                  isOpen ? "rotate-0" : "rotate-180"
+          {cartProducts?.length > 0 ? (
+            <div className="p-2">
+              <button
+                onClick={toggleAccordion}
+                className="flex items-center justify-between w-full py-2 focus:outline-none"
+              >
+                <span className="text-lg">Cart products</span>
+                <span
+                  className={`transform transition duration-150 ease-in-out ${
+                    isOpen ? "rotate-0" : "rotate-180"
+                  }`}
+                >
+                  ▼
+                </span>
+              </button>
+              <div
+                className={`accordion-body my-2 grid gap-3 items-center ${
+                  isOpen ? "open" : "closed"
                 }`}
               >
-                ▼
-              </span>
-            </button>
-            <div
-              className={`accordion-body my-2 grid gap-3 items-center ${
-                isOpen ? "open" : "closed"
-              }`}
-            >
-              {products.map((product) => {
-                return (
-                  <div key={product._id} className="flex items-center gap-2">
-                    <div className="row-span-3 cols-span-2">
-                      <img
-                        src={product.images[0]}
-                        alt={product.title}
-                        className="w-[5rem] h-[5rem] rounded-2xl"
-                      />
-                    </div>
-                    <div>
-                      <p className="font-bold ">{product.title}</p>
-                    </div>
-                    <div className="grid justify-end">
-                      <div className="p-5 text-right text-md">
-                        ${product.price}.00 USD
+                {products.map((product) => {
+                  return (
+                    <div key={product._id} className="flex items-center gap-2">
+                      <div className="row-span-3 cols-span-2">
+                        <img
+                          src={product.images[0]}
+                          alt={product.title}
+                          className="w-[5rem] h-[5rem] rounded-2xl"
+                        />
                       </div>
-                      <div
-                        className="bg-[#E56B6F] rounded-xl mr-5 p-2"
-                        style={{
-                          width: "fit-content",
-                          justifySelf: "self-end",
-                        }}
-                      >
-                        {/* Buttons to adjust product quantity */}
-                        <button onClick={() => lessOfThisProduct(product._id)}>
-                          -
-                        </button>
-                        <span className="px-2">
-                          {
-                            cartProducts.filter((id) => id === product._id)
-                              .length
-                          }
-                        </span>
-                        <button onClick={() => moreOfThisProduct(product._id)}>
-                          +
-                        </button>
+                      <div>
+                        <p className="font-bold ">{product.title}</p>
                       </div>
+                      <div className="grid justify-end">
+                        <div className="p-5 text-right text-md">
+                          ${product.price}.00 USD
+                        </div>
+                        <div
+                          className="bg-[#E56B6F] rounded-xl mr-5 p-2"
+                          style={{
+                            width: "fit-content",
+                            justifySelf: "self-end",
+                          }}
+                        >
+                          {/* Buttons to adjust product quantity */}
+                          <button onClick={() => lessOfThisProduct(product._id)}>
+                            -
+                          </button>
+                          <span className="px-2">
+                            {
+                              cartProducts.filter((id) => id === product._id)
+                                .length
+                            }
+                          </span>
+                          <button onClick={() => moreOfThisProduct(product._id)}>
+                            +
+                          </button>
+                        </div>
+                      </div>
+                      {/* <div>
+                        {productSpecifics
+                          .filter((specs) => specs.productId === product._id)
+                          .map((obj, index) => {
+                            const entries = Object.entries(obj);
+                            return (
+                              <>
+                                <div key={index}>
+                                  {entries.map(([key, value]) => (
+                                    <div
+                                      key={key}
+                                      className="flex justify-between text-xs"
+                                    >
+                                      <span>{key}: </span>
+                                      <span>{value}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </>
+                            );
+                          })}
+                      </div> */}
+                      <div className="divider" />
                     </div>
-                    {/* <div>
-                      {productSpecifics
-                        .filter((specs) => specs.productId === product._id)
-                        .map((obj, index) => {
-                          const entries = Object.entries(obj);
-                          return (
-                            <>
-                              <div key={index}>
-                                {entries.map(([key, value]) => (
-                                  <div
-                                    key={key}
-                                    className="flex justify-between text-xs"
-                                  >
-                                    <span>{key}: </span>
-                                    <span>{value}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            </>
-                          );
-                        })}
-                    </div> */}
-                    <div className="divider" />
-                  </div>
-                );
-              })}
+                  );
+                })}
 
-            </div>
-            <div id="cart-total">
-              <div className="flex justify-between p-5">
-                <span className="text-2xl">Taxes:</span>
-                <span className="text-2xl">$0.00 USD</span>
               </div>
-              <div className="flex items-center justify-between p-5">
-                <span className="text-2xl">Shipping:</span>
-                <span className="text-md">Calculated at checkout</span>
+              <div id="cart-total">
+                <div className="flex justify-between p-5">
+                  <span className="text-2xl">Taxes:</span>
+                  <span className="text-2xl">$0.00 USD</span>
+                </div>
+                <div className="flex items-center justify-between p-5">
+                  <span className="text-2xl">Shipping:</span>
+                  <span className="text-md">Calculated at checkout</span>
+                </div>
+                <div className="flex justify-between p-5">
+                  <span className="text-2xl">Total:</span>
+                  <span className="text-2xl">${total}.00 USD</span>
+                </div>
               </div>
-              <div className="flex justify-between p-5">
-                <span className="text-2xl">Total:</span>
-                <span className="text-2xl">${total}.00 USD</span>
-              </div>
-            </div>
-            <div className="p-5 divider" />
+              <div className="p-5 divider" />
 
-            <div id="checkout" className="m-5 w-fit">
-              <Link href={"/cart"}>
-                <button
-                  onClick={handleDrawer}
-                  className="btn bg-[#E56B6F] hover:bg-[#355070] rounded-2xl text-[#EAAC8B] border-2 border-transparent hover:border-transparent"
-                >
-                  Proceed to Checkout
-                </button>
-              </Link>
+              <div id="checkout" className="m-5 w-fit">
+                <Link href={"/cart"}>
+                  <button
+                    onClick={handleDrawer}
+                    className="btn bg-[#E56B6F] hover:bg-[#355070] rounded-2xl text-[#EAAC8B] border-2 border-transparent hover:border-transparent"
+                  >
+                    Proceed to Checkout
+                  </button>
+                </Link>
+              </div>
             </div>
-          </div>
+          )
+          : (
+            <p className="p-5 text-xl">No products in cart</p>
+          )}
 
           {/* {products?.length > 0 && (
             <>

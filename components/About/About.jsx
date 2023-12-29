@@ -13,7 +13,6 @@ export const About = () => {
             <div className='w-full px-10 lg:w-6/12 lg:grid-rows-3'>
                 <h1 className='pb-5 text-6xl'>About us:</h1>
                 <p className='text-md lg:text-4xl'>
-                    About us:
                     Hello there, we are the fromdtrip crew – a group of individuals deeply connected to our Caribbean
                     roots, committed to celebrating and promoting the rich tapestry of our cultural clothing through
                     our craftsmanship. We live and breathe Caribbean heritage, infusing each piece with the vibrant

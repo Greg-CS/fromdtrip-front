@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import emailjs from "emailjs-com";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 export const ContactMe = () => {
   const formRef = useRef(null);
   const [form, setForm] = useState({
@@ -28,8 +27,8 @@ export const ContactMe = () => {
 
     emailjs
       .send(
-        "service_9et71bb",
-        "template_qvx529g",
+        process.env.SERVICE_ID,
+        process.env.TEMPLATE_ID,
         {
           from_name: form.name,
           to_name: "fromdtrip",
@@ -37,7 +36,7 @@ export const ContactMe = () => {
           to_email: "from.the.trip@gmail.com",
           message: form.message,
         },
-        "aVvKUc0BmU_Q0ALAW",
+        process.env.PUBLIC_KEY,
       )
       .then(
         () => {

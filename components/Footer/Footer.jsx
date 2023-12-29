@@ -280,19 +280,24 @@ export const Footer = () => {
 
                     How to Reach Us: <br/> <br/>
 
-                    Customer Support Email: [Your Customer Support Email]
-                    Customer Support Phone Number: [Your Customer Support Phone Number] <br/> <br/>
+                    Customer Support Email: from.the.trip@gmail.com
+                    Customer Support Phone Number: 939-265-0722 <br/> <br/>
 
-                    Our Address: <br/> <br/>
-                    [Your Physical Address, if applicable] <br/> <br/>
+                    {/* Our Address: <br/> <br/>
+                    [Your Physical Address, if applicable] <br/> <br/> */}
 
                     Social Media: <br/> <br/>
                     Stay connected with us on our social media platforms, where you can get the latest updates on our designs, promotions, and engage with our community of Boricuan spirit enthusiasts. <br/> <br/>
-
-                    [Instagram]
-                    [Facebook]
-                    [Twitter]
-                    [Pinterest] <br/> <br/>
+                    
+                    <a href='https://www.instagram.com/fromdtrip/'>
+                      Instagram
+                    </a>                     <br/> <br/>
+                    <a href='https://twitter.com/FromDTrip'>
+                      Twitter
+                    </a>                     <br/> <br/>
+                    <a href='https://www.tiktok.com/@fromdtrip'>
+                      TikTok
+                    </a>                     <br/> <br/>
 
                     Fromdtrip is not just a brand; it&apos;s a celebration of Puerto Rico, its culture, and its people. Your thoughts and experiences matter to us, and we are eager to hear from you. Whether you have a question, feedback, or simply want to chat about all things Boricua, please don&apos;t hesitate to reach out. We look forward to connecting with you.
 
