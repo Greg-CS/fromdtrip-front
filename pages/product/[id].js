@@ -142,7 +142,7 @@ export async function getServerSideProps(context) {
   await mongooseConnect();
   const newProducts = await Product.find({}, null, {
     sort: { _id: -1 },
-    limit: 3,
+    limit: 5,
   });
 
   const { id } = context.query;

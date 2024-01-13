@@ -4,7 +4,7 @@ import { CartContext } from "../Context/CartContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
-
+import { motion, AnimatePresence } from "framer-motion";
 export const Navbar = () => {
 
   const router = useRouter();
@@ -77,32 +77,133 @@ export const Navbar = () => {
 
   return (
     <>
-      <div
-        className={`navbar bg-[#355070] text-[#EAAC8B] ${
-          isCart ? " hidden" : ""
-        }`}
-      >
-        <button className="flex lg:hidden" onClick={handleMenu}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-        </button>
-        {open ? (
-          <div className="fixed flex flex-col top-0 min-h-screen bg-[#6D597A] w-[15rem] border-r-2 border-[#B56576] z-10 text-[#EAAC8B] left-0">
-            <div className="flex items-center justify-between p-2 mb-6 gap-9">
-              <h1 className="text-2xl font-bold">Menu</h1>
-              <button onClick={handleMenu} className="btn btn-ghost btn-circle">
+      <AnimatePresence>
+        <motion.nav
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 2 }}
+          className={`navbar bg-[#355070] text-[#EAAC8B] ${
+            isCart ? " hidden" : ""
+          }`}
+        >
+          <button className="flex lg:hidden" onClick={handleMenu}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          </button>
+          {open ? (
+            <motion.div
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              transition={{ type: "spring", stiffness: 60, damping: 20 }}
+              className="fixed flex flex-col top-0 min-h-screen bg-[#6D597A] w-[15rem] border-r-2 border-[#B56576] z-10 text-[#EAAC8B] left-0"
+            >
+              <div className="flex items-center justify-between p-2 mb-6 gap-9">
+                <h1 className="text-2xl font-bold">Menu</h1>
+                <button
+                  onClick={handleMenu}
+                  className="btn btn-ghost btn-circle"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div className="grid gap-10 p-2">
+                <Link
+                  onClick={handleMenu}
+                  href="/"
+                  className="text-2xl font-extrabold"
+                >
+                  Home
+                </Link>
+                <Link
+                  onClick={handleMenu}
+                  href="/products"
+                  className="text-2xl font-extrabold"
+                >
+                  All products
+                </Link>
+                <Link
+                  onClick={handleMenu}
+                  href="/faq"
+                  className="text-2xl font-extrabold"
+                >
+                  FAQ
+                </Link>
+                <Link
+                  onClick={handleMenu}
+                  href="/contact"
+                  className="text-2xl font-extrabold"
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </motion.div>
+          ) : null}
+          <div className="justify-center flex-1 gap-5 lg:justify-start">
+            <Link className="" href="/">
+              <div className="rounded-full spinning-div">
+                <img
+                  className="w-full h-full"
+                  src={"/img/Logo.png"}
+                  alt="logo"
+                />
+              </div>
+            </Link>
+
+            <span className="hidden lg:flex">
+              <Link href="/">
+                <h1 className="text-4xl font-extrabold">Fromdtrip</h1>
+              </Link>
+            </span>
+          </div>
+          <div className="flex flex-none">
+            <div className="flex gap-10">
+              <Link
+                href="/faq"
+                className="hidden text-2xl font-extrabold lg:flex"
+              >
+                FAQ
+              </Link>
+              <Link
+                href="/contact"
+                className="hidden text-2xl font-extrabold lg:flex"
+              >
+                Contact Us
+              </Link>
+              <Link
+                href="/products"
+                className="hidden text-2xl font-extrabold lg:flex"
+              >
+                All products
+              </Link>
+            </div>
+            <button className="indicator" onClick={handleDrawer}>
+              <label className="relative m-1 btn btn-ghost btn-circle">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -114,102 +215,25 @@ export const Navbar = () => {
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
                   />
                 </svg>
-              </button>
-            </div>
-            <div className="grid gap-10 p-2">
-              <Link
-                onClick={handleMenu}
-                href="/"
-                className="text-2xl font-extrabold"
-              >
-                Home
-              </Link>
-              <Link
-                onClick={handleMenu}
-                href="/products"
-                className="text-2xl font-extrabold"
-              >
-                All products
-              </Link>
-              <Link
-                onClick={handleMenu}
-                href="/faq"
-                className="text-2xl font-extrabold"
-              >
-                FAQ
-              </Link>
-              <Link
-                onClick={handleMenu}
-                href="/contact"
-                className="text-2xl font-extrabold"
-              >
-                Contact Us
-              </Link>
-            </div>
+                <span className="badge badge-sm indicator-item">
+                  {cartProducts.length}
+                </span>
+              </label>
+            </button>
           </div>
-        ) : null}
-        <div className="justify-center flex-1 gap-5 lg:justify-start">
-          <Link className="" href="/">
-            <div className="rounded-full spinning-div">
-              <img className="w-full h-full" src={"/img/Logo.png"} alt="logo" />
-            </div>
-          </Link>
-
-          <span className="hidden lg:flex">
-            <Link href="/">
-              <h1 className="text-4xl font-extrabold">Fromdtrip</h1>
-            </Link>
-          </span>
-        </div>
-        <div className="flex flex-none">
-          <div className="flex gap-10">
-            <Link
-              href="/faq"
-              className="hidden text-2xl font-extrabold lg:flex"
-            >
-              FAQ
-            </Link>
-            <Link
-              href="/contact"
-              className="hidden text-2xl font-extrabold lg:flex"
-            >
-              Contact Us
-            </Link>
-            <Link
-              href="/products"
-              className="hidden text-2xl font-extrabold lg:flex"
-            >
-              All products
-            </Link>
-          </div>
-          <button className="indicator" onClick={handleDrawer}>
-            <label className="relative m-1 btn btn-ghost btn-circle">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                />
-              </svg>
-              <span className="badge badge-sm indicator-item">
-                {cartProducts.length}
-              </span>
-            </label>
-          </button>
-        </div>
-      </div>
+        </motion.nav>
+      </AnimatePresence>
       {drawerOpen ? (
-        <div className="fixed top-0 right-0 min-h-screen bg-[#6D597A] w-[22rem] border-l-2 border-[#B56576] z-10 text-[#EAAC8B]">
+        // drawer
+        <motion.div
+          className="fixed top-0 right-0 min-h-screen bg-[#6D597A] w-[22rem] border-l-2 border-[#B56576] z-10 text-[#EAAC8B]"
+          initial={{ x: "100%" }}
+          animate={{ x: 0 }}
+          transition={{ type: "spring", stiffness: 60, damping: 20 }}
+        >
           <div className="flex items-center justify-between p-5">
             <span className="text-2xl font-bold">My Cart</span>
             <button onClick={handleDrawer} className="btn btn-ghost btn-circle">
@@ -274,7 +298,9 @@ export const Navbar = () => {
                           }}
                         >
                           {/* Buttons to adjust product quantity */}
-                          <button onClick={() => lessOfThisProduct(product._id)}>
+                          <button
+                            onClick={() => lessOfThisProduct(product._id)}
+                          >
                             -
                           </button>
                           <span className="px-2">
@@ -283,7 +309,9 @@ export const Navbar = () => {
                                 .length
                             }
                           </span>
-                          <button onClick={() => moreOfThisProduct(product._id)}>
+                          <button
+                            onClick={() => moreOfThisProduct(product._id)}
+                          >
                             +
                           </button>
                         </div>
@@ -314,7 +342,6 @@ export const Navbar = () => {
                     </div>
                   );
                 })}
-
               </div>
               <div id="cart-total">
                 <div className="flex justify-between p-5">
@@ -343,8 +370,7 @@ export const Navbar = () => {
                 </Link>
               </div>
             </div>
-          )
-          : (
+          ) : (
             <p className="p-5 text-xl">No products in cart</p>
           )}
 
@@ -436,7 +462,7 @@ export const Navbar = () => {
               </div>
             </>
           )} */}
-        </div>
+        </motion.div>
       ) : null}
     </>
   );

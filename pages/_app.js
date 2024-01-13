@@ -18,4 +18,4 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
   );
 }
 
-export default MyApp
+export default MyApp;

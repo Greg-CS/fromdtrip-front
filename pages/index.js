@@ -6,11 +6,8 @@ import { About } from "../components/About/About";
 import { JoinUs } from "../components/JoinUs/JoinUs";
 // import { StayInTouch } from "../components/StayInTouch/StayInTouch";
 import ParticleRing from "../components/Animations/ParticleRing";
-import { NewsLetter } from "../components/NewsLetter/NewsLetter";
-
+// import { NewsLetter } from "../components/NewsLetter/NewsLetter";
 export default function Home({ featuredProduct, newProducts }) {
-
-
 
   return (
     <>

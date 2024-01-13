@@ -6,8 +6,8 @@ export const ProductBox = ({ _id, title, description, price, images }) => {
   const url = "/product/" + _id;
 
   return (
-    <div className="px-10 card-container">
-      <div className="card h-[18rem] w-[50rem]">
+    <div className="px-5 card-container">
+      <div className="card h-[18rem] w-[35vw] border-2 border-[#6d597a] md:w-[50rem]">
         <div className="card-icon rounded-xl">
           <Link href={url}>
             <img

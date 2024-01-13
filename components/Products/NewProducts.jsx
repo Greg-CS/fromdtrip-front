@@ -3,7 +3,7 @@ import React from "react";
 
 export const NewProducts = ({ products }) => {
   return (
-    <div
+    <section
       className="text-m text-[#EAAC8B] pt-24"
       style={{
         background:
@@ -12,7 +12,7 @@ export const NewProducts = ({ products }) => {
     >
       <h1 className="ml-12 text-5xl font-extrabold lg:ml-36">New Products</h1>
       <ProductsGridAnim products={products} />
-    </div>
+    </section>
   );
 };
 
