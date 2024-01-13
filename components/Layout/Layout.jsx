@@ -3,6 +3,7 @@ import { Navbar } from "../../components/Navbar/Navbar"
 import { Footer } from "../../components/Footer/Footer";
 import Head from 'next/head';
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 export const Layout = ({children}) => {
 
   return (
@@ -28,6 +29,7 @@ export const Layout = ({children}) => {
       <Navbar />
       {children}
       <Analytics />
+      <SpeedInsights />
       <Footer />
     </>
   );
