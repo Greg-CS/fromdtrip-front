@@ -29,7 +29,7 @@ export const Featured = ({product}) => {
           <img
             src="https://fromdtrip-ecommerce-bucket.s3.amazonaws.com/1684115693368.jpg"
             alt="featured"
-            className="mx-auto h-[50vh] w-[90vw] rounded-2xl"
+            className="mx-auto h-[40vh] lg:h-[50vh] w-[90vw] rounded-2xl"
           />
         </Link>
       </div>
