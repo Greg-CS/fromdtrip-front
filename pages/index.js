@@ -3,7 +3,9 @@ import { NewProducts } from "../components/Products/NewProducts";
 import { Product } from "../models/Product";
 import { mongooseConnect } from "../lib/mongoose";
 import { About } from "../components/About/About";
-import { JoinUs } from "../components/JoinUs/JoinUs";
+import { JoinUs } from "../components/JoinUs/JoinUs"
+import { CookieConcent } from "../components/CookieConcent/CookieConcent";
+;
 // import { StayInTouch } from "../components/StayInTouch/StayInTouch";
 import ParticleRing from "../components/Animations/ParticleRing";
 // import { NewsLetter } from "../components/NewsLetter/NewsLetter";
@@ -16,6 +18,8 @@ export default function Home({ featuredProduct, newProducts }) {
       <NewProducts products={newProducts} />
       <About />
       <JoinUs />
+      <CookieConcent />
+      
       {/* <StayInTouch/> */}
     </>
   );
