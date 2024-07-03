@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const Featured = ({product}) => {
   const { addProduct } = useContext(CartContext);
-  const url = "/product/" + product._id;
+  const url = "/product/" + product?._id;
   function addFeaturedToCart() {
     addProduct(product._id);
   }
