@@ -5,21 +5,18 @@ import { mongooseConnect } from "../lib/mongoose";
 import { About } from "../components/About/About";
 import { JoinUs } from "../components/JoinUs/JoinUs"
 import { CookieConcent } from "../components/CookieConcent/CookieConcent";
-;
-// import { StayInTouch } from "../components/StayInTouch/StayInTouch";
-import ParticleRing from "../components/Animations/ParticleRing";
-// import { NewsLetter } from "../components/NewsLetter/NewsLetter";
+import { Hero } from "../components/Hero/Hero";
 export default function Home({ featuredProduct, newProducts }) {
 
   return (
     <>
       {/* <NewsLetter/> */}
-      <ParticleRing products={featuredProduct}/>
+      <Hero products={featuredProduct}/>
       <NewProducts products={newProducts} />
       <About />
       <JoinUs />
       <CookieConcent />
-      
+
       {/* <StayInTouch/> */}
     </>
   );

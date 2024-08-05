@@ -88,7 +88,7 @@ export const ContactMe = () => {
           variants={containerVariants}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex-row gap-4 mt-12 overflow-hidden text-[#355070] bg-[#E56B6F] rounded-2xl shadow-lg">
+          <div className="flex-row gap-4 mt-12 overflow-hidden text-[#71948D] bg-[#354A4B] rounded-2xl shadow-lg">
             <form ref={formRef} onSubmit={handleSubmit} className="p-8 flex-3">
               <label className="mt-5 text-lg md:text-xl lg:text-2xl">
                 Your Name
@@ -99,7 +99,7 @@ export const ContactMe = () => {
                 value={form.name}
                 onChange={handleChange}
                 placeholder="John Dope"
-                className="w-full px-3 py-2 mt-2 rounded-2xl focus:outline-none bg-[#A56475] focus:border-[#6D597A] focus:bg-[#6D597A]"
+                className="w-full px-3 py-2 mt-2 rounded-2xl focus:outline-none bg-[#5A6B58] focus:border-[#6D597A] focus:bg-[#6D597A]"
               />
 
               <label className="mt-5 text-lg md:text-xl lg:text-2xl">
@@ -111,7 +111,7 @@ export const ContactMe = () => {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="john@gmail.com"
-                className="w-full px-3 py-2 mt-2 rounded-2xl focus:outline-none bg-[#A56475] focus:border-[#6D597A] focus:bg-[#6D597A]"
+                className="w-full px-3 py-2 mt-2 rounded-2xl focus:outline-none bg-[#5A6B58] focus:border-[#6D597A] focus:bg-[#6D597A]"
               />
 
               <label className="mt-5 text-lg md:text-xl lg:text-2xl">
@@ -122,15 +122,17 @@ export const ContactMe = () => {
                 value={form.message}
                 onChange={handleChange}
                 placeholder="Hi fromdtrip!"
-                className="w-full px-3 py-2 mt-2 rounded-2xl text-white focus:outline-none bg-[#A56475] focus:border-[#6D597A] focus:bg-[#6D597A]"
+                className="w-full px-3 py-2 mt-2 rounded-2xl text-white focus:outline-none bg-[#5A6B58] focus:border-[#6D597A] focus:bg-[#6D597A]"
               />
 
               <div className="my-10">
                 <button
                   type="submit"
-                  className="w-full px-4 py-2 text-[#E56B6F] bg-[#355070] rounded-md"
+                  className="w-full ui-btn"
                 >
-                  {loading ? "Sending..." : "Send"}
+                  <span>
+                    {loading ? "Sending..." : "Send"}
+                  </span>
                 </button>
               </div>
             </form>

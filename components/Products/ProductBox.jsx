@@ -6,9 +6,9 @@ export const ProductBox = ({ _id, title, description, price, images }) => {
   const url = "/product/" + _id;
 
   return (
-    <div className="px-5 card-container">
-      <div className="card h-[18rem] w-[35vw] border-2 border-[#6d597a] md:w-[50rem]">
-        <div className="card-icon rounded-xl">
+    <div className="grid items-center justify-center p-10 border-2 border-[#354A4B] bg-[#1F3C2A] rounded-lg h-auto w-[15dvw]">
+      <div className="grid items-center justify-center place-items-center">
+        <div className="rounded-xl">
           <Link href={url}>
             <img
               className="max-w-full rounded-lg max-h-40"
@@ -17,7 +17,7 @@ export const ProductBox = ({ _id, title, description, price, images }) => {
             />
           </Link>
         </div>
-        <div className="card-body">
+        <div className="text-center">
           <p className="text-lg uppercase">{title}</p>
         </div>
       </div>

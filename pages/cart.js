@@ -114,25 +114,51 @@ export default function CartPage({ newProducts }) {
 
   return (
     <>
-      {isSuccess ?
+      {isSuccess ? (
         <>
           <div className="text-center text-black bg-[#355070]">
-            <div className='flex items-center justify-center pt-32 lg:py-40'>
+            <div className="flex items-center justify-center pt-32 lg:py-40">
               <div className="card">
                 <Link href={"/"}>
-                  <button className="dismiss" onClick={() => clearCart()} type="button">×</button>
+                  <button
+                    className="dismiss"
+                    onClick={() => clearCart()}
+                    type="button"
+                  >
+                    ×
+                  </button>
                 </Link>
                 <div className="header">
                   <div className="image">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                      <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                      <g id="SVGRepo_iconCarrier"> <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path> </g>
+                      <g
+                        id="SVGRepo_tracerCarrier"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      ></g>
+                      <g id="SVGRepo_iconCarrier">
+                        {" "}
+                        <path
+                          d="M20 7L9.00004 18L3.99994 13"
+                          stroke="#000000"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        ></path>{" "}
+                      </g>
                     </svg>
                   </div>
                   <div className="content">
                     <span className="title">Order validated</span>
-                    <p className="message">Thank you for your purchase. You will be receiving a email in the following days on your order status.</p>
+                    <p className="message">
+                      Thank you for your purchase. You will be receiving a email
+                      in the following days on your order status.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -140,25 +166,40 @@ export default function CartPage({ newProducts }) {
           </div>
           <NewProducts products={newProducts} />
         </>
-        :
-        <div className="grid lg:flex justify-evenly py-5 min-h-screen bg-[#6D597A] text-[#EAAC8B]">
+      ) : (
+        <div className="grid lg:flex justify-evenly py-5 min-h-screen bg-[#07100B] text-[#71948D]">
           {/* Checkout form */}
           <div className="w-auto p-0 lg:p-6 lg:w-6/12 rounded-xl">
-            <div className='grid justify-end justify-items-center lg:justify-items-start'>
+            <div className="grid justify-end justify-items-center lg:justify-items-start">
               <Link className="" href="/">
                 <div className="rounded-full spinning-div">
-                  <img className="w-full h-full" src={'/img/Logo.png'} alt="logo" />
+                  <img
+                    className="w-full h-full"
+                    src={"/img/Logo.png"}
+                    alt="logo"
+                  />
                 </div>
               </Link>
-              <div className='flex gap-5 py-10 justify-left'>
-                <span className='font-bold'>Information</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              <div className="flex gap-5 py-10 justify-left">
+                <span className="font-bold">Information</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  />
                 </svg>
 
-                <span className='font-bold'>Payment</span>
+                <span className="font-bold">Payment</span>
               </div>
-              <div className='lg:hidden'>
+              <div className="lg:hidden">
                 <button
                   onClick={toggleAccordion}
                   className="flex items-center justify-between w-full py-2 focus:outline-none"
@@ -166,124 +207,185 @@ export default function CartPage({ newProducts }) {
                   <span className="text-lg">Cart products</span>
                   <span
                     className={`transform transition duration-150 ease-in-out ${
-                      isOpen ? 'rotate-0' : 'rotate-180'
+                      isOpen ? "rotate-0" : "rotate-180"
                     }`}
                   >
                     ▼
                   </span>
                 </button>
-                <div className={`accordion-body my-2 grid gap-3 items-center ${isOpen ? 'open' : 'closed'}`}>
-                {products.map((product) => {
-                  return (
-                    <>
-                      <div key={product._id} className='row-span-3 cols-span-2'>
-                      <img src={product.images[0]} alt={product.title} className='w-[5rem] h-[5rem] rounded-2xl' />
-                      </div>
-                      <div>
+                <div
+                  className={`accordion-body my-2 grid gap-3 items-center ${
+                    isOpen ? "open" : "closed"
+                  }`}
+                >
+                  {products.map((product) => {
+                    return (
+                      <>
+                        <div
+                          key={product._id}
+                          className="row-span-3 cols-span-2"
+                        >
+                          <img
+                            src={product.images[0]}
+                            alt={product.title}
+                            className="w-[5rem] h-[5rem] rounded-2xl"
+                          />
+                        </div>
+                        <div>
                           <p className="font-bold ">{product.title}</p>
-                      </div>
-                      <div>
+                        </div>
+                        <div>
                           {productSpecifics
-                              .filter(specs => specs.productId === product._id)
-                              .map((obj, index) => {
+                            .filter((specs) => specs.productId === product._id)
+                            .map((obj, index) => {
                               const entries = Object.entries(obj);
                               return (
-                                  <>
+                                <>
                                   <div key={index}>
-                                  {entries.map(([key, value]) => (
-                                      <div key={key} className='flex justify-between text-xs'>
-                                      <span>{key}: </span>
-                                      <span>{value}</span>
+                                    {entries.map(([key, value]) => (
+                                      <div
+                                        key={key}
+                                        className="flex justify-between text-xs"
+                                      >
+                                        <span>{key}: </span>
+                                        <span>{value}</span>
                                       </div>
-                                  ))}
+                                    ))}
                                   </div>
-                                  </>
+                                </>
                               );
-                          })}
-                      </div>
-                      <div className='divider'/>
-                    </>
-                  )
+                            })}
+                        </div>
+                        <div className="divider" />
+                      </>
+                    );
                   })}
                 </div>
               </div>
               <div className="grid text-center lg:text-left">
-                <span className='pb-3 text-2xl font-bold'>
+                <span className="pb-3 text-2xl font-bold">
                   Shipping Address
                 </span>
                 <div className="flex justify-center inputBox">
-                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" autoFocus value={email} placeholder='example@email.com'
-                    onChange={(e) => setEmail(e.target.value)} type="email" />
+                  <input
+                    className="w-[20rem] lg:w-[30rem] 2xl:w-full"
+                    required=""
+                    autoFocus
+                    value={email}
+                    placeholder="example@email.com"
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="email"
+                  />
                 </div>
-                <div className='flex items-center justify-center gap-3 py-3 lg:justify-start'>
+                {/* <div className="flex items-center justify-center gap-3 py-3 lg:justify-start">
                   <input type="checkbox" className="checkbox" />
-                  <span className='text-xs'>Let me know for updates on order or additional drops</span>
-                </div>
+                  <span className="text-xs">
+                    Let me know for updates on order or additional drops
+                  </span>
+                </div> */}
               </div>
-              <span className='py-3 text-2xl font-bold'>
-                Shipping Address
-              </span>
+              <span className="py-3 text-2xl font-bold">Shipping Address</span>
               <div className="py-3">
                 <div className="flex justify-center inputBox">
-                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" value={country} placeholder='Puerto Rico'
-                    onChange={(e) => setCountry(e.target.value)} type="text" />
+                  <input
+                    className="w-[20rem] lg:w-[30rem] 2xl:w-full"
+                    required=""
+                    value={country}
+                    placeholder="Puerto Rico"
+                    onChange={(e) => setCountry(e.target.value)}
+                    type="text"
+                  />
                   <span>Country :</span>
                 </div>
               </div>
-              <div className='grid justify-between gap-5 py-3 2xl:flex'>
+              <div className="grid justify-between gap-5 py-3 2xl:flex">
                 <div className="flex justify-center inputBox">
-                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-[21.5rem]' required="" value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)} type="text" />
+                  <input
+                    className="w-[20rem] lg:w-[30rem] 2xl:w-[21.5rem]"
+                    required=""
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    type="text"
+                  />
                   <span>First name :</span>
                 </div>
                 <div className="flex justify-center inputBox">
-                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-[21.5rem]' required="" value={lastName}
-                    onChange={(e) => setLastName(e.target.value)} type="text" />
+                  <input
+                    className="w-[20rem] lg:w-[30rem] 2xl:w-[21.5rem]"
+                    required=""
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    type="text"
+                  />
                   <span>Last name :</span>
                 </div>
               </div>
-              <div className='py-3'>
+              <div className="py-3">
                 <div className="flex justify-center inputBox">
-                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" value={address} 
-                  onChange={(e) => setAddress(e.target.value)} type="text" />
+                  <input
+                    className="w-[20rem] lg:w-[30rem] 2xl:w-full"
+                    required=""
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    type="text"
+                  />
                   <span>Address :</span>
                 </div>
               </div>
-              <div className='py-3'>
+              <div className="py-3">
                 <div className="flex justify-center inputBox">
-                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" type="text" />
+                  <input
+                    className="w-[20rem] lg:w-[30rem] 2xl:w-full"
+                    required=""
+                    type="text"
+                  />
                   <span>Apartment, suite, etc. (optional) :</span>
                 </div>
               </div>
-              <div className='grid justify-between gap-5 py-3 2xl:flex'>
+              <div className="grid justify-between gap-5 py-3 2xl:flex">
                 <div className="flex justify-center inputBox">
-                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" value={city} 
-                  onChange={(e) => setCity(e.target.value)} type="text" />
+                  <input
+                    className="w-[20rem] lg:w-[30rem] 2xl:w-full"
+                    required=""
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    type="text"
+                  />
                   <span>City :</span>
                 </div>
                 <div className="flex justify-center inputBox">
-                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" value={State} 
-                  onChange={(e) => setState(e.target.value)} type="text" />
+                  <input
+                    className="w-[20rem] lg:w-[30rem] 2xl:w-full"
+                    required=""
+                    value={State}
+                    onChange={(e) => setState(e.target.value)}
+                    type="text"
+                  />
                   <span>State :</span>
                 </div>
                 <div className="flex justify-center inputBox">
-                  <input className='w-[20rem] lg:w-[30rem] 2xl:w-full' required="" value={postalCode} 
-                  onChange={(e) => setPostalCode(e.target.value)} type="text" />
+                  <input
+                    className="w-[20rem] lg:w-[30rem] 2xl:w-full"
+                    required=""
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
+                    type="text"
+                  />
                   <span>Zip Code :</span>
                 </div>
               </div>
-              <div className='flex items-center gap-3 py-3'>
+              {/* <div className="flex items-center gap-3 py-3">
                 <input type="checkbox" className="checkbox" />
-                <span className='text-xs'>Save this information for next time</span>
-              </div>
-              <div className="">
-                <Button black="true" onClick={stateHandler}>
-                  Checkout
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                    <path id="fire" strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z" />
-                    <path id="fire" strokeLinecap="round" strokeLinejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z" />
-                  </svg>
-                </Button>
+                <span className="text-xs">
+                  Save this information for next time
+                </span>
+              </div> */}
+              <div className="pt-5">
+                <button className='ui-btn' black="true" onClick={stateHandler}>
+                  <span>
+                    Checkout
+                  </span>
+                </button>
               </div>
             </div>
           </div>
@@ -291,7 +393,6 @@ export default function CartPage({ newProducts }) {
 
           {/* Cart details */}
           <div className="hidden p-6 lg:grid lg:w-6/12 rounded-xl">
-
             {/* if theres no products selected by client card will display empty */}
 
             {!cartProducts?.length && <p>No products in cart</p>}
@@ -303,23 +404,35 @@ export default function CartPage({ newProducts }) {
                 <div>
                   {products.map((product) => (
                     <>
-                      <div key={product._id} className='grid items-center grid-cols-2 gap-10'>
+                      <div
+                        key={product._id}
+                        className="grid items-center grid-cols-2 gap-10"
+                      >
                         {/* Display product details */}
                         <div className="grid grid-cols-2 mt-10">
-                          <div className='row-span-3 cols-span-2'>
-                            <img src={product.images[0]} alt={product.title} className='w-[5rem] h-[5rem] rounded-2xl' />
+                          <div className="row-span-3 cols-span-2">
+                            <img
+                              src={product.images[0]}
+                              alt={product.title}
+                              className="w-[5rem] h-[5rem] rounded-2xl"
+                            />
                           </div>
                           <div className="grid pt-3 text-left">
                             <p className="font-bold ">{product.title}</p>
-                            <div className='grid'>
+                            <div className="grid">
                               {productSpecifics
-                                .filter(specs => specs.productId === product._id)
+                                .filter(
+                                  (specs) => specs.productId === product._id,
+                                )
                                 .map((obj, index) => {
                                   const entries = Object.entries(obj);
                                   return (
                                     <div key={index}>
                                       {entries.map(([key, value]) => (
-                                        <div key={key} className='flex justify-between text-xs'>
+                                        <div
+                                          key={key}
+                                          className="flex justify-between text-xs"
+                                        >
                                           <span>{key}: </span>
                                           <span>{value}</span>
                                         </div>
@@ -330,10 +443,14 @@ export default function CartPage({ newProducts }) {
                             </div>
                           </div>
                         </div>
-                        <span className="font-bold text-center">${cartProducts.filter(id => id === product._id).length * product.price}</span>
+                        <span className="font-bold text-center">
+                          $
+                          {cartProducts.filter((id) => id === product._id)
+                            .length * product.price}
+                        </span>
                         {/* <OptionsDisplay {...products}/> */}
                       </div>
-                      <div className='divider' />
+                      <div className="divider" />
                     </>
                   ))}
                   <div>
@@ -355,15 +472,14 @@ export default function CartPage({ newProducts }) {
             )}
             {/* Display the total cost */}
             <div className="grid items-center justify-between mt-12">
-              <div className='flex gap-5 py-3'>
+              <div className="flex gap-5 py-3">
                 <p className="text-6xl font-bold">Total:</p>
                 <p className="text-6xl font-bold">${total}</p>
               </div>
             </div>
           </div>
-
         </div>
-      }
+      )}
       <ToastContainer />
     </>
   );

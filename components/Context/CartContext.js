@@ -4,14 +4,14 @@ export const CartContext = createContext({});
 
 export function CartContextProvider({children}) {
   const ls = typeof window !== "undefined" ? window.localStorage : null;
-  
+
   const [cartProducts,setCartProducts] = useState([]);
   const [productSpecifics, setProductSpecifics] = useState([]);
-  
+
   // const [buttonSpecs, setButtonSpecs] = useState([]);
   // buttonspecs is an array of objects, each object is a product with its own button specs
   let buttonSpecs = [];
-  
+
   useEffect(() => {
     if (cartProducts?.length > 0) {
       ls?.setItem('cart', JSON.stringify(cartProducts));

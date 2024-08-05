@@ -24,19 +24,13 @@ export default function ProductsPage({ products, CategoryProp }) {
         exit={{ opacity: 0 }}
         transition={{ duration: 2 }}
       >
-        <div
-          className="min-h-[75vh]"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(53,80,112,1) 0%, rgba(109,89,122,1) 50%, rgba(0,0,0,1) 100%)",
-          }}
-        >
+        <div className="min-h-[75vh] bg-[#07100B] px-10">
           <div className="flex items-center justify-between pt-10">
-            <h1 className="relative pl-5 text-5xl font-extrabold text-[#EAAC8B]">
+            <h1 className="relative text-5xl font-extrabold text-[#71948D]">
               Shop all items
             </h1>
             <div className="pr-5 dropdown dropdown-end">
-              <label tabIndex={0} className="btn border-0 bg-[#6D597A] m-1">
+              <label tabIndex={0} className="btn border-0 bg-[#71948D] m-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -54,13 +48,13 @@ export default function ProductsPage({ products, CategoryProp }) {
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 bg-[#6D597A] text-white font-mono border-2 border-[#E56B6F] rounded-box w-52"
+                className="dropdown-content z-[1] menu p-2 bg-[#1F3C2A] text-white font-mono border-2 border-[#354A4B] rounded-box w-52"
               >
                 {CategoryProp.map((Cat) => (
                   <li
                     key={Cat._id}
                     onClick={() => handleFilter(Cat._id)}
-                    className="px-2 py-2"
+                    className="px-2 py-2 hover:bg-[#365D4A] cursor-pointer"
                   >
                     {Cat.name}
                   </li>

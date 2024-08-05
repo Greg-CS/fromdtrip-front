@@ -71,9 +71,9 @@ export const Navbar = () => {
     total += price;
   }
 
-    const toggleAccordion = () => {
-      setIsOpen(!isOpen);
-    };
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
@@ -83,7 +83,7 @@ export const Navbar = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 2 }}
-          className={`navbar bg-[#355070] text-[#EAAC8B] ${
+          className={`navbar bg-[#07100B] text-[#71948D] transition-all ${
             isCart ? " hidden" : ""
           }`}
         >
@@ -103,12 +103,15 @@ export const Navbar = () => {
               />
             </svg>
           </button>
+
+          {/* Mobile menu for the left side */}
+
           {open ? (
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               transition={{ type: "spring", stiffness: 60, damping: 20 }}
-              className="fixed flex flex-col top-0 min-h-screen bg-[#6D597A] w-[15rem] border-r-2 border-[#B56576] z-10 text-[#EAAC8B] left-0"
+              className="fixed flex flex-col top-0 min-h-screen bg-[#07100B] w-[15rem] border-r-2 border-[#1F3C2A] z-10 text-[#365D4A] left-0"
             >
               <div className="flex items-center justify-between p-2 mb-6 gap-9">
                 <h1 className="text-2xl font-bold">Menu</h1>
@@ -147,13 +150,13 @@ export const Navbar = () => {
                 >
                   All products
                 </Link>
-                <Link
+                {/* <Link
                   onClick={handleMenu}
                   href="/faq"
                   className="text-2xl font-extrabold"
                 >
                   FAQ
-                </Link>
+                </Link> */}
                 <Link
                   onClick={handleMenu}
                   href="/contact"
@@ -167,11 +170,7 @@ export const Navbar = () => {
           <div className="justify-center flex-1 gap-5 lg:justify-start">
             <Link className="" href="/">
               <div className="rounded-full spinning-div">
-                <img
-                  className="w-full h-full"
-                  src={"/img/Logo.png"}
-                  alt="logo"
-                />
+                <img className="w-12 h-12" src={"/img/Logo.png"} alt="logo" />
               </div>
             </Link>
 
@@ -183,12 +182,12 @@ export const Navbar = () => {
           </div>
           <div className="flex flex-none">
             <div className="flex gap-10">
-              <Link
+              {/* <Link
                 href="/faq"
                 className="hidden text-2xl font-extrabold lg:flex"
               >
                 FAQ
-              </Link>
+              </Link> */}
               <Link
                 href="/contact"
                 className="hidden text-2xl font-extrabold lg:flex"
@@ -229,9 +228,9 @@ export const Navbar = () => {
       {drawerOpen ? (
         // drawer
         <motion.div
-          className="fixed top-0 right-0 min-h-screen bg-[#6D597A] w-[22rem] border-l-2 border-[#B56576] z-10 text-[#EAAC8B]"
+          className="fixed top-0 right-0 min-h-screen bg-[#07100B] w-[22rem] border-l-2 border-[#1F3C2A] z-10 text-[#365D4A]"
           initial={{ x: "100%" }}
-          animate={{ x: 0 }}
+          animate={{ x: 20 }}
           transition={{ type: "spring", stiffness: 60, damping: 20 }}
         >
           <div className="flex items-center justify-between p-5">
@@ -291,7 +290,7 @@ export const Navbar = () => {
                           ${product.price}.00 USD
                         </div>
                         <div
-                          className="bg-[#E56B6F] rounded-xl mr-5 p-2"
+                          className="bg-[#73848C] border-[#71948D] border-2 font-bold rounded-xl mr-5 p-2"
                           style={{
                             width: "fit-content",
                             justifySelf: "self-end",
@@ -363,9 +362,11 @@ export const Navbar = () => {
                 <Link href={"/cart"}>
                   <button
                     onClick={handleDrawer}
-                    className="btn bg-[#E56B6F] hover:bg-[#355070] rounded-2xl text-[#EAAC8B] border-2 border-transparent hover:border-transparent"
+                    className="ui-btn"
                   >
-                    Proceed to Checkout
+                    <span>
+                      Proceed to Checkout
+                    </span>
                   </button>
                 </Link>
               </div>
@@ -373,95 +374,6 @@ export const Navbar = () => {
           ) : (
             <p className="p-5 text-xl">No products in cart</p>
           )}
-
-          {/* {products?.length > 0 && (
-            <>
-
-              <div id="cart-items">
-                {products.map((product) => (
-                  <>
-                    <div
-                      key={product._id}
-                      className="flex items-center justify-between"
-                    >
-
-                      <div className="grid p-5">
-                        <div className="justify-self-center">
-                          <img
-                            src={product.images[0]}
-                            alt={product.title}
-                            className="w-20 border-2 border-black rounded-2xl"
-                          />
-                        </div>
-                        <div className="pt-3 text-center">
-                          <p className="font-bold">{product.title}</p>
-                        </div>
-                      </div>
-                      <div className="grid justify-end">
-                        <div className="p-5 text-xl text-right">
-                          ${product.price}.00 USD
-                        </div>
-                        <div
-                          className="bg-[#E56B6F] rounded-xl mr-5 p-2"
-                          style={{
-                            width: "fit-content",
-                            justifySelf: "self-end",
-                          }}
-                        >
-                          
-                          <button
-                            onClick={() => lessOfThisProduct(product._id)}
-                          >
-                            -
-                          </button>
-                          <span className="px-2">
-                            {
-                              cartProducts.filter((id) => id === product._id)
-                                .length
-                            }
-                          </span>
-                          <button
-                            onClick={() => moreOfThisProduct(product._id)}
-                          >
-                            +
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="p-5 divider" />
-                  </>
-                ))}
-              </div>
-
-
-              <div id="cart-total">
-                <div className="flex justify-between p-5">
-                  <span className="text-2xl">Taxes:</span>
-                  <span className="text-2xl">$0.00 USD</span>
-                </div>
-                <div className="flex items-center justify-between p-5">
-                  <span className="text-2xl">Shipping:</span>
-                  <span className="text-md">Calculated at checkout</span>
-                </div>
-                <div className="flex justify-between p-5">
-                  <span className="text-2xl">Total:</span>
-                  <span className="text-2xl">${total}.00 USD</span>
-                </div>
-              </div>
-              <div className="p-5 divider" />
-
-              <div id="checkout" className="m-5 w-fit">
-                <Link href={"/cart"}>
-                  <button
-                    onClick={handleDrawer}
-                    className="btn bg-[#E56B6F] hover:bg-[#355070] rounded-2xl text-[#EAAC8B] border-2 border-transparent hover:border-transparent"
-                  >
-                    Proceed to Checkout
-                  </button>
-                </Link>
-              </div>
-            </>
-          )} */}
         </motion.div>
       ) : null}
     </>

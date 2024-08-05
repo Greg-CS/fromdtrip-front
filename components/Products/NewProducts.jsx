@@ -4,14 +4,22 @@ import React from "react";
 export const NewProducts = ({ products }) => {
   return (
     <section
-      className="text-m text-[#EAAC8B] pt-24"
+      className="text-m text-[#71948D] pt-24 min-h-screen grid items-center justify-center place-items-center"
       style={{
-        background:
-          "linear-gradient(180deg, rgba(53,80,112,1) 0%, rgba(109,89,122,1) 50%)",
+        background: "#07100B",
       }}
     >
-      <h1 className="ml-12 text-5xl font-extrabold lg:ml-36">New Products</h1>
-      <ProductsGridAnim products={products} />
+      {products.length === 0 && (
+       <>
+       <h1 className="text-5xl font-extrabold">No products are currently listed check back later...</h1>
+       </>
+      )}
+      {products.length > 0 && (
+        <>
+          <h1 className="text-5xl font-extrabold">New Products</h1>
+          <ProductsGridAnim products={products} />
+        </>
+      )}
     </section>
   );
 };
