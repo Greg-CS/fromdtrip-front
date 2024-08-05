@@ -10,7 +10,7 @@ export const ProductsGridAnim = ({ products }) => {
         x: {
           repeat: Infinity,
           repeatType: "loop",
-          duration: 25, // Adjust the speed of the marquee
+          duration: 30, // Adjust the speed of the marquee
         },
       },
     },

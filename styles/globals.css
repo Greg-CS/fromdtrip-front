@@ -76,7 +76,6 @@
   /* Use the 'spin' animation */
 }
 
-/* From Uiverse.io by devanshsatwara */
 .ui-btn {
   --btn-default-bg: #010314;
   --btn-padding: 15px 20px;
@@ -93,8 +92,6 @@
   --font-weight: 600;
   --font-family: Menlo, Roboto Mono, monospace;
 }
-
-/* button settings 👆 */
 
 .ui-btn {
   box-sizing: border-box;

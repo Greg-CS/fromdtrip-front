@@ -16,7 +16,7 @@ export const Featured = ({product}) => {
           Checkout our new product
         </h1>
         <p
-          className="max-w-2xl p-2 mb-6 bg-[#07100B] font-semibold border-2 border-[#1F3C2A] lg:mb-8 md:text-lg lg:text-xl rounded-2xl"
+          className="max-w-2xl p-2 mb-6 text-[#71948D] bg-[#07100B] font-semibold border-2 border-[#1F3C2A] lg:mb-8 md:text-lg lg:text-xl rounded-2xl"
           style={{ wordSpacing: "4px" }}
         >
           a stylish and comfortable shirt that&apos;s perfect for any occasion!
